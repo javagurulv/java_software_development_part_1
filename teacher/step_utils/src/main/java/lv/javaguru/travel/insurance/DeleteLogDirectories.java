@@ -11,7 +11,7 @@ public class DeleteLogDirectories {
 
     public static void main(String[] args) {
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 188; i++) {
             String stepDirPath = "C:\\javaguru\\projects\\java_software_development_part_1\\teacher\\step_";
 
             stepDirPath = stepDirPath + i;
