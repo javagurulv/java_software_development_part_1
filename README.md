@@ -1,4 +1,4 @@
-#### JavaGuru: Travel Insurance Calculator
+#### JavaGuru: Travel Insurance Calculator (часть 1)
 
 Привет! 👋 Данный документ содержит основную информацию о проекте.
 
