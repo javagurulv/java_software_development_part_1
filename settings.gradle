@@ -189,7 +189,6 @@ include 'teacher:step_184'
 include 'teacher:step_185'
 include 'teacher:step_186'
 include 'teacher:step_187'
-include 'teacher:step_188'
 
 
 include 'teacher:step_utils'
