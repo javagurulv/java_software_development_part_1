@@ -2,15 +2,13 @@ package org.javaguru.travel.insurance.core.services;
 
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
-import org.javaguru.travel.insurance.core.domain.entities.*;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementEntityRepository;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementPersonEntityRepository;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementPersonRiskEntityRepository;
 import org.javaguru.travel.insurance.core.repositories.entities.SelectedRiskEntityRepository;
+import org.javaguru.travel.insurance.core.domain.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.UUID;
 
 @Component
 class AgreementEntityFactory {
@@ -30,7 +28,6 @@ class AgreementEntityFactory {
 
     private AgreementEntity saveAgreement(AgreementDTO agreementDTO) {
         AgreementEntity agreementEntity = new AgreementEntity();
-        agreementEntity.setUuid(UUID.randomUUID().toString());
         agreementEntity.setAgreementDateFrom(agreementDTO.getAgreementDateFrom());
         agreementEntity.setAgreementDateTo(agreementDTO.getAgreementDateTo());
         agreementEntity.setCountry(agreementDTO.getCountry());

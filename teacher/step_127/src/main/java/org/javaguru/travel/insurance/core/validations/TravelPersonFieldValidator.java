@@ -1,6 +1,5 @@
 package org.javaguru.travel.insurance.core.validations;
 
-import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,30 +18,30 @@ class TravelPersonFieldValidator {
     @Autowired
     private List<TravelPersonFieldValidation> personFieldValidations;
 
-    List<ValidationErrorDTO> validate(AgreementDTO agreement) {
-        return agreement.getPersons().stream()
-                        .map(person -> collectPersonErrors(agreement, person))
+    List<ValidationErrorDTO> validate(List<PersonDTO> persons) {
+        return persons.stream()
+                        .map(this::collectPersonErrors)
                         .flatMap(List::stream)
                         .collect(Collectors.toList());
     }
 
-    private List<ValidationErrorDTO> collectPersonErrors(AgreementDTO agreement, PersonDTO person) {
-        List<ValidationErrorDTO> singleErrors = collectSinglePersonErrors(agreement, person);
-        List<ValidationErrorDTO> listErrors = collectListPersonErrors(agreement, person);
+    private List<ValidationErrorDTO> collectPersonErrors(PersonDTO person) {
+        List<ValidationErrorDTO> singleErrors = collectSinglePersonErrors(person);
+        List<ValidationErrorDTO> listErrors = collectListPersonErrors(person);
         return concatenateLists(singleErrors, listErrors);
     }
 
-    private List<ValidationErrorDTO> collectSinglePersonErrors(AgreementDTO agreement, PersonDTO person) {
+    private List<ValidationErrorDTO> collectSinglePersonErrors(PersonDTO person) {
         return personFieldValidations.stream()
-                .map(validation -> validation.validate(agreement, person))
+                .map(validation -> validation.validate(person))
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .collect(Collectors.toList());
     }
 
-    private List<ValidationErrorDTO> collectListPersonErrors(AgreementDTO agreement, PersonDTO person) {
+    private List<ValidationErrorDTO> collectListPersonErrors(PersonDTO person) {
         return personFieldValidations.stream()
-                .map(validation -> validation.validateList(agreement, person))
+                .map(validation -> validation.validateList(person))
                 .filter(Objects::nonNull)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());

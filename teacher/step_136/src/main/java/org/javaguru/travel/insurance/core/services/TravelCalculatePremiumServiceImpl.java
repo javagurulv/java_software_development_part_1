@@ -17,14 +17,11 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
     @Autowired private AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator;
     @Autowired private AgreementTotalPremiumCalculator agreementTotalPremiumCalculator;
 
-    @Autowired private PersonSaver personSaver;
-
     @Override
     public TravelCalculatePremiumCoreResult calculatePremium(TravelCalculatePremiumCoreCommand command) {
         List<ValidationErrorDTO> errors = agreementValidator.validate(command.getAgreement());
         if (errors.isEmpty()) {
             calculatePremium(command.getAgreement());
-            savePersons(command.getAgreement());
             return buildResponse(command.getAgreement());
         } else {
             return buildResponse(errors);
@@ -34,10 +31,6 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
     private void calculatePremium(AgreementDTO agreement) {
         agreementPersonsPremiumCalculator.calculateRiskPremiums(agreement);
         agreement.setAgreementPremium(agreementTotalPremiumCalculator.calculate(agreement));
-    }
-
-    private void savePersons(AgreementDTO agreement) {
-        agreement.getPersons().forEach(person -> personSaver.savePerson(person));
     }
 
     private TravelCalculatePremiumCoreResult buildResponse(List<ValidationErrorDTO> errors) {

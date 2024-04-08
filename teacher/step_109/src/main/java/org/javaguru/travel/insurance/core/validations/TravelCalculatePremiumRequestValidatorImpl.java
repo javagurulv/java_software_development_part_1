@@ -1,6 +1,6 @@
 package org.javaguru.travel.insurance.core.validations;
 
-import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
+import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,25 +20,25 @@ class TravelCalculatePremiumRequestValidatorImpl
     @Autowired private List<TravelPersonFieldValidation> personFieldValidations;
 
     @Override
-    public List<ValidationError> validate(TravelCalculatePremiumRequestV1 request) {
+    public List<ValidationError> validate(TravelCalculatePremiumRequest request) {
         List<ValidationError> agreementErrors = collectAgreementErrors(request);
         List<ValidationError> personErrors = collectPersonErrors(request);
         return concatenateLists(agreementErrors, personErrors);
     }
 
-    private List<ValidationError> collectAgreementErrors(TravelCalculatePremiumRequestV1 request) {
+    private List<ValidationError> collectAgreementErrors(TravelCalculatePremiumRequest request) {
         List<ValidationError> singleErrors = collectSingleAgreementErrors(request);
         List<ValidationError> listErrors = collectListAgreementErrors(request);
         return concatenateLists(singleErrors, listErrors);
     }
 
-    private List<ValidationError> collectPersonErrors(TravelCalculatePremiumRequestV1 request) {
+    private List<ValidationError> collectPersonErrors(TravelCalculatePremiumRequest request) {
         List<ValidationError> singleErrors = collectSinglePersonErrors(request);
         List<ValidationError> listErrors = collectListPersonErrors(request);
         return concatenateLists(singleErrors, listErrors);
     }
 
-    private List<ValidationError> collectSingleAgreementErrors(TravelCalculatePremiumRequestV1 request) {
+    private List<ValidationError> collectSingleAgreementErrors(TravelCalculatePremiumRequest request) {
         return agreementFieldValidations.stream()
                 .map(validation -> validation.validate(request))
                 .filter(Optional::isPresent)
@@ -46,7 +46,7 @@ class TravelCalculatePremiumRequestValidatorImpl
                 .collect(Collectors.toList());
     }
 
-    private List<ValidationError> collectListAgreementErrors(TravelCalculatePremiumRequestV1 request) {
+    private List<ValidationError> collectListAgreementErrors(TravelCalculatePremiumRequest request) {
         return agreementFieldValidations.stream()
                 .map(validation -> validation.validateList(request))
                 .filter(Objects::nonNull)
@@ -54,7 +54,7 @@ class TravelCalculatePremiumRequestValidatorImpl
                 .collect(Collectors.toList());
     }
 
-    private List<ValidationError> collectSinglePersonErrors(TravelCalculatePremiumRequestV1 request) {
+    private List<ValidationError> collectSinglePersonErrors(TravelCalculatePremiumRequest request) {
         return personFieldValidations.stream()
                 .map(validation -> validation.validate(request))
                 .filter(Optional::isPresent)
@@ -62,7 +62,7 @@ class TravelCalculatePremiumRequestValidatorImpl
                 .collect(Collectors.toList());
     }
 
-    private List<ValidationError> collectListPersonErrors(TravelCalculatePremiumRequestV1 request) {
+    private List<ValidationError> collectListPersonErrors(TravelCalculatePremiumRequest request) {
         return personFieldValidations.stream()
                 .map(validation -> validation.validateList(request))
                 .filter(Objects::nonNull)

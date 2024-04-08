@@ -17,10 +17,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.*;
-import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class AgreementXmlExporterJob {
@@ -32,9 +30,6 @@ public class AgreementXmlExporterJob {
 
     @Value( "${agreement.xml.exporter.job.path}" )
     private String agreementExportPath;
-
-    @Value( "${agreement.xml.exporter.job.thread.count}" )
-    private Integer threadCount;
 
     @Autowired private TravelGetAllAgreementUuidsService allAgreementUuidsService;
     @Autowired private TravelGetAgreementService agreementService;
@@ -50,7 +45,7 @@ public class AgreementXmlExporterJob {
     private void executeJob() {
         logger.info("AgreementXmlExporterJob started");
         List<String> allAgreementUuids = getAllAgreementUuids();
-        exportAgreements(allAgreementUuids);
+        allAgreementUuids.forEach(this::exportAgreement);
         logger.info("AgreementXmlExporterJob finished");
     }
 
@@ -59,26 +54,6 @@ public class AgreementXmlExporterJob {
                 new TravelGetAllAgreementUuidsCoreCommand()
         );
         return result.getAgreementUuids();
-    }
-
-    private void exportAgreements(List<String> agreementUuids) {
-        ExecutorService executor = Executors.newFixedThreadPool(threadCount);
-        Collection<Future<?>> futures = new LinkedList<>();
-        agreementUuids.forEach(uuid -> futures.add(executor.submit(() -> exportAgreement(uuid))));
-        waitUntilAllTasksWillBeExecuted(futures);
-        executor.shutdownNow();
-    }
-
-    private static void waitUntilAllTasksWillBeExecuted(Collection<Future<?>> futures) {
-        for (Future<?> future : futures) {
-            try {
-                future.get();
-            } catch (InterruptedException e) {
-                logger.info("AgreementXmlExporterJob exception", e);
-            } catch (ExecutionException e) {
-                logger.info("AgreementXmlExporterJob exception", e);
-            }
-        }
     }
 
     private void exportAgreement(String agreementUuid) {

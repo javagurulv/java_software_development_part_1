@@ -1,8 +1,8 @@
 package org.javaguru.travel.insurance.jobs;
 
-import org.javaguru.travel.insurance.core.api.command.TravelGetNotExportedAgreementUuidsCoreCommand;
-import org.javaguru.travel.insurance.core.api.command.TravelGetNotExportedAgreementUuidsCoreResult;
-import org.javaguru.travel.insurance.core.services.TravelGetNotExportedAgreementUuidsService;
+import org.javaguru.travel.insurance.core.api.command.TravelGetAllAgreementUuidsCoreCommand;
+import org.javaguru.travel.insurance.core.api.command.TravelGetAllAgreementUuidsCoreResult;
+import org.javaguru.travel.insurance.core.services.TravelGetAllAgreementUuidsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class AgreementXmlExporterJob {
     @Value( "${agreement.xml.exporter.job.thread.count}" )
     private Integer threadCount;
 
-    @Autowired private TravelGetNotExportedAgreementUuidsService notExportedAgreementUuidsService;
+    @Autowired private TravelGetAllAgreementUuidsService allAgreementUuidsService;
     @Autowired private AgreementXmlExporter agreementXmlExporter;
 
 
@@ -39,14 +39,14 @@ public class AgreementXmlExporterJob {
 
     private void executeJob() {
         logger.info("AgreementXmlExporterJob started");
-        List<String> notExportedYetAgreementUuids = getNotExportedYetAgreementUuids();
-        exportAgreements(notExportedYetAgreementUuids);
+        List<String> allAgreementUuids = getAllAgreementUuids();
+        exportAgreements(allAgreementUuids);
         logger.info("AgreementXmlExporterJob finished");
     }
 
-    private List<String> getNotExportedYetAgreementUuids() {
-        TravelGetNotExportedAgreementUuidsCoreResult result = notExportedAgreementUuidsService.getAgreementUuids(
-                new TravelGetNotExportedAgreementUuidsCoreCommand()
+    private List<String> getAllAgreementUuids() {
+        TravelGetAllAgreementUuidsCoreResult result = allAgreementUuidsService.getAgreement(
+                new TravelGetAllAgreementUuidsCoreCommand()
         );
         return result.getAgreementUuids();
     }
