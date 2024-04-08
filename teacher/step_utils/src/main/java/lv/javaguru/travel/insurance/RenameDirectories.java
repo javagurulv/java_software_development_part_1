@@ -11,12 +11,12 @@ public class RenameDirectories {
 
     public static void main(String[] args) {
 
-        for (int i = 175; i >= 38; i--) {
-            String sourceDirPath = "C:\\javaguru\\projects\\java2-real-practice-with-mentor\\java_software_engineer\\lesson_27_trevel_insurance_calculator\\step_";
-            String targetDirPath = "C:\\javaguru\\projects\\java2-real-practice-with-mentor\\java_software_engineer\\lesson_27_trevel_insurance_calculator\\step_";
+        for (int i = 191; i >= 98; i--) {
+            String sourceDirPath = "C:\\javaguru\\projects\\java_software_development_part_1\\teacher\\step_";
+            String targetDirPath = "C:\\javaguru\\projects\\java_software_development_part_1\\teacher\\step_";
 
             sourceDirPath = sourceDirPath + i;
-            targetDirPath = targetDirPath + (i + 2);
+            targetDirPath = targetDirPath + (i + 1);
             renameDir(sourceDirPath, targetDirPath);
         }
 

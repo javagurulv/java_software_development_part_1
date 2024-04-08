@@ -23,7 +23,7 @@ public class TravelInsuranceControllerV1 {
     public String showForm(ModelMap modelMap) {
         modelMap.addAttribute("request", new TravelCalculatePremiumRequestV1());
         modelMap.addAttribute("response", new TravelCalculatePremiumResponseV1());
-        return "travel-calculate-premium-v1";
+        return "travel-calculate-premium";
     }
 
     @PostMapping("/insurance/travel/web/v1")
@@ -33,7 +33,7 @@ public class TravelInsuranceControllerV1 {
         TravelCalculatePremiumCoreResult coreResult = service.calculatePremium(coreCommand);
         TravelCalculatePremiumResponseV1 response = dtoV1Converter.buildResponse(coreResult);
         modelMap.addAttribute("response", response);
-        return "travel-calculate-premium-v1";
+        return "travel-calculate-premium";
     }
 
 }
