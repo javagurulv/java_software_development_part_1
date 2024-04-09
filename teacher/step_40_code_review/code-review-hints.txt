@@ -14,3 +14,8 @@ Lombok аннотации используются на простых клас�
 @AllArgsConstructor
 @Service
 class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService {
+
+
+2. Использование * в import директиве.
+Считается хорошим тоном явно перечислять все
+импортируемые классы.
