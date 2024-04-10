@@ -4,7 +4,6 @@ import org.javaguru.travel.insurance.core.util.DateTimeUtil;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
 import org.javaguru.travel.insurance.dto.ValidationError;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -13,8 +12,14 @@ import java.util.Optional;
 @Component
 class PersonBirthDateInThePastValidation extends TravelPersonFieldValidationImpl {
 
-    @Autowired private DateTimeUtil dateTimeUtil;
-    @Autowired private ValidationErrorFactory errorFactory;
+    private final DateTimeUtil dateTimeUtil;
+    private final ValidationErrorFactory errorFactory;
+
+    PersonBirthDateInThePastValidation(DateTimeUtil dateTimeUtil,
+                                       ValidationErrorFactory errorFactory) {
+        this.dateTimeUtil = dateTimeUtil;
+        this.errorFactory = errorFactory;
+    }
 
     @Override
     public Optional<ValidationError> validate(TravelCalculatePremiumRequestV1 request) {
