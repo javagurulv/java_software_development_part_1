@@ -12,8 +12,14 @@ import java.util.Optional;
 @Component
 class AgreementDateToInFutureValidation extends TravelRequestValidationImpl {
 
-    @Autowired private DateTimeUtil dateTimeUtil;
-    @Autowired private ValidationErrorFactory errorFactory;
+    private final DateTimeUtil dateTimeUtil;
+    private final ValidationErrorFactory errorFactory;
+
+    AgreementDateToInFutureValidation(DateTimeUtil dateTimeUtil,
+                                      ValidationErrorFactory errorFactory) {
+        this.dateTimeUtil = dateTimeUtil;
+        this.errorFactory = errorFactory;
+    }
 
     @Override
     public Optional<ValidationError> validate(TravelCalculatePremiumRequest request) {
