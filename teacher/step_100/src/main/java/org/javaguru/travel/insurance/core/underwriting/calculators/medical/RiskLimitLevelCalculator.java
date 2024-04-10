@@ -3,7 +3,6 @@ package org.javaguru.travel.insurance.core.underwriting.calculators.medical;
 import org.javaguru.travel.insurance.core.domain.MedicalRiskLimitLevel;
 import org.javaguru.travel.insurance.core.repositories.MedicalRiskLimitLevelRepository;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +14,11 @@ class RiskLimitLevelCalculator {
     @Value( "${medical.risk.limit.level.enabled:false}" )
     private Boolean medicalRiskLimitLevelEnabled;
 
-    @Autowired private MedicalRiskLimitLevelRepository riskLimitLevelRepository;
+    private final MedicalRiskLimitLevelRepository riskLimitLevelRepository;
+
+    RiskLimitLevelCalculator(MedicalRiskLimitLevelRepository riskLimitLevelRepository) {
+        this.riskLimitLevelRepository = riskLimitLevelRepository;
+    }
 
     BigDecimal calculate(TravelCalculatePremiumRequest request) {
         return medicalRiskLimitLevelEnabled
