@@ -3,7 +3,6 @@ package org.javaguru.travel.insurance.core.underwriting.calculators.medical;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.underwriting.TravelRiskPremiumCalculator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -12,10 +11,20 @@ import java.math.RoundingMode;
 @Component
 class TravelMedicalRiskPremiumCalculator implements TravelRiskPremiumCalculator {
 
-    @Autowired private DayCountCalculator dayCountCalculator;
-    @Autowired private CountryDefaultDayRateCalculator countryDefaultDayRateCalculator;
-    @Autowired private AgeCoefficientCalculator ageCoefficientCalculator;
-    @Autowired private RiskLimitLevelCalculator riskLimitLevelCalculator;
+    private final DayCountCalculator dayCountCalculator;
+    private final CountryDefaultDayRateCalculator countryDefaultDayRateCalculator;
+    private final AgeCoefficientCalculator ageCoefficientCalculator;
+    private final RiskLimitLevelCalculator riskLimitLevelCalculator;
+
+    TravelMedicalRiskPremiumCalculator(DayCountCalculator dayCountCalculator,
+                                       CountryDefaultDayRateCalculator countryDefaultDayRateCalculator,
+                                       AgeCoefficientCalculator ageCoefficientCalculator,
+                                       RiskLimitLevelCalculator riskLimitLevelCalculator) {
+        this.dayCountCalculator = dayCountCalculator;
+        this.countryDefaultDayRateCalculator = countryDefaultDayRateCalculator;
+        this.ageCoefficientCalculator = ageCoefficientCalculator;
+        this.riskLimitLevelCalculator = riskLimitLevelCalculator;
+    }
 
     @Override
     public BigDecimal calculatePremium(AgreementDTO agreement, PersonDTO person) {
