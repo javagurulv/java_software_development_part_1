@@ -6,7 +6,6 @@ import org.javaguru.travel.insurance.core.validations.TravelCalculatePremiumRequ
 import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
 import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumResponseV1;
 import org.javaguru.travel.insurance.dto.ValidationError;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,8 +13,14 @@ import java.util.List;
 @Component
 class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService {
 
-    @Autowired private TravelCalculatePremiumRequestValidator requestValidator;
-    @Autowired private TravelPremiumUnderwriting premiumUnderwriting;
+    private final TravelCalculatePremiumRequestValidator requestValidator;
+    private final TravelPremiumUnderwriting premiumUnderwriting;
+
+    TravelCalculatePremiumServiceImpl(TravelCalculatePremiumRequestValidator requestValidator,
+                                      TravelPremiumUnderwriting premiumUnderwriting) {
+        this.requestValidator = requestValidator;
+        this.premiumUnderwriting = premiumUnderwriting;
+    }
 
     @Override
     public TravelCalculatePremiumResponseV1 calculatePremium(TravelCalculatePremiumRequestV1 request) {
