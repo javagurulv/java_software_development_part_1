@@ -4,7 +4,6 @@ import org.javaguru.travel.insurance.core.DateTimeService;
 import org.javaguru.travel.insurance.core.ErrorCodeUtil;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -13,8 +12,14 @@ import java.util.Optional;
 @Component
 class AgreementDateFromInFutureValidation implements TravelRequestValidation {
 
-    @Autowired private DateTimeService dateTimeService;
-    @Autowired private ErrorCodeUtil errorCodeUtil;
+    private final DateTimeService dateTimeService;
+    private final ErrorCodeUtil errorCodeUtil;
+
+    AgreementDateFromInFutureValidation(DateTimeService dateTimeService,
+                                        ErrorCodeUtil errorCodeUtil) {
+        this.dateTimeService = dateTimeService;
+        this.errorCodeUtil = errorCodeUtil;
+    }
 
     @Override
     public Optional<ValidationError> execute(TravelCalculatePremiumRequest request) {

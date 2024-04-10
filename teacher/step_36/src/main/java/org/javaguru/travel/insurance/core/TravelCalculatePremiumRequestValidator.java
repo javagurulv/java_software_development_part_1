@@ -2,7 +2,6 @@ package org.javaguru.travel.insurance.core;
 
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -13,7 +12,11 @@ import java.util.Optional;
 @Component
 class TravelCalculatePremiumRequestValidator {
 
-    @Autowired private DateTimeService dateTimeService;
+    private final DateTimeService dateTimeService;
+
+    TravelCalculatePremiumRequestValidator(DateTimeService dateTimeService) {
+        this.dateTimeService = dateTimeService;
+    }
 
     public List<ValidationError> validate(TravelCalculatePremiumRequest request) {
         List<ValidationError> errors = new ArrayList<>();
