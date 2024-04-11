@@ -1,8 +1,12 @@
 Ваша задача:
 
 Примените Lombok для генерации конструктора
-в классе TravelCalculatePremiumServiceImpl
-без модификатора доступа. Для этого воспользуйтесь
+в классах
+- TravelCalculatePremiumServiceImpl
+- TravelCalculatePremiumController
+без модификатора доступа.
+
+Для этого воспользуйтесь
 следующей аннотацией из Lombok библиотеки:
 
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
