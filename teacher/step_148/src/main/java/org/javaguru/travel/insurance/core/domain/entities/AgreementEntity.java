@@ -22,9 +22,6 @@ public class AgreementEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "uuid", nullable = false)
-    private String uuid;
-
     @Column(name = "date_from", nullable = false)
     private Date agreementDateFrom;
 

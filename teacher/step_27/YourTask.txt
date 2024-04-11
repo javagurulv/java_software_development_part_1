@@ -1,10 +1,1 @@
-Ментор хочет написать тесты на контроллер
-TravelCalculatePremiumController, для того чтобы можно было
-поднимать приложение целиком, посылать HTTP POST запрос с JSON
-внутри и проверять ответ.
-
-Ментор создал вам пример такого теста в классе
-TravelCalculatePremiumControllerTest.
-
-Ваша задача: разобраться как работает тест контроллера
-TravelCalculatePremiumControllerTest.
+Ваша задача: установить явно формат даты в запросе на "yyyy-MM-dd".

@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 @Component
 class TravelCalculatePremiumRequestValidatorImpl
     implements TravelCalculatePremiumRequestValidator {
-    
+
     private final List<TravelRequestValidation> travelValidations;
 
     TravelCalculatePremiumRequestValidatorImpl(List<TravelRequestValidation> travelValidations) {

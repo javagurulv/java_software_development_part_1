@@ -3,7 +3,6 @@ package org.javaguru.travel.insurance.core.underwriting.calculators.cancellation
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.underwriting.TravelRiskPremiumCalculator;
-
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -16,8 +15,8 @@ class TravelCancellationRiskPremiumCalculator implements TravelRiskPremiumCalcul
     private final TCAgeCoefficientCalculator ageCoefficientCalculator;
     private final TCCountrySafetyRatingCoefficientCalculator countrySafetyRatingCoefficientCalculator;
 
-    TravelCancellationRiskPremiumCalculator(TCTravelCostCoefficientCalculator travelCostCoefficientCalculator, 
-                                            TCAgeCoefficientCalculator ageCoefficientCalculator, 
+    TravelCancellationRiskPremiumCalculator(TCTravelCostCoefficientCalculator travelCostCoefficientCalculator,
+                                            TCAgeCoefficientCalculator ageCoefficientCalculator,
                                             TCCountrySafetyRatingCoefficientCalculator countrySafetyRatingCoefficientCalculator) {
         this.travelCostCoefficientCalculator = travelCostCoefficientCalculator;
         this.ageCoefficientCalculator = ageCoefficientCalculator;

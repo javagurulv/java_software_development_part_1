@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Component
 class AgreementDateToValidation extends TravelRequestValidationImpl {
-    
+
     private final ValidationErrorFactory errorFactory;
 
     AgreementDateToValidation(ValidationErrorFactory errorFactory) {

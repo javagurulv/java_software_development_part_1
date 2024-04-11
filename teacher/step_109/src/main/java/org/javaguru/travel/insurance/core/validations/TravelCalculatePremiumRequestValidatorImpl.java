@@ -2,6 +2,7 @@ package org.javaguru.travel.insurance.core.validations;
 
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
+
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -14,67 +15,35 @@ import java.util.stream.Stream;
 @Component
 class TravelCalculatePremiumRequestValidatorImpl
     implements TravelCalculatePremiumRequestValidator {
+    
+    private final List<TravelRequestValidation> travelValidations;
 
-    private final List<TravelAgreementFieldValidation> agreementFieldValidations;
-    private final List<TravelPersonFieldValidation> personFieldValidations;
-
-    TravelCalculatePremiumRequestValidatorImpl(List<TravelAgreementFieldValidation> agreementFieldValidations,
-                                               List<TravelPersonFieldValidation> personFieldValidations) {
-        this.agreementFieldValidations = agreementFieldValidations;
-        this.personFieldValidations = personFieldValidations;
+    TravelCalculatePremiumRequestValidatorImpl(List<TravelRequestValidation> travelValidations) {
+        this.travelValidations = travelValidations;
     }
 
     @Override
     public List<ValidationError> validate(TravelCalculatePremiumRequest request) {
-        List<ValidationError> agreementErrors = collectAgreementErrors(request);
-        List<ValidationError> personErrors = collectPersonErrors(request);
-        return concatenateLists(agreementErrors, personErrors);
-    }
-
-    private List<ValidationError> collectAgreementErrors(TravelCalculatePremiumRequest request) {
-        List<ValidationError> singleErrors = collectSingleAgreementErrors(request);
-        List<ValidationError> listErrors = collectListAgreementErrors(request);
+        List<ValidationError> singleErrors = collectSingleErrors(request);
+        List<ValidationError> listErrors = collectListErrors(request);
         return concatenateLists(singleErrors, listErrors);
     }
 
-    private List<ValidationError> collectPersonErrors(TravelCalculatePremiumRequest request) {
-        List<ValidationError> singleErrors = collectSinglePersonErrors(request);
-        List<ValidationError> listErrors = collectListPersonErrors(request);
-        return concatenateLists(singleErrors, listErrors);
-    }
-
-    private List<ValidationError> collectSingleAgreementErrors(TravelCalculatePremiumRequest request) {
-        return agreementFieldValidations.stream()
+    private List<ValidationError> collectSingleErrors(TravelCalculatePremiumRequest request) {
+        return travelValidations.stream()
                 .map(validation -> validation.validate(request))
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .collect(Collectors.toList());
     }
 
-    private List<ValidationError> collectListAgreementErrors(TravelCalculatePremiumRequest request) {
-        return agreementFieldValidations.stream()
+    private List<ValidationError> collectListErrors(TravelCalculatePremiumRequest request) {
+        return travelValidations.stream()
                 .map(validation -> validation.validateList(request))
                 .filter(Objects::nonNull)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
     }
-
-    private List<ValidationError> collectSinglePersonErrors(TravelCalculatePremiumRequest request) {
-        return personFieldValidations.stream()
-                .map(validation -> validation.validate(request))
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .collect(Collectors.toList());
-    }
-
-    private List<ValidationError> collectListPersonErrors(TravelCalculatePremiumRequest request) {
-        return personFieldValidations.stream()
-                .map(validation -> validation.validateList(request))
-                .filter(Objects::nonNull)
-                .flatMap(Collection::stream)
-                .collect(Collectors.toList());
-    }
-
 
     private List<ValidationError> concatenateLists(List<ValidationError> singleErrors,
                                                    List<ValidationError> listErrors) {

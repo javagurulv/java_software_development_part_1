@@ -11,15 +11,15 @@ import java.math.RoundingMode;
 @Component
 class TravelMedicalRiskPremiumCalculator implements TravelRiskPremiumCalculator {
 
-    private final TMDayCountCalculator dayCountCalculator;
-    private final TMCountryDefaultDayRateCalculator countryDefaultDayRateCalculator;
-    private final TMAgeCoefficientCalculator ageCoefficientCalculator;
-    private final TMRiskLimitLevelCalculator riskLimitLevelCalculator;
+    private final DayCountCalculator dayCountCalculator;
+    private final CountryDefaultDayRateCalculator countryDefaultDayRateCalculator;
+    private final AgeCoefficientCalculator ageCoefficientCalculator;
+    private final RiskLimitLevelCalculator riskLimitLevelCalculator;
 
-    TravelMedicalRiskPremiumCalculator(TMDayCountCalculator dayCountCalculator,
-                                       TMCountryDefaultDayRateCalculator countryDefaultDayRateCalculator,
-                                       TMAgeCoefficientCalculator ageCoefficientCalculator,
-                                       TMRiskLimitLevelCalculator riskLimitLevelCalculator) {
+    TravelMedicalRiskPremiumCalculator(DayCountCalculator dayCountCalculator,
+                                       CountryDefaultDayRateCalculator countryDefaultDayRateCalculator,
+                                       AgeCoefficientCalculator ageCoefficientCalculator,
+                                       RiskLimitLevelCalculator riskLimitLevelCalculator) {
         this.dayCountCalculator = dayCountCalculator;
         this.countryDefaultDayRateCalculator = countryDefaultDayRateCalculator;
         this.ageCoefficientCalculator = ageCoefficientCalculator;

@@ -13,16 +13,13 @@ class TravelMedicalRiskPremiumCalculator implements TravelRiskPremiumCalculator 
     private final DayCountCalculator dayCountCalculator;
     private final CountryDefaultDayRateCalculator countryDefaultDayRateCalculator;
     private final AgeCoefficientCalculator ageCoefficientCalculator;
-    private final RiskLimitLevelCalculator riskLimitLevelCalculator;
 
     TravelMedicalRiskPremiumCalculator(DayCountCalculator dayCountCalculator,
                                        CountryDefaultDayRateCalculator countryDefaultDayRateCalculator,
-                                       AgeCoefficientCalculator ageCoefficientCalculator,
-                                       RiskLimitLevelCalculator riskLimitLevelCalculator) {
+                                       AgeCoefficientCalculator ageCoefficientCalculator) {
         this.dayCountCalculator = dayCountCalculator;
         this.countryDefaultDayRateCalculator = countryDefaultDayRateCalculator;
         this.ageCoefficientCalculator = ageCoefficientCalculator;
-        this.riskLimitLevelCalculator = riskLimitLevelCalculator;
     }
 
     @Override
@@ -30,11 +27,9 @@ class TravelMedicalRiskPremiumCalculator implements TravelRiskPremiumCalculator 
         var daysCount = dayCountCalculator.calculate(request);
         var countryDefaultRate = countryDefaultDayRateCalculator.calculate(request);
         var ageCoefficient = ageCoefficientCalculator.calculate(request);
-        var riskLimitLevel = riskLimitLevelCalculator.calculate(request);
         return countryDefaultRate
                 .multiply(daysCount)
                 .multiply(ageCoefficient)
-                .multiply(riskLimitLevel)
                 .setScale(2, RoundingMode.HALF_UP);
     }
 

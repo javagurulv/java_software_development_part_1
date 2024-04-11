@@ -3,7 +3,6 @@ package org.javaguru.travel.insurance.core.underwriting.calculators.medical;
 import org.javaguru.travel.insurance.core.domain.CountryDefaultDayRate;
 import org.javaguru.travel.insurance.core.repositories.CountryDefaultDayRateRepository;
 import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
-
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;

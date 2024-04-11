@@ -16,6 +16,7 @@ class SelectedRisksPremiumCalculator {
         this.riskPremiumCalculators = riskPremiumCalculators;
     }
 
+
     List<RiskPremium> calculatePremiumForAllRisks(TravelCalculatePremiumRequest request) {
         return request.getSelectedRisks().stream()
                 .map(riskIc -> new RiskPremium(riskIc, calculatePremiumForRisk(riskIc, request)))

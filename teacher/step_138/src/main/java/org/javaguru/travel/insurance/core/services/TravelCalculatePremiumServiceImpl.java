@@ -15,16 +15,16 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
     private final TravelAgreementValidator agreementValidator;
     private final AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator;
     private final AgreementTotalPremiumCalculator agreementTotalPremiumCalculator;
-    private final AgreementEntityFactory agreementEntityFactory;
+    private final PersonSaver personSaver;
 
     TravelCalculatePremiumServiceImpl(TravelAgreementValidator agreementValidator,
                                       AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator,
                                       AgreementTotalPremiumCalculator agreementTotalPremiumCalculator,
-                                      AgreementEntityFactory agreementEntityFactory) {
+                                      PersonSaver personSaver) {
         this.agreementValidator = agreementValidator;
         this.agreementPersonsPremiumCalculator = agreementPersonsPremiumCalculator;
         this.agreementTotalPremiumCalculator = agreementTotalPremiumCalculator;
-        this.agreementEntityFactory = agreementEntityFactory;
+        this.personSaver = personSaver;
     }
 
     @Override
@@ -32,7 +32,7 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
         List<ValidationErrorDTO> errors = agreementValidator.validate(command.getAgreement());
         if (errors.isEmpty()) {
             calculatePremium(command.getAgreement());
-            agreementEntityFactory.createAgreementEntity(command.getAgreement());
+            savePersons(command.getAgreement());
             return buildResponse(command.getAgreement());
         } else {
             return buildResponse(errors);
@@ -42,6 +42,10 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
     private void calculatePremium(AgreementDTO agreement) {
         agreementPersonsPremiumCalculator.calculateRiskPremiums(agreement);
         agreement.setAgreementPremium(agreementTotalPremiumCalculator.calculate(agreement));
+    }
+
+    private void savePersons(AgreementDTO agreement) {
+        agreement.getPersons().forEach(person -> personSaver.savePerson(person));
     }
 
     private TravelCalculatePremiumCoreResult buildResponse(List<ValidationErrorDTO> errors) {

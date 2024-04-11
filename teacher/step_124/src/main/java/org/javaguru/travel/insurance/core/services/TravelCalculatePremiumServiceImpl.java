@@ -5,7 +5,6 @@ import org.javaguru.travel.insurance.core.api.command.TravelCalculatePremiumCore
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.validations.TravelAgreementValidator;
-
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -17,8 +16,8 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
     private final AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator;
     private final AgreementTotalPremiumCalculator agreementTotalPremiumCalculator;
 
-    TravelCalculatePremiumServiceImpl(TravelAgreementValidator agreementValidator, 
-                                      AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator, 
+    TravelCalculatePremiumServiceImpl(TravelAgreementValidator agreementValidator,
+                                      AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator,
                                       AgreementTotalPremiumCalculator agreementTotalPremiumCalculator) {
         this.agreementValidator = agreementValidator;
         this.agreementPersonsPremiumCalculator = agreementPersonsPremiumCalculator;

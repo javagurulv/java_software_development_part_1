@@ -5,7 +5,6 @@ import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.repositories.ClassifierValueRepository;
 import org.javaguru.travel.insurance.core.util.Placeholder;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
-
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -18,7 +17,7 @@ class SelectedRisksValidation extends TravelAgreementFieldValidationImpl {
     private final ClassifierValueRepository classifierValueRepository;
     private final ValidationErrorFactory errorFactory;
 
-    SelectedRisksValidation(ClassifierValueRepository classifierValueRepository, 
+    SelectedRisksValidation(ClassifierValueRepository classifierValueRepository,
                             ValidationErrorFactory errorFactory) {
         this.classifierValueRepository = classifierValueRepository;
         this.errorFactory = errorFactory;

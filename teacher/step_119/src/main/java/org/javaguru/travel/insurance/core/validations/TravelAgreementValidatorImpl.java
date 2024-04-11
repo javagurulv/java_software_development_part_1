@@ -2,7 +2,6 @@ package org.javaguru.travel.insurance.core.validations;
 
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
-
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,7 +14,7 @@ class TravelAgreementValidatorImpl implements TravelAgreementValidator {
     private final TravelAgreementFieldValidator agreementFieldValidator;
     private final TravelPersonFieldValidator personFieldValidator;
 
-    TravelAgreementValidatorImpl(TravelAgreementFieldValidator agreementFieldValidator, 
+    TravelAgreementValidatorImpl(TravelAgreementFieldValidator agreementFieldValidator,
                                  TravelPersonFieldValidator personFieldValidator) {
         this.agreementFieldValidator = agreementFieldValidator;
         this.personFieldValidator = personFieldValidator;

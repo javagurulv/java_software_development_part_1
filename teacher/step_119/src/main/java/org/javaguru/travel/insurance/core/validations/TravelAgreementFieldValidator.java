@@ -2,7 +2,6 @@ package org.javaguru.travel.insurance.core.validations;
 
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
-
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -14,7 +13,7 @@ import java.util.stream.Stream;
 
 @Component
 class TravelAgreementFieldValidator {
-    
+
     private final List<TravelAgreementFieldValidation> agreementFieldValidations;
 
     TravelAgreementFieldValidator(List<TravelAgreementFieldValidation> agreementFieldValidations) {

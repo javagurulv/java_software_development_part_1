@@ -2,7 +2,7 @@ package org.javaguru.travel.insurance.core.validations.agreement;
 
 import org.javaguru.travel.insurance.core.util.DateTimeUtil;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
-import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
+import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +22,7 @@ class AgreementDateToInFutureValidation extends TravelAgreementFieldValidationIm
     }
 
     @Override
-    public Optional<ValidationError> validate(TravelCalculatePremiumRequestV1 request) {
+    public Optional<ValidationError> validate(TravelCalculatePremiumRequest request) {
         Date dateTo = request.getAgreementDateTo();
         Date currentDateTime = dateTimeUtil.getCurrentDateTime();
         return (dateTo != null && dateTo.before(currentDateTime))

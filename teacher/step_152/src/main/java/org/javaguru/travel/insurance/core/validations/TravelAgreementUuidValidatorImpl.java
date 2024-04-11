@@ -3,7 +3,6 @@ package org.javaguru.travel.insurance.core.validations;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementEntityRepository;
 import org.javaguru.travel.insurance.core.util.Placeholder;
-
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ class TravelAgreementUuidValidatorImpl implements TravelAgreementUuidValidator {
     private final ValidationErrorFactory errorFactory;
     private final AgreementEntityRepository agreementEntityRepository;
 
-    TravelAgreementUuidValidatorImpl(ValidationErrorFactory errorFactory, 
+    TravelAgreementUuidValidatorImpl(ValidationErrorFactory errorFactory,
                                      AgreementEntityRepository agreementEntityRepository) {
         this.errorFactory = errorFactory;
         this.agreementEntityRepository = agreementEntityRepository;

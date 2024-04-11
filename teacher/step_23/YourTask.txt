@@ -1,30 +1,27 @@
-Ментор указал вам на то, что код TravelCalculatePremiumServiceImpl
-не отражает сути бизнес процесса, который он реализует.
+Ментор обращает ваше внимание на качество кода.
 
-В нём нет чёткого акцента на место в коде, где бы
-происходил расчёт стоимости страхового полиса (underwriting).
-На данный момент это происходит где-то во время создания ответа.
+Хорошее ИТ решение это не просто решение, которое выполняет
+все предъявленные к нему требования. Это решение, которое
+легко понять и легко расширять и изменять. Поэтому, чтобы
+стать профессионалом, нужно следить за качеством кода,
+который вы создаёте.
 
-А ведь это и есть главная вещь,
-ради которой и создавался этот сервис!
+Рефакторинг (англ. refactoring) — это процесс изменения
+внутренней структуры программы, не затрагивающий её внешнего
+поведения и имеющий целью облегчить понимание её работы.
 
-Попробуйте переделать код так, чтобы удовлетворить
-пожелание ментора и приблизить ваш код к реальному
-бизнес процессу, который он автоматизирует.
+На тему рефакторинга классической является книга авторов
+Martin Fowler, Kent Beck, Refactoring: Improving the Design of Existing Code:
+First edition: https://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672
+Second edition: https://www.amazon.com/Refactoring-Improving-Existing-Addison-Wesley-Signature/dp/0134757599
 
-Если у вас нет идей как это можно сделать - проконсультируйтесь с ментором!
+На тему clean code классикой является The Clean Coder (by Robert C. Martin):
+https://www.amazon.com/Robert-Martinand-Professional-Programmers-Paperback/dp/B07VK8VZ9B
 
-PS: при изменении кода не забудьте про тесты.
+Ваша задача: улучшить код в классе
+TravelCalculatePremiumServiceImpl, провести рефакторинг
+если это возможно. Цель рефакторинга - улучшить читабельность
+кода и подготовить его к будущим изменениям.
 
-From business:
-The process of calculating the price of an insurance policy
-is typically referred to as "underwriting". Underwriting involves
-assessing the risk of insuring a particular individual or entity,
-based on factors such as age, health, occupation, location,
-and other relevant information. Once the risk has been assessed,
-the insurer can then determine the appropriate premium to charge
-for the policy, based on the likelihood of a claim being made and
-the potential cost of that claim. Underwriting is a key part of the
-insurance industry, as it helps to ensure that premiums are set at a
-level that is fair and sustainable for both the insurer and the
-policyholder.
+Подсказка: попробуйте при рефакторинге воспользоваться
+функциональным стилем написания кода.

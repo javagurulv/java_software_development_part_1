@@ -5,7 +5,6 @@ import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.repositories.ClassifierValueRepository;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
-
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -16,7 +15,7 @@ class MedicalRiskLimitLevelValidation extends TravelPersonFieldValidationImpl {
     private final ClassifierValueRepository classifierValueRepository;
     private final ValidationErrorFactory errorFactory;
 
-    MedicalRiskLimitLevelValidation(ClassifierValueRepository classifierValueRepository, 
+    MedicalRiskLimitLevelValidation(ClassifierValueRepository classifierValueRepository,
                                     ValidationErrorFactory errorFactory) {
         this.classifierValueRepository = classifierValueRepository;
         this.errorFactory = errorFactory;

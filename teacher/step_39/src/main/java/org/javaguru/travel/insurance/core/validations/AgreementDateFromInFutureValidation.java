@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Optional;
 
 @Component
-class AgreementDateFromInFutureValidation implements TravelRequestValidation {
+public class AgreementDateFromInFutureValidation {
 
     private final DateTimeService dateTimeService;
 
@@ -17,8 +17,7 @@ class AgreementDateFromInFutureValidation implements TravelRequestValidation {
         this.dateTimeService = dateTimeService;
     }
 
-    @Override
-    public Optional<ValidationError> execute(TravelCalculatePremiumRequest request) {
+    public Optional<ValidationError> validateDateFromInFuture(TravelCalculatePremiumRequest request) {
         Date dateFrom = request.getAgreementDateFrom();
         Date currentDateTime = dateTimeService.getCurrentDateTime();
         return (dateFrom != null && dateFrom.before(currentDateTime))

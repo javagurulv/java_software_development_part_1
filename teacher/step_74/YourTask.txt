@@ -1,56 +1,30 @@
+Для реализации расчёта премии на основе рисков ментор предлагает
+сделать следующие архитектурные изменения в пакете core.underwriting:
 
-На данный момент ответ приложения выглядит так:
+Создать интерфейс TravelRiskPremiumCalculator с методами
 
-{
-  "errors": null,
-  "personFirstName": "Vasja",
-  "personLastName": "Pupkin",
-  "agreementDateFrom": "2025-05-25",
-  "agreementDateTo": "2025-05-29",
-  "agreementPrice": 4
-}
+BigDecimal calculatePremium(TravelCalculatePremiumRequest request);
+String getRiskIc();
 
-Шагом ранее мы внедрили архитектурные изменения позволяющие
-рассчитывать премию для каждого риска в отдельности, а потом
-суммировать премии рисков, чтобы получить общую премию полиса.
+Для каждого из следующих рисков:
+               TRAVEL_MEDICAL
+               TRAVEL_CANCELLATION
+               TRAVEL_LOSS_BAGGAGE
+               TRAVEL_THIRD_PARTY_LIABILITY
+               TRAVEL_EVACUATION
+               TRAVEL_SPORT_ACTIVITIES
+создать свою реализацию интерфейса TravelRiskPremiumCalculator.
+Метод getRiskIc() каждой реализации будет возвращать ic код риска
+для которого он содержит алгоритм расчёта премии.
 
-Так как приложение считает премию каждого выбранного риска в
-отдельности, то у ментора возник резонный вопрос: "А нужно ли
-отображать в ответе премию каждого выбранного риска?"
+По дефолту метод calculatePremium(...) должен возвращать 0 (BigDecimal.ZERO).
 
-Это отличный вопрос от разработчика! Такие вопросы улучшают
-коммуникацию между ИТ и бизнесом и позволяют создавать качественное
-программное обеспечение. ИТ тоже может и должно предлагать идеи
-по улучшению разрабатываемого программного обеспечения.
+Для TRAVEL_MEDICAL риска на данный момент оставить текущую
+формулу расчёта из класса TravelPremiumUnderwritingImpl.
 
-Задав вопрос выше бизнесу ментор получил положительный ответ.
-Бизнес хочет видеть в ответе премии для каждого выбранного риска
-в отдельности и общую премию для всего полиса.
+Далее в TravelPremiumUnderwritingImpl в зависимости получить
+список всех TravelRiskPremiumCalculator и с помощью него
+посчитать премии для каждого выбранного в запросе риска (selected_risks)
+и сложить их.
 
-Ментор предлагает следующий формат ответа:
-
-{
-  "errors": null,
-  "personFirstName": "Vasja",
-  "personLastName": "Pupkin",
-  "agreementDateFrom": "2025-05-25",
-  "agreementDateTo": "2025-05-29",
-  "agreementPremium": 4,
-  "risks": [
-          {
-            "riskIc": "TRAVEL_MEDICAL",
-            "premium": 2.00
-          },
-          {
-             "riskIc": "TRAVEL_CANCELLATION",
-             "premium": 5.00
-          },
-  ]
-}
-
-
-Ваша задача:
-
-1. В ответе заменить agreementPrice на agreementPremium.
-
-Обоснование: бизнес применяет термин premium для описания цены полиса.
+Ваша задача: реализовать предложение ментора.

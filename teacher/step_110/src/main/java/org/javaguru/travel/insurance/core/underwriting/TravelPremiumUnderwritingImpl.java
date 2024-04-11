@@ -1,7 +1,7 @@
 package org.javaguru.travel.insurance.core.underwriting;
 
 import org.javaguru.travel.insurance.dto.RiskPremium;
-import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
+import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 
 import org.springframework.stereotype.Component;
 
@@ -18,13 +18,13 @@ class TravelPremiumUnderwritingImpl implements TravelPremiumUnderwriting {
     }
 
     @Override
-    public TravelPremiumCalculationResult calculatePremium(TravelCalculatePremiumRequestV1 request) {
+    public TravelPremiumCalculationResult calculatePremium(TravelCalculatePremiumRequest request) {
         List<RiskPremium> riskPremiums = calculateSelectedRisksPremium(request);
         BigDecimal totalPremium = calculateTotalPremium(riskPremiums);
         return new TravelPremiumCalculationResult(totalPremium, riskPremiums);
     }
 
-    private List<RiskPremium> calculateSelectedRisksPremium(TravelCalculatePremiumRequestV1 request) {
+    private List<RiskPremium> calculateSelectedRisksPremium(TravelCalculatePremiumRequest request) {
         return selectedRisksPremiumCalculator.calculatePremiumForAllRisks(request);
     }
 

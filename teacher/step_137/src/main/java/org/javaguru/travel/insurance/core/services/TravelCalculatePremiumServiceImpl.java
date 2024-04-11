@@ -5,6 +5,7 @@ import org.javaguru.travel.insurance.core.api.command.TravelCalculatePremiumCore
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.validations.TravelAgreementValidator;
+
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,16 +16,13 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
     private final TravelAgreementValidator agreementValidator;
     private final AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator;
     private final AgreementTotalPremiumCalculator agreementTotalPremiumCalculator;
-    private final PersonSaver personSaver;
 
-    TravelCalculatePremiumServiceImpl(TravelAgreementValidator agreementValidator,
-                                      AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator,
-                                      AgreementTotalPremiumCalculator agreementTotalPremiumCalculator,
-                                      PersonSaver personSaver) {
+    TravelCalculatePremiumServiceImpl(TravelAgreementValidator agreementValidator, 
+                                      AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator, 
+                                      AgreementTotalPremiumCalculator agreementTotalPremiumCalculator) {
         this.agreementValidator = agreementValidator;
         this.agreementPersonsPremiumCalculator = agreementPersonsPremiumCalculator;
         this.agreementTotalPremiumCalculator = agreementTotalPremiumCalculator;
-        this.personSaver = personSaver;
     }
 
     @Override
@@ -32,7 +30,6 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
         List<ValidationErrorDTO> errors = agreementValidator.validate(command.getAgreement());
         if (errors.isEmpty()) {
             calculatePremium(command.getAgreement());
-            savePersons(command.getAgreement());
             return buildResponse(command.getAgreement());
         } else {
             return buildResponse(errors);
@@ -42,10 +39,6 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
     private void calculatePremium(AgreementDTO agreement) {
         agreementPersonsPremiumCalculator.calculateRiskPremiums(agreement);
         agreement.setAgreementPremium(agreementTotalPremiumCalculator.calculate(agreement));
-    }
-
-    private void savePersons(AgreementDTO agreement) {
-        agreement.getPersons().forEach(person -> personSaver.savePerson(person));
     }
 
     private TravelCalculatePremiumCoreResult buildResponse(List<ValidationErrorDTO> errors) {

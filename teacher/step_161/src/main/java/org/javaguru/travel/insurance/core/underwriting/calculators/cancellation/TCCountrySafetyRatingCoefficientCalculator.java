@@ -3,7 +3,6 @@ package org.javaguru.travel.insurance.core.underwriting.calculators.cancellation
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.domain.TCCountrySafetyRatingCoefficient;
 import org.javaguru.travel.insurance.core.repositories.TCCountrySafetyRatingCoefficientRepository;
-
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;

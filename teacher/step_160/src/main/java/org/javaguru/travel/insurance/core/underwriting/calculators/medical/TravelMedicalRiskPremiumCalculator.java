@@ -3,7 +3,6 @@ package org.javaguru.travel.insurance.core.underwriting.calculators.medical;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.underwriting.TravelRiskPremiumCalculator;
-
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -17,9 +16,9 @@ class TravelMedicalRiskPremiumCalculator implements TravelRiskPremiumCalculator 
     private final TMAgeCoefficientCalculator ageCoefficientCalculator;
     private final TMRiskLimitLevelCalculator riskLimitLevelCalculator;
 
-    TravelMedicalRiskPremiumCalculator(TMDayCountCalculator dayCountCalculator, 
+    TravelMedicalRiskPremiumCalculator(TMDayCountCalculator dayCountCalculator,
                                        TMCountryDefaultDayRateCalculator countryDefaultDayRateCalculator,
-                                       TMAgeCoefficientCalculator ageCoefficientCalculator, 
+                                       TMAgeCoefficientCalculator ageCoefficientCalculator,
                                        TMRiskLimitLevelCalculator riskLimitLevelCalculator) {
         this.dayCountCalculator = dayCountCalculator;
         this.countryDefaultDayRateCalculator = countryDefaultDayRateCalculator;

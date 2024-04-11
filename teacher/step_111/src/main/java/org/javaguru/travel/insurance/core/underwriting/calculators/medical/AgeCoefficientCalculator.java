@@ -23,7 +23,7 @@ class AgeCoefficientCalculator {
     private final DateTimeUtil dateTimeUtil;
     private final AgeCoefficientRepository ageCoefficientRepository;
 
-    AgeCoefficientCalculator(DateTimeUtil dateTimeUtil, 
+    AgeCoefficientCalculator(DateTimeUtil dateTimeUtil,
                              AgeCoefficientRepository ageCoefficientRepository) {
         this.dateTimeUtil = dateTimeUtil;
         this.ageCoefficientRepository = ageCoefficientRepository;

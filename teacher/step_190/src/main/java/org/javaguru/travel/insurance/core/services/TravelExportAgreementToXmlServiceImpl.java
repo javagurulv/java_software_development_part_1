@@ -9,7 +9,6 @@ import org.javaguru.travel.insurance.core.repositories.entities.AgreementXmlExpo
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

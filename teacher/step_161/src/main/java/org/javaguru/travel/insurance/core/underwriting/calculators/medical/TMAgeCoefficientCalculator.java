@@ -4,7 +4,6 @@ import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.domain.TMAgeCoefficient;
 import org.javaguru.travel.insurance.core.repositories.TMAgeCoefficientRepository;
 import org.javaguru.travel.insurance.core.util.DateTimeUtil;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +22,7 @@ class TMAgeCoefficientCalculator {
     private final DateTimeUtil dateTimeUtil;
     private final TMAgeCoefficientRepository ageCoefficientRepository;
 
-    TMAgeCoefficientCalculator(DateTimeUtil dateTimeUtil, 
+    TMAgeCoefficientCalculator(DateTimeUtil dateTimeUtil,
                                TMAgeCoefficientRepository ageCoefficientRepository) {
         this.dateTimeUtil = dateTimeUtil;
         this.ageCoefficientRepository = ageCoefficientRepository;

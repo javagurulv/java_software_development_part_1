@@ -2,12 +2,11 @@ package org.javaguru.travel.insurance.core.services;
 
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
-import org.javaguru.travel.insurance.core.domain.entities.*;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementEntityRepository;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementPersonEntityRepository;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementPersonRiskEntityRepository;
 import org.javaguru.travel.insurance.core.repositories.entities.SelectedRiskEntityRepository;
-
+import org.javaguru.travel.insurance.core.domain.entities.*;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,10 +18,10 @@ class AgreementEntityFactory {
     private final AgreementPersonEntityRepository agreementPersonEntityRepository;
     private final AgreementPersonRiskEntityRepository agreementPersonRiskEntityRepository;
 
-    AgreementEntityFactory(AgreementEntityRepository agreementEntityRepository, 
+    AgreementEntityFactory(AgreementEntityRepository agreementEntityRepository,
                            PersonEntityFactory personEntityFactory,
-                           SelectedRiskEntityRepository selectedRiskEntityRepository, 
-                           AgreementPersonEntityRepository agreementPersonEntityRepository, 
+                           SelectedRiskEntityRepository selectedRiskEntityRepository,
+                           AgreementPersonEntityRepository agreementPersonEntityRepository,
                            AgreementPersonRiskEntityRepository agreementPersonRiskEntityRepository) {
         this.agreementEntityRepository = agreementEntityRepository;
         this.personEntityFactory = personEntityFactory;

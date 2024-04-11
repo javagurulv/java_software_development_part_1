@@ -12,7 +12,7 @@ class TravelCostCoefficientCalculator {
 
     private final TCTravelCostCoefficientRepository tcTravelCostCoefficientRepository;
 
-    TravelCostCoefficientCalculator(TCTravelCostCoefficientRepository tcTravelCostCoefficientRepository) {
+    public TravelCostCoefficientCalculator(TCTravelCostCoefficientRepository tcTravelCostCoefficientRepository) {
         this.tcTravelCostCoefficientRepository = tcTravelCostCoefficientRepository;
     }
 

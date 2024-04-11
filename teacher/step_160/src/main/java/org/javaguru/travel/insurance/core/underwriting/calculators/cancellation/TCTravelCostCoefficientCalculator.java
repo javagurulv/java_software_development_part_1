@@ -10,14 +10,14 @@ import java.math.BigDecimal;
 @Component
 class TCTravelCostCoefficientCalculator {
 
-    private final TCTravelCostCoefficientRepository TCTravelCostCoefficientRepository;
+    private final TCTravelCostCoefficientRepository tcTravelCostCoefficientRepository;
 
-    TCTravelCostCoefficientCalculator(org.javaguru.travel.insurance.core.repositories.TCTravelCostCoefficientRepository TCTravelCostCoefficientRepository) {
-        this.TCTravelCostCoefficientRepository = TCTravelCostCoefficientRepository;
+    TCTravelCostCoefficientCalculator(TCTravelCostCoefficientRepository tcTravelCostCoefficientRepository) {
+        this.tcTravelCostCoefficientRepository = tcTravelCostCoefficientRepository;
     }
 
     BigDecimal calculate(PersonDTO person) {
-        return TCTravelCostCoefficientRepository.findCoefficient(person.getTravelCost())
+        return tcTravelCostCoefficientRepository.findCoefficient(person.getTravelCost())
                 .map(TCTravelCostCoefficient::getCoefficient)
                 .orElseThrow(() -> new RuntimeException("Travel Cost coefficient not found for travel cost = " + person.getTravelCost()));
     }

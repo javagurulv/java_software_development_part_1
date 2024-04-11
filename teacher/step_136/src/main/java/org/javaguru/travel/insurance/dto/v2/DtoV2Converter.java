@@ -92,19 +92,12 @@ public class DtoV2Converter {
         agreement.setCountry(request.getCountry());
         agreement.setSelectedRisks(request.getSelectedRisks());
 
-        agreement.setPersons(buildPersonDTOFromRequest(request));
+        List<PersonDTO> persons = request.getPersons().stream()
+                .map(this::buildPersonFromRequest)
+                        .collect(Collectors.toList());
+        agreement.setPersons(persons);
 
         return agreement;
-    }
-
-    private List<PersonDTO> buildPersonDTOFromRequest(TravelCalculatePremiumRequestV2 request) {
-        if (request.getPersons() == null) {
-            return List.of();
-        } else {
-            return request.getPersons().stream()
-                    .map(this::buildPersonFromRequest)
-                    .collect(Collectors.toList());
-        }
     }
 
 }

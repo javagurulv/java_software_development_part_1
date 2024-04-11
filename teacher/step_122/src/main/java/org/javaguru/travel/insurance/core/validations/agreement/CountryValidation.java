@@ -15,7 +15,7 @@ class CountryValidation extends TravelAgreementFieldValidationImpl {
     private final ClassifierValueRepository classifierValueRepository;
     private final ValidationErrorFactory errorFactory;
 
-    CountryValidation(ClassifierValueRepository classifierValueRepository, 
+    CountryValidation(ClassifierValueRepository classifierValueRepository,
                       ValidationErrorFactory errorFactory) {
         this.classifierValueRepository = classifierValueRepository;
         this.errorFactory = errorFactory;

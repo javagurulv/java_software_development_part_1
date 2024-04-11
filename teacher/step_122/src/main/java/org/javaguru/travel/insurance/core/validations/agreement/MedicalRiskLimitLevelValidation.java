@@ -15,7 +15,7 @@ class MedicalRiskLimitLevelValidation extends TravelAgreementFieldValidationImpl
     private final ClassifierValueRepository classifierValueRepository;
     private final ValidationErrorFactory errorFactory;
 
-    MedicalRiskLimitLevelValidation(ClassifierValueRepository classifierValueRepository, 
+    MedicalRiskLimitLevelValidation(ClassifierValueRepository classifierValueRepository,
                                     ValidationErrorFactory errorFactory) {
         this.classifierValueRepository = classifierValueRepository;
         this.errorFactory = errorFactory;

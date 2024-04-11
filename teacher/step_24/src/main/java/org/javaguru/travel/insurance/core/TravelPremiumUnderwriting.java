@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 @Component
 class TravelPremiumUnderwriting {
 
-    private final DateTimeService dateTimeService;
+    private DateTimeService dateTimeService;
 
     TravelPremiumUnderwriting(DateTimeService dateTimeService) {
         this.dateTimeService = dateTimeService;
