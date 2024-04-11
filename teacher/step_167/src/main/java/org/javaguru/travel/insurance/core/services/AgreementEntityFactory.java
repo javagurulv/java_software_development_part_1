@@ -7,7 +7,7 @@ import org.javaguru.travel.insurance.core.repositories.entities.AgreementEntityR
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementPersonEntityRepository;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementPersonRiskEntityRepository;
 import org.javaguru.travel.insurance.core.repositories.entities.SelectedRiskEntityRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;

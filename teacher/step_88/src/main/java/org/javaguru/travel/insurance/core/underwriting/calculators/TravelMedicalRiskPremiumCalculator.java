@@ -7,7 +7,6 @@ import org.javaguru.travel.insurance.core.repositories.CountryDefaultDayRateRepo
 import org.javaguru.travel.insurance.core.underwriting.TravelRiskPremiumCalculator;
 import org.javaguru.travel.insurance.core.util.DateTimeUtil;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -20,9 +19,17 @@ import java.util.Date;
 @Component
 class TravelMedicalRiskPremiumCalculator implements TravelRiskPremiumCalculator {
 
-    @Autowired private DateTimeUtil dateTimeUtil;
-    @Autowired private CountryDefaultDayRateRepository countryDefaultDayRateRepository;
-    @Autowired private AgeCoefficientRepository ageCoefficientRepository;
+    private final DateTimeUtil dateTimeUtil;
+    private final CountryDefaultDayRateRepository countryDefaultDayRateRepository;
+    private final AgeCoefficientRepository ageCoefficientRepository;
+
+    TravelMedicalRiskPremiumCalculator(DateTimeUtil dateTimeUtil,
+                                       CountryDefaultDayRateRepository countryDefaultDayRateRepository,
+                                       AgeCoefficientRepository ageCoefficientRepository) {
+        this.dateTimeUtil = dateTimeUtil;
+        this.countryDefaultDayRateRepository = countryDefaultDayRateRepository;
+        this.ageCoefficientRepository = ageCoefficientRepository;
+    }
 
     @Override
     public BigDecimal calculatePremium(TravelCalculatePremiumRequest request) {

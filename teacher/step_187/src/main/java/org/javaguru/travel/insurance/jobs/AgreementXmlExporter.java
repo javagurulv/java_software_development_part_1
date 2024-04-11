@@ -5,7 +5,6 @@ import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.services.TravelGetAgreementService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +21,11 @@ class AgreementXmlExporter {
     @Value( "${agreement.xml.exporter.job.path}" )
     private String agreementExportPath;
 
-    @Autowired private TravelGetAgreementService agreementService;
+    private final TravelGetAgreementService agreementService;
+
+    AgreementXmlExporter(TravelGetAgreementService agreementService) {
+        this.agreementService = agreementService;
+    }
 
     void exportAgreement(String agreementUuid) {
         try {

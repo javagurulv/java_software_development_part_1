@@ -3,7 +3,6 @@ package org.javaguru.travel.insurance.core.underwriting.calculators.cancellation
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.domain.TCTravelCostCoefficient;
 import org.javaguru.travel.insurance.core.repositories.TCTravelCostCoefficientRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -11,7 +10,11 @@ import java.math.BigDecimal;
 @Component
 class TCTravelCostCoefficientCalculator {
 
-    @Autowired private TCTravelCostCoefficientRepository TCTravelCostCoefficientRepository;
+    private final TCTravelCostCoefficientRepository TCTravelCostCoefficientRepository;
+
+    TCTravelCostCoefficientCalculator(org.javaguru.travel.insurance.core.repositories.TCTravelCostCoefficientRepository TCTravelCostCoefficientRepository) {
+        this.TCTravelCostCoefficientRepository = TCTravelCostCoefficientRepository;
+    }
 
     BigDecimal calculate(PersonDTO person) {
         return TCTravelCostCoefficientRepository.findCoefficient(person.getTravelCost())

@@ -4,7 +4,6 @@ import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.domain.TMAgeCoefficient;
 import org.javaguru.travel.insurance.core.repositories.TMAgeCoefficientRepository;
 import org.javaguru.travel.insurance.core.util.DateTimeUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -20,8 +19,14 @@ class TMAgeCoefficientCalculator {
     @Value( "${medical.risk.age.coefficient.enabled:false}" )
     private Boolean medicalRiskAgeCoefficientEnabled;
 
-    @Autowired private DateTimeUtil dateTimeUtil;
-    @Autowired private TMAgeCoefficientRepository ageCoefficientRepository;
+    private final DateTimeUtil dateTimeUtil;
+    private final TMAgeCoefficientRepository ageCoefficientRepository;
+
+    TMAgeCoefficientCalculator(DateTimeUtil dateTimeUtil,
+                               TMAgeCoefficientRepository ageCoefficientRepository) {
+        this.dateTimeUtil = dateTimeUtil;
+        this.ageCoefficientRepository = ageCoefficientRepository;
+    }
 
     BigDecimal calculate(PersonDTO person) {
         return medicalRiskAgeCoefficientEnabled

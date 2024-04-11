@@ -4,7 +4,7 @@ import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -12,7 +12,11 @@ import java.util.Optional;
 @Component
 class EmptyTravelCostValidation extends TravelPersonFieldValidationImpl {
 
-    @Autowired private ValidationErrorFactory errorFactory;
+    private final ValidationErrorFactory errorFactory;
+
+    EmptyTravelCostValidation(ValidationErrorFactory errorFactory) {
+        this.errorFactory = errorFactory;
+    }
 
     @Override
     public Optional<ValidationErrorDTO> validate(AgreementDTO agreement, PersonDTO person) {

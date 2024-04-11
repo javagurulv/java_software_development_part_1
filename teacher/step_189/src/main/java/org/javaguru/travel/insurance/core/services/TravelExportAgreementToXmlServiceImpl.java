@@ -9,7 +9,6 @@ import org.javaguru.travel.insurance.core.repositories.entities.AgreementXmlExpo
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,9 +29,17 @@ class TravelExportAgreementToXmlServiceImpl
     @Value( "${agreement.xml.exporter.job.path}" )
     private String agreementExportPath;
 
-    @Autowired private TravelGetAgreementService agreementService;
-    @Autowired private AgreementXmlExportEntityRepository agreementXmlExportEntityRepository;
-    @Autowired private ValidationErrorFactory errorFactory;
+    private final TravelGetAgreementService agreementService;
+    private final AgreementXmlExportEntityRepository agreementXmlExportEntityRepository;
+    private final ValidationErrorFactory errorFactory;
+
+    TravelExportAgreementToXmlServiceImpl(TravelGetAgreementService agreementService,
+                                          AgreementXmlExportEntityRepository agreementXmlExportEntityRepository,
+                                          ValidationErrorFactory errorFactory) {
+        this.agreementService = agreementService;
+        this.agreementXmlExportEntityRepository = agreementXmlExportEntityRepository;
+        this.errorFactory = errorFactory;
+    }
 
     @Override
     public TravelExportAgreementToXmlCoreResult export(TravelExportAgreementToXmlCoreCommand command) {

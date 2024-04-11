@@ -5,7 +5,7 @@ import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.util.Placeholder;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -16,7 +16,11 @@ import java.util.regex.Pattern;
 @Component
 class PersonLastNameFormatValidation extends TravelPersonFieldValidationImpl {
 
-    @Autowired private ValidationErrorFactory errorFactory;
+    private final ValidationErrorFactory errorFactory;
+
+    PersonLastNameFormatValidation(ValidationErrorFactory errorFactory) {
+        this.errorFactory = errorFactory;
+    }
 
     @Override
     public Optional<ValidationErrorDTO> validate(AgreementDTO agreement, PersonDTO person) {

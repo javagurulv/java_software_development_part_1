@@ -5,7 +5,7 @@ import org.javaguru.travel.insurance.core.api.command.TravelGetNotExportedAgreem
 import org.javaguru.travel.insurance.core.services.TravelGetNotExportedAgreementUuidsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -26,9 +26,14 @@ public class AgreementXmlExporterJob {
     @Value( "${agreement.xml.exporter.job.thread.count}" )
     private Integer threadCount;
 
-    @Autowired private TravelGetNotExportedAgreementUuidsService notExportedAgreementUuidsService;
-    @Autowired private AgreementXmlExporter agreementXmlExporter;
+    private final TravelGetNotExportedAgreementUuidsService notExportedAgreementUuidsService;
+    private final AgreementXmlExporter agreementXmlExporter;
 
+    AgreementXmlExporterJob(TravelGetNotExportedAgreementUuidsService notExportedAgreementUuidsService, 
+                            AgreementXmlExporter agreementXmlExporter) {
+        this.notExportedAgreementUuidsService = notExportedAgreementUuidsService;
+        this.agreementXmlExporter = agreementXmlExporter;
+    }
 
     @Scheduled(fixedRate = 5, timeUnit = TimeUnit.SECONDS)
     public void doJob() {

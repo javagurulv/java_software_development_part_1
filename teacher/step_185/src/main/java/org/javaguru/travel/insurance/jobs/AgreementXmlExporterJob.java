@@ -8,7 +8,6 @@ import org.javaguru.travel.insurance.core.services.TravelGetAgreementService;
 import org.javaguru.travel.insurance.core.services.TravelGetAllAgreementUuidsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -31,9 +30,14 @@ public class AgreementXmlExporterJob {
     @Value( "${agreement.xml.exporter.job.path}" )
     private String agreementExportPath;
 
-    @Autowired private TravelGetAllAgreementUuidsService allAgreementUuidsService;
-    @Autowired private TravelGetAgreementService agreementService;
+    private final TravelGetAllAgreementUuidsService allAgreementUuidsService;
+    private final TravelGetAgreementService agreementService;
 
+    AgreementXmlExporterJob(TravelGetAllAgreementUuidsService allAgreementUuidsService,
+                            TravelGetAgreementService agreementService) {
+        this.allAgreementUuidsService = allAgreementUuidsService;
+        this.agreementService = agreementService;
+    }
 
     @Scheduled(fixedRate = 5, timeUnit = TimeUnit.SECONDS)
     public void doJob() {

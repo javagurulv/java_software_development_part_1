@@ -3,7 +3,6 @@ package org.javaguru.travel.insurance.rest.internal;
 import com.google.common.base.Stopwatch;
 import org.javaguru.travel.insurance.dto.internal.TravelGetAgreementResponse;
 import org.javaguru.travel.insurance.rest.common.TravelRestRequestExecutionTimeLogger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -12,10 +11,17 @@ import java.util.Date;
 @RequestMapping("/insurance/travel/api/internal/agreement")
 public class TravelGetAgreementRestController {
 
-	@Autowired private TravelGetAgreementRequestLogger requestLogger;
-	@Autowired private TravelGetAgreementResponseLogger responseLogger;
-	@Autowired private TravelRestRequestExecutionTimeLogger executionTimeLogger;
-	// @Autowired private DtoConverter dtoConverter;
+	private final TravelGetAgreementRequestLogger requestLogger;
+	private final TravelGetAgreementResponseLogger responseLogger;
+	private final TravelRestRequestExecutionTimeLogger executionTimeLogger;
+
+	TravelGetAgreementRestController(TravelGetAgreementRequestLogger requestLogger,
+									 TravelGetAgreementResponseLogger responseLogger,
+									 TravelRestRequestExecutionTimeLogger executionTimeLogger) {
+		this.requestLogger = requestLogger;
+		this.responseLogger = responseLogger;
+		this.executionTimeLogger = executionTimeLogger;
+	}
 
 	@GetMapping(path = "/{uuid}",
 			produces = "application/json")

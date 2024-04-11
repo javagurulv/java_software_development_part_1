@@ -4,7 +4,6 @@ import org.javaguru.travel.insurance.core.domain.AgeCoefficient;
 import org.javaguru.travel.insurance.core.repositories.AgeCoefficientRepository;
 import org.javaguru.travel.insurance.core.util.DateTimeUtil;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -16,8 +15,14 @@ import java.util.Date;
 @Component
 class AgeCoefficientCalculator {
 
-    @Autowired private DateTimeUtil dateTimeUtil;
-    @Autowired private AgeCoefficientRepository ageCoefficientRepository;
+    private final DateTimeUtil dateTimeUtil;
+    private final AgeCoefficientRepository ageCoefficientRepository;
+
+    AgeCoefficientCalculator(DateTimeUtil dateTimeUtil,
+                             AgeCoefficientRepository ageCoefficientRepository) {
+        this.dateTimeUtil = dateTimeUtil;
+        this.ageCoefficientRepository = ageCoefficientRepository;
+    }
 
     BigDecimal calculate(TravelCalculatePremiumRequest request) {
         int age = calculateAge(request);

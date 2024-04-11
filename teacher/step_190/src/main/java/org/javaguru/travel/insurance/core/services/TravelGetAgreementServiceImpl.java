@@ -4,7 +4,7 @@ import org.javaguru.travel.insurance.core.api.command.TravelGetAgreementCoreComm
 import org.javaguru.travel.insurance.core.api.command.TravelGetAgreementCoreResult;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.validations.TravelAgreementUuidValidator;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,8 +14,14 @@ import java.util.List;
 @Transactional
 class TravelGetAgreementServiceImpl implements TravelGetAgreementService {
 
-    @Autowired private TravelAgreementUuidValidator agreementUuidValidator;
-    @Autowired private AgreementDTOLoader agreementDTOLoader;
+    private final TravelAgreementUuidValidator agreementUuidValidator;
+    private final AgreementDTOLoader agreementDTOLoader;
+
+    TravelGetAgreementServiceImpl(TravelAgreementUuidValidator agreementUuidValidator, 
+                                  AgreementDTOLoader agreementDTOLoader) {
+        this.agreementUuidValidator = agreementUuidValidator;
+        this.agreementDTOLoader = agreementDTOLoader;
+    }
 
     @Override
     public TravelGetAgreementCoreResult getAgreement(TravelGetAgreementCoreCommand command) {

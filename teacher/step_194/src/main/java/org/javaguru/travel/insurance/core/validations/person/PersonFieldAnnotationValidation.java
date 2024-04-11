@@ -5,7 +5,6 @@ import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.util.Placeholder;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.validation.ConstraintViolation;
@@ -19,7 +18,11 @@ import java.util.Set;
 @Component
 class PersonFieldAnnotationValidation extends TravelPersonFieldValidationImpl {
 
-    @Autowired private ValidationErrorFactory errorFactory;
+    private final ValidationErrorFactory errorFactory;
+
+    PersonFieldAnnotationValidation(ValidationErrorFactory errorFactory) {
+        this.errorFactory = errorFactory;
+    }
 
     @Override
     public List<ValidationErrorDTO> validateList(AgreementDTO agreement, PersonDTO person) {

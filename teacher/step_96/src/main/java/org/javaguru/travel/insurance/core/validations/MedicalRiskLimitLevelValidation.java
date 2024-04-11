@@ -3,7 +3,6 @@ package org.javaguru.travel.insurance.core.validations;
 import org.javaguru.travel.insurance.core.repositories.ClassifierValueRepository;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -15,9 +14,14 @@ class MedicalRiskLimitLevelValidation extends TravelRequestValidationImpl {
     @Value( "${medical.risk.limit.level.enabled:false}" )
     private Boolean medicalRiskLimitLevelEnabled;
 
-    @Autowired private ClassifierValueRepository classifierValueRepository;
-    @Autowired private ValidationErrorFactory errorFactory;
+    private final ClassifierValueRepository classifierValueRepository;
+    private final ValidationErrorFactory errorFactory;
 
+    MedicalRiskLimitLevelValidation(ClassifierValueRepository classifierValueRepository,
+                                    ValidationErrorFactory errorFactory) {
+        this.classifierValueRepository = classifierValueRepository;
+        this.errorFactory = errorFactory;
+    }
 
     @Override
     public Optional<ValidationError> validate(TravelCalculatePremiumRequest request) {

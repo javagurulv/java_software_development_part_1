@@ -5,7 +5,7 @@ import org.javaguru.travel.insurance.core.repositories.CountryDefaultDayRateRepo
 import org.javaguru.travel.insurance.core.underwriting.TravelRiskPremiumCalculator;
 import org.javaguru.travel.insurance.core.util.DateTimeUtil;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -14,8 +14,14 @@ import java.math.RoundingMode;
 @Component
 class TravelMedicalRiskPremiumCalculator implements TravelRiskPremiumCalculator {
 
-    @Autowired private DateTimeUtil dateTimeUtil;
-    @Autowired private CountryDefaultDayRateRepository countryDefaultDayRateRepository;
+    private final DateTimeUtil dateTimeUtil;
+    private final CountryDefaultDayRateRepository countryDefaultDayRateRepository;
+
+    TravelMedicalRiskPremiumCalculator(DateTimeUtil dateTimeUtil,
+                                       CountryDefaultDayRateRepository countryDefaultDayRateRepository) {
+        this.dateTimeUtil = dateTimeUtil;
+        this.countryDefaultDayRateRepository = countryDefaultDayRateRepository;
+    }
 
     @Override
     public BigDecimal calculatePremium(TravelCalculatePremiumRequest request) {

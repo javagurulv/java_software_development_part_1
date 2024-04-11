@@ -3,7 +3,6 @@ package org.javaguru.travel.insurance.core.services;
 import org.javaguru.travel.insurance.core.api.command.TravelGetNotExportedAgreementUuidsCoreCommand;
 import org.javaguru.travel.insurance.core.api.command.TravelGetNotExportedAgreementUuidsCoreResult;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementEntityRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,8 +13,11 @@ import java.util.List;
 class TravelGetNotExportedAgreementUuidsServiceImpl
         implements TravelGetNotExportedAgreementUuidsService {
 
-    @Autowired
-    private AgreementEntityRepository agreementRepository;
+    private final AgreementEntityRepository agreementRepository;
+
+    TravelGetNotExportedAgreementUuidsServiceImpl(AgreementEntityRepository agreementRepository) {
+        this.agreementRepository = agreementRepository;
+    }
 
     @Override
     public TravelGetNotExportedAgreementUuidsCoreResult getAgreementUuids(TravelGetNotExportedAgreementUuidsCoreCommand command) {

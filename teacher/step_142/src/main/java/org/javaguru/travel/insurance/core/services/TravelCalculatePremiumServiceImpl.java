@@ -5,7 +5,6 @@ import org.javaguru.travel.insurance.core.api.command.TravelCalculatePremiumCore
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.validations.TravelAgreementValidator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,11 +14,20 @@ import java.util.List;
 @Transactional
 class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService {
 
-    @Autowired private TravelAgreementValidator agreementValidator;
-    @Autowired private AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator;
-    @Autowired private AgreementTotalPremiumCalculator agreementTotalPremiumCalculator;
+    private final TravelAgreementValidator agreementValidator;
+    private final AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator;
+    private final AgreementTotalPremiumCalculator agreementTotalPremiumCalculator;
+    private final AgreementEntityFactory agreementEntityFactory;
 
-    @Autowired private AgreementEntityFactory agreementEntityFactory;
+    TravelCalculatePremiumServiceImpl(TravelAgreementValidator agreementValidator,
+                                      AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator,
+                                      AgreementTotalPremiumCalculator agreementTotalPremiumCalculator,
+                                      AgreementEntityFactory agreementEntityFactory) {
+        this.agreementValidator = agreementValidator;
+        this.agreementPersonsPremiumCalculator = agreementPersonsPremiumCalculator;
+        this.agreementTotalPremiumCalculator = agreementTotalPremiumCalculator;
+        this.agreementEntityFactory = agreementEntityFactory;
+    }
 
     @Override
     public TravelCalculatePremiumCoreResult calculatePremium(TravelCalculatePremiumCoreCommand command) {
