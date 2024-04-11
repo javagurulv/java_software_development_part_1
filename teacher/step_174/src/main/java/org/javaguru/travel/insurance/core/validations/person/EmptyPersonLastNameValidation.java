@@ -12,7 +12,11 @@ import java.util.Optional;
 @Component
 class EmptyPersonLastNameValidation extends TravelPersonFieldValidationImpl {
 
-    @Autowired private ValidationErrorFactory errorFactory;
+    private final ValidationErrorFactory errorFactory;
+
+    EmptyPersonLastNameValidation(ValidationErrorFactory errorFactory) {
+        this.errorFactory = errorFactory;
+    }
 
     @Override
     public Optional<ValidationErrorDTO> validate(AgreementDTO agreement, PersonDTO person) {

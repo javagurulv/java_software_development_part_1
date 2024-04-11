@@ -15,9 +15,12 @@ import java.util.stream.Stream;
 @Component
 class TravelCalculatePremiumRequestValidatorImpl
     implements TravelCalculatePremiumRequestValidator {
+    
+    private final List<TravelRequestValidation> travelValidations;
 
-    @Autowired
-    private List<TravelRequestValidation> travelValidations;
+    TravelCalculatePremiumRequestValidatorImpl(List<TravelRequestValidation> travelValidations) {
+        this.travelValidations = travelValidations;
+    }
 
     @Override
     public List<ValidationError> validate(TravelCalculatePremiumRequest request) {

@@ -12,7 +12,11 @@ import java.util.List;
 @Component
 class TravelPremiumUnderwritingImpl implements TravelPremiumUnderwriting {
 
-    @Autowired private SelectedRisksPremiumCalculator selectedRisksPremiumCalculator;
+    private final SelectedRisksPremiumCalculator selectedRisksPremiumCalculator;
+
+    TravelPremiumUnderwritingImpl(SelectedRisksPremiumCalculator selectedRisksPremiumCalculator) {
+        this.selectedRisksPremiumCalculator = selectedRisksPremiumCalculator;
+    }
 
     @Override
     public TravelPremiumCalculationResult calculatePremium(AgreementDTO agreementDTO, PersonDTO person) {

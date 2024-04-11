@@ -3,7 +3,6 @@ package org.javaguru.travel.insurance.core.services;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.domain.PersonEntity;
 import org.javaguru.travel.insurance.core.repositories.PersonEntityRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -11,7 +10,11 @@ import java.util.Optional;
 @Component
 class PersonSaver {
 
-    @Autowired private PersonEntityRepository repository;
+    private final PersonEntityRepository repository;
+
+    PersonSaver(PersonEntityRepository repository) {
+        this.repository = repository;
+    }
 
     PersonEntity savePerson(PersonDTO personDTO) {
         Optional<PersonEntity> personOpt = repository.findBy(

@@ -10,7 +10,11 @@ import java.math.BigDecimal;
 @Component
 class DayCountCalculator {
 
-    @Autowired private DateTimeUtil dateTimeUtil;
+    private final DateTimeUtil dateTimeUtil;
+
+    DayCountCalculator(DateTimeUtil dateTimeUtil) {
+        this.dateTimeUtil = dateTimeUtil;
+    }
 
     BigDecimal calculate(TravelCalculatePremiumRequestV1 request) {
         var daysBetween = dateTimeUtil.getDaysBetween(request.getAgreementDateFrom(), request.getAgreementDateTo());

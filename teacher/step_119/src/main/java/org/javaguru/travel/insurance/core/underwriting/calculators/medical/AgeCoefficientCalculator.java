@@ -4,7 +4,6 @@ import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.domain.AgeCoefficient;
 import org.javaguru.travel.insurance.core.repositories.AgeCoefficientRepository;
 import org.javaguru.travel.insurance.core.util.DateTimeUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -20,8 +19,14 @@ class AgeCoefficientCalculator {
     @Value( "${medical.risk.age.coefficient.enabled:false}" )
     private Boolean medicalRiskAgeCoefficientEnabled;
 
-    @Autowired private DateTimeUtil dateTimeUtil;
-    @Autowired private AgeCoefficientRepository ageCoefficientRepository;
+    private final DateTimeUtil dateTimeUtil;
+    private final AgeCoefficientRepository ageCoefficientRepository;
+
+    AgeCoefficientCalculator(DateTimeUtil dateTimeUtil,
+                             AgeCoefficientRepository ageCoefficientRepository) {
+        this.dateTimeUtil = dateTimeUtil;
+        this.ageCoefficientRepository = ageCoefficientRepository;
+    }
 
     BigDecimal calculate(PersonDTO person) {
         return medicalRiskAgeCoefficientEnabled

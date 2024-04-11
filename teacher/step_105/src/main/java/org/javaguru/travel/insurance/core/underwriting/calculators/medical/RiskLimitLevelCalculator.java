@@ -15,7 +15,11 @@ class RiskLimitLevelCalculator {
     @Value( "${medical.risk.limit.level.enabled:false}" )
     private Boolean medicalRiskLimitLevelEnabled;
 
-    @Autowired private MedicalRiskLimitLevelRepository riskLimitLevelRepository;
+    private final MedicalRiskLimitLevelRepository riskLimitLevelRepository;
+
+    RiskLimitLevelCalculator(MedicalRiskLimitLevelRepository riskLimitLevelRepository) {
+        this.riskLimitLevelRepository = riskLimitLevelRepository;
+    }
 
     BigDecimal calculate(TravelCalculatePremiumRequest request) {
         return medicalRiskLimitLevelEnabled

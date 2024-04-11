@@ -13,9 +13,17 @@ import java.util.List;
 @Component
 class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService {
 
-    @Autowired private TravelAgreementValidator agreementValidator;
-    @Autowired private AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator;
-    @Autowired private AgreementTotalPremiumCalculator agreementTotalPremiumCalculator;
+    private final TravelAgreementValidator agreementValidator;
+    private final AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator;
+    private final AgreementTotalPremiumCalculator agreementTotalPremiumCalculator;
+
+    TravelCalculatePremiumServiceImpl(TravelAgreementValidator agreementValidator, 
+                                      AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator, 
+                                      AgreementTotalPremiumCalculator agreementTotalPremiumCalculator) {
+        this.agreementValidator = agreementValidator;
+        this.agreementPersonsPremiumCalculator = agreementPersonsPremiumCalculator;
+        this.agreementTotalPremiumCalculator = agreementTotalPremiumCalculator;
+    }
 
     @Override
     public TravelCalculatePremiumCoreResult calculatePremium(TravelCalculatePremiumCoreCommand command) {

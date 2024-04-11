@@ -11,7 +11,11 @@ import java.util.List;
 @Component
 public class ValidationErrorFactory {
 
-    @Autowired private ErrorCodeUtil errorCodeUtil;
+    private final ErrorCodeUtil errorCodeUtil;
+
+    ValidationErrorFactory(ErrorCodeUtil errorCodeUtil) {
+        this.errorCodeUtil = errorCodeUtil;
+    }
 
     public ValidationError buildError(String errorCode) {
         String errorDescription = errorCodeUtil.getErrorDescription(errorCode);

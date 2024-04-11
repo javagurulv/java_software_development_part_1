@@ -12,9 +12,14 @@ import java.util.Optional;
 @Component
 class MedicalRiskLimitLevelValidation extends TravelAgreementFieldValidationImpl {
 
-    @Autowired private ClassifierValueRepository classifierValueRepository;
-    @Autowired private ValidationErrorFactory errorFactory;
+    private final ClassifierValueRepository classifierValueRepository;
+    private final ValidationErrorFactory errorFactory;
 
+    MedicalRiskLimitLevelValidation(ClassifierValueRepository classifierValueRepository, 
+                                    ValidationErrorFactory errorFactory) {
+        this.classifierValueRepository = classifierValueRepository;
+        this.errorFactory = errorFactory;
+    }
 
     @Override
     public Optional<ValidationErrorDTO> validate(AgreementDTO agreement) {

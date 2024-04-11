@@ -3,7 +3,6 @@ package org.javaguru.travel.insurance.web;
 import org.javaguru.travel.insurance.core.services.TravelCalculatePremiumService;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class TravelInsuranceController {
 
-    @Autowired private TravelCalculatePremiumService service;
+    private final TravelCalculatePremiumService service;
+
+    TravelInsuranceController(TravelCalculatePremiumService service) {
+        this.service = service;
+    }
 
     @GetMapping("/insurance/travel/web")
     public String showForm(ModelMap modelMap) {

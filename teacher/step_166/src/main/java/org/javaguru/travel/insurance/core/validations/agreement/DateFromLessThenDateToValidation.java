@@ -12,7 +12,11 @@ import java.util.Optional;
 @Component
 class DateFromLessThenDateToValidation extends TravelAgreementFieldValidationImpl {
 
-    @Autowired private ValidationErrorFactory errorFactory;
+    private final ValidationErrorFactory errorFactory;
+
+    DateFromLessThenDateToValidation(ValidationErrorFactory errorFactory) {
+        this.errorFactory = errorFactory;
+    }
 
     @Override
     public Optional<ValidationErrorDTO> validate(AgreementDTO agreement) {

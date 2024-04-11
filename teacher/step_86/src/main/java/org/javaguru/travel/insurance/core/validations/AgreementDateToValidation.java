@@ -9,8 +9,12 @@ import java.util.Optional;
 
 @Component
 class AgreementDateToValidation extends TravelRequestValidationImpl {
+    
+    private final ValidationErrorFactory errorFactory;
 
-    @Autowired private ValidationErrorFactory errorFactory;
+    AgreementDateToValidation(ValidationErrorFactory errorFactory) {
+        this.errorFactory = errorFactory;
+    }
 
     @Override
     public Optional<ValidationError> validate(TravelCalculatePremiumRequest request) {

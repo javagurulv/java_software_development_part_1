@@ -16,8 +16,14 @@ import java.util.stream.Stream;
 class TravelCalculatePremiumRequestValidatorImpl
     implements TravelCalculatePremiumRequestValidator {
 
-    @Autowired private List<TravelAgreementFieldValidation> agreementFieldValidations;
-    @Autowired private List<TravelPersonFieldValidation> personFieldValidations;
+    private final List<TravelAgreementFieldValidation> agreementFieldValidations;
+    private final List<TravelPersonFieldValidation> personFieldValidations;
+
+    TravelCalculatePremiumRequestValidatorImpl(List<TravelAgreementFieldValidation> agreementFieldValidations, 
+                                               List<TravelPersonFieldValidation> personFieldValidations) {
+        this.agreementFieldValidations = agreementFieldValidations;
+        this.personFieldValidations = personFieldValidations;
+    }
 
     @Override
     public List<ValidationError> validate(TravelCalculatePremiumRequestV1 request) {

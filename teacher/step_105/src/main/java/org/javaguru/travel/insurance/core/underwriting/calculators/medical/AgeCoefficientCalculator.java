@@ -20,8 +20,14 @@ class AgeCoefficientCalculator {
     @Value( "${medical.risk.age.coefficient.enabled:false}" )
     private Boolean medicalRiskAgeCoefficientEnabled;
 
-    @Autowired private DateTimeUtil dateTimeUtil;
-    @Autowired private AgeCoefficientRepository ageCoefficientRepository;
+    private final DateTimeUtil dateTimeUtil;
+    private final AgeCoefficientRepository ageCoefficientRepository;
+
+    AgeCoefficientCalculator(DateTimeUtil dateTimeUtil,
+                             AgeCoefficientRepository ageCoefficientRepository) {
+        this.dateTimeUtil = dateTimeUtil;
+        this.ageCoefficientRepository = ageCoefficientRepository;
+    }
 
     BigDecimal calculate(TravelCalculatePremiumRequest request) {
         return medicalRiskAgeCoefficientEnabled

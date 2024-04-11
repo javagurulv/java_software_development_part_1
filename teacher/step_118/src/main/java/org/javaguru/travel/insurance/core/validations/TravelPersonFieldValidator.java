@@ -2,7 +2,6 @@ package org.javaguru.travel.insurance.core.validations;
 
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -15,8 +14,11 @@ import java.util.stream.Stream;
 @Component
 class TravelPersonFieldValidator {
 
-    @Autowired
-    private List<TravelPersonFieldValidation> personFieldValidations;
+    private final List<TravelPersonFieldValidation> personFieldValidations;
+
+    TravelPersonFieldValidator(List<TravelPersonFieldValidation> personFieldValidations) {
+        this.personFieldValidations = personFieldValidations;
+    }
 
     List<ValidationErrorDTO> validate(List<PersonDTO> persons) {
         return persons.stream()

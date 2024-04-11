@@ -8,7 +8,6 @@ import org.javaguru.travel.insurance.dto.v1.DtoV1Converter;
 import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
 import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumResponseV1;
 import org.javaguru.travel.insurance.rest.common.TravelCalculatePremiumRequestExecutionTimeLogger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,11 +17,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/insurance/travel/api/v1")
 public class TravelCalculatePremiumRestControllerV1 {
 
-	@Autowired private TravelCalculatePremiumRequestLoggerV1 requestLogger;
-	@Autowired private TravelCalculatePremiumResponseLoggerV1 responseLogger;
-	@Autowired private TravelCalculatePremiumRequestExecutionTimeLogger executionTimeLogger;
-	@Autowired private TravelCalculatePremiumService calculatePremiumService;
-	@Autowired private DtoV1Converter dtoV1Converter;
+	private final TravelCalculatePremiumRequestLoggerV1 requestLogger;
+	private final TravelCalculatePremiumResponseLoggerV1 responseLogger;
+	private final TravelCalculatePremiumRequestExecutionTimeLogger executionTimeLogger;
+	private final TravelCalculatePremiumService calculatePremiumService;
+	private final DtoV1Converter dtoV1Converter;
+
+	TravelCalculatePremiumRestControllerV1(TravelCalculatePremiumRequestLoggerV1 requestLogger,
+										   TravelCalculatePremiumResponseLoggerV1 responseLogger,
+										   TravelCalculatePremiumRequestExecutionTimeLogger executionTimeLogger,
+										   TravelCalculatePremiumService calculatePremiumService,
+										   DtoV1Converter dtoV1Converter) {
+		this.requestLogger = requestLogger;
+		this.responseLogger = responseLogger;
+		this.executionTimeLogger = executionTimeLogger;
+		this.calculatePremiumService = calculatePremiumService;
+		this.dtoV1Converter = dtoV1Converter;
+	}
 
 	@PostMapping(path = "/",
 			consumes = "application/json",

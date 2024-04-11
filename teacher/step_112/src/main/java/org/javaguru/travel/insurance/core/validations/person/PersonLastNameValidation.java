@@ -11,7 +11,11 @@ import java.util.Optional;
 @Component
 class PersonLastNameValidation extends TravelPersonFieldValidationImpl {
 
-    @Autowired private ValidationErrorFactory errorFactory;
+    private final ValidationErrorFactory errorFactory;
+
+    PersonLastNameValidation(ValidationErrorFactory errorFactory) {
+        this.errorFactory = errorFactory;
+    }
 
     @Override
     public Optional<ValidationError> validate(TravelCalculatePremiumRequestV1 request) {

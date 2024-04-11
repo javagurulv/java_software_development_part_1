@@ -18,11 +18,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/insurance/travel/api/v2")
 public class TravelCalculatePremiumRestControllerV2 {
 
-	@Autowired private TravelCalculatePremiumRequestLoggerV2 requestLogger;
-	@Autowired private TravelCalculatePremiumResponseLoggerV2 responseLogger;
-	@Autowired private TravelCalculatePremiumRequestExecutionTimeLogger executionTimeLogger;
-	@Autowired private TravelCalculatePremiumService calculatePremiumService;
-	@Autowired private DtoV2Converter dtoV2Converter;
+	private final TravelCalculatePremiumRequestLoggerV2 requestLogger;
+	private final TravelCalculatePremiumResponseLoggerV2 responseLogger;
+	private final TravelCalculatePremiumRequestExecutionTimeLogger executionTimeLogger;
+	private final TravelCalculatePremiumService calculatePremiumService;
+	private final DtoV2Converter dtoV2Converter;
+
+	TravelCalculatePremiumRestControllerV2(TravelCalculatePremiumRequestLoggerV2 requestLogger, 
+										   TravelCalculatePremiumResponseLoggerV2 responseLogger, 
+										   TravelCalculatePremiumRequestExecutionTimeLogger executionTimeLogger, 
+										   TravelCalculatePremiumService calculatePremiumService, 
+										   DtoV2Converter dtoV2Converter) {
+		this.requestLogger = requestLogger;
+		this.responseLogger = responseLogger;
+		this.executionTimeLogger = executionTimeLogger;
+		this.calculatePremiumService = calculatePremiumService;
+		this.dtoV2Converter = dtoV2Converter;
+	}
 
 	@PostMapping(path = "/",
 			consumes = "application/json",

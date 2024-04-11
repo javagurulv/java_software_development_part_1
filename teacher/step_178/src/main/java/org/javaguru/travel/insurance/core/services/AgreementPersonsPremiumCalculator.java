@@ -9,7 +9,11 @@ import org.springframework.stereotype.Component;
 @Component
 class AgreementPersonsPremiumCalculator {
 
-    @Autowired private TravelPremiumUnderwriting premiumUnderwriting;
+    private final TravelPremiumUnderwriting premiumUnderwriting;
+
+    AgreementPersonsPremiumCalculator(TravelPremiumUnderwriting premiumUnderwriting) {
+        this.premiumUnderwriting = premiumUnderwriting;
+    }
 
     void calculateRiskPremiums(AgreementDTO agreement) {
         agreement.getPersons().forEach(person -> {

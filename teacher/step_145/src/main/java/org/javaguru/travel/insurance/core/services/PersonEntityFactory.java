@@ -11,7 +11,11 @@ import java.util.Optional;
 @Component
 class PersonEntityFactory {
 
-    @Autowired private PersonEntityRepository repository;
+    private final PersonEntityRepository repository;
+
+    PersonEntityFactory(PersonEntityRepository repository) {
+        this.repository = repository;
+    }
 
     PersonEntity createPersonEntity(PersonDTO personDTO) {
         Optional<PersonEntity> personOpt = repository.findBy(

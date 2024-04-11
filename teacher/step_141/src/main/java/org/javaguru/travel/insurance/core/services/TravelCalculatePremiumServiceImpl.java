@@ -10,14 +10,22 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
 class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService {
 
-    @Autowired private TravelAgreementValidator agreementValidator;
-    @Autowired private AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator;
-    @Autowired private AgreementTotalPremiumCalculator agreementTotalPremiumCalculator;
+    private final TravelAgreementValidator agreementValidator;
+    private final AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator;
+    private final AgreementTotalPremiumCalculator agreementTotalPremiumCalculator;
+    private final AgreementEntityFactory agreementEntityFactory;
 
-    @Autowired private AgreementEntityFactory agreementEntityFactory;
+    TravelCalculatePremiumServiceImpl(TravelAgreementValidator agreementValidator, 
+                                      AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator, 
+                                      AgreementTotalPremiumCalculator agreementTotalPremiumCalculator, 
+                                      AgreementEntityFactory agreementEntityFactory) {
+        this.agreementValidator = agreementValidator;
+        this.agreementPersonsPremiumCalculator = agreementPersonsPremiumCalculator;
+        this.agreementTotalPremiumCalculator = agreementTotalPremiumCalculator;
+        this.agreementEntityFactory = agreementEntityFactory;
+    }
 
     @Override
     public TravelCalculatePremiumCoreResult calculatePremium(TravelCalculatePremiumCoreCommand command) {

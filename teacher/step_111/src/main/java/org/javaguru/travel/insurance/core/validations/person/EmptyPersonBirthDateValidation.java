@@ -11,7 +11,11 @@ import java.util.Optional;
 @Component
 class EmptyPersonBirthDateValidation extends TravelPersonFieldValidationImpl {
 
-    @Autowired private ValidationErrorFactory errorFactory;
+    private final ValidationErrorFactory errorFactory;
+
+    EmptyPersonBirthDateValidation(ValidationErrorFactory errorFactory) {
+        this.errorFactory = errorFactory;
+    }
 
     @Override
     public Optional<ValidationError> validate(TravelCalculatePremiumRequestV1 request) {

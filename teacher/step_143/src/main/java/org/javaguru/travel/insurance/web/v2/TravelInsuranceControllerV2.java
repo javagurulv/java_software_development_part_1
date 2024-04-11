@@ -16,8 +16,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class TravelInsuranceControllerV2 {
 
-    @Autowired private TravelCalculatePremiumService service;
-    @Autowired private DtoV2Converter dtoV2Converter;
+    private final TravelCalculatePremiumService service;
+    private final DtoV2Converter dtoV2Converter;
+
+    TravelInsuranceControllerV2(TravelCalculatePremiumService service, 
+                                DtoV2Converter dtoV2Converter) {
+        this.service = service;
+        this.dtoV2Converter = dtoV2Converter;
+    }
 
     @GetMapping("/insurance/travel/web/v2")
     public String showForm(ModelMap modelMap) {

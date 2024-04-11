@@ -6,7 +6,6 @@ import org.javaguru.travel.insurance.core.services.TravelCalculatePremiumService
 import org.javaguru.travel.insurance.dto.v1.DtoV1Converter;
 import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
 import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumResponseV1;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +15,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class TravelInsuranceControllerV1 {
 
-    @Autowired private TravelCalculatePremiumService service;
-    @Autowired private DtoV1Converter dtoV1Converter;
+    private final TravelCalculatePremiumService service;
+    private final DtoV1Converter dtoV1Converter;
+
+    TravelInsuranceControllerV1(TravelCalculatePremiumService service,
+                                DtoV1Converter dtoV1Converter) {
+        this.service = service;
+        this.dtoV1Converter = dtoV1Converter;
+    }
 
     @GetMapping("/insurance/travel/web/v1")
     public String showForm(ModelMap modelMap) {

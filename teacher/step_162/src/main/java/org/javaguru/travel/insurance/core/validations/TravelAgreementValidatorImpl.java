@@ -12,8 +12,14 @@ import java.util.stream.Stream;
 @Component
 class TravelAgreementValidatorImpl implements TravelAgreementValidator {
 
-    @Autowired private TravelAgreementFieldValidator agreementFieldValidator;
-    @Autowired private TravelPersonFieldValidator personFieldValidator;
+    private final TravelAgreementFieldValidator agreementFieldValidator;
+    private final TravelPersonFieldValidator personFieldValidator;
+
+    TravelAgreementValidatorImpl(TravelAgreementFieldValidator agreementFieldValidator, 
+                                 TravelPersonFieldValidator personFieldValidator) {
+        this.agreementFieldValidator = agreementFieldValidator;
+        this.personFieldValidator = personFieldValidator;
+    }
 
     @Override
     public List<ValidationErrorDTO> validate(AgreementDTO agreement) {

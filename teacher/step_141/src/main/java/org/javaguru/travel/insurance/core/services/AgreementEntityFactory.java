@@ -7,17 +7,28 @@ import org.javaguru.travel.insurance.core.repositories.entities.AgreementPersonE
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementPersonRiskEntityRepository;
 import org.javaguru.travel.insurance.core.repositories.entities.SelectedRiskEntityRepository;
 import org.javaguru.travel.insurance.core.domain.entities.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 class AgreementEntityFactory {
 
-    @Autowired private AgreementEntityRepository agreementEntityRepository;
-    @Autowired private PersonEntityFactory personEntityFactory;
-    @Autowired private SelectedRiskEntityRepository selectedRiskEntityRepository;
-    @Autowired private AgreementPersonEntityRepository agreementPersonEntityRepository;
-    @Autowired private AgreementPersonRiskEntityRepository agreementPersonRiskEntityRepository;
+    private final AgreementEntityRepository agreementEntityRepository;
+    private final PersonEntityFactory personEntityFactory;
+    private final SelectedRiskEntityRepository selectedRiskEntityRepository;
+    private final AgreementPersonEntityRepository agreementPersonEntityRepository;
+    private final AgreementPersonRiskEntityRepository agreementPersonRiskEntityRepository;
+
+    AgreementEntityFactory(AgreementEntityRepository agreementEntityRepository,
+                           PersonEntityFactory personEntityFactory,
+                           SelectedRiskEntityRepository selectedRiskEntityRepository,
+                           AgreementPersonEntityRepository agreementPersonEntityRepository,
+                           AgreementPersonRiskEntityRepository agreementPersonRiskEntityRepository) {
+        this.agreementEntityRepository = agreementEntityRepository;
+        this.personEntityFactory = personEntityFactory;
+        this.selectedRiskEntityRepository = selectedRiskEntityRepository;
+        this.agreementPersonEntityRepository = agreementPersonEntityRepository;
+        this.agreementPersonRiskEntityRepository = agreementPersonRiskEntityRepository;
+    }
 
     AgreementEntity createAgreementEntity(AgreementDTO agreementDTO) {
         AgreementEntity agreementEntity = saveAgreement(agreementDTO);

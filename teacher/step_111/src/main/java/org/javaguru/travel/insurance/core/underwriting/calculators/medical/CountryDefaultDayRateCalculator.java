@@ -11,7 +11,11 @@ import java.math.BigDecimal;
 @Component
 class CountryDefaultDayRateCalculator {
 
-    @Autowired private CountryDefaultDayRateRepository countryDefaultDayRateRepository;
+    private final CountryDefaultDayRateRepository countryDefaultDayRateRepository;
+
+    CountryDefaultDayRateCalculator(CountryDefaultDayRateRepository countryDefaultDayRateRepository) {
+        this.countryDefaultDayRateRepository = countryDefaultDayRateRepository;
+    }
 
     BigDecimal calculate(TravelCalculatePremiumRequestV1 request) {
         return countryDefaultDayRateRepository.findByCountryIc(request.getCountry())

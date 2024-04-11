@@ -16,8 +16,11 @@ import java.util.stream.Stream;
 @Component
 class TravelPersonFieldValidator {
 
-    @Autowired
-    private List<TravelPersonFieldValidation> personFieldValidations;
+    private final List<TravelPersonFieldValidation> personFieldValidations;
+
+    TravelPersonFieldValidator(List<TravelPersonFieldValidation> personFieldValidations) {
+        this.personFieldValidations = personFieldValidations;
+    }
 
     List<ValidationErrorDTO> validate(AgreementDTO agreement) {
         return agreement.getPersons().stream()

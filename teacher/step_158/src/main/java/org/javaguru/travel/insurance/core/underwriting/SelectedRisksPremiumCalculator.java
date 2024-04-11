@@ -12,7 +12,11 @@ import java.util.List;
 @Component
 class SelectedRisksPremiumCalculator {
 
-    @Autowired private List<TravelRiskPremiumCalculator> riskPremiumCalculators;
+    private final List<TravelRiskPremiumCalculator> riskPremiumCalculators;
+
+    SelectedRisksPremiumCalculator(List<TravelRiskPremiumCalculator> riskPremiumCalculators) {
+        this.riskPremiumCalculators = riskPremiumCalculators;
+    }
 
     List<RiskDTO> calculatePremiumForAllRisks(AgreementDTO agreement, PersonDTO person) {
         return agreement.getSelectedRisks().stream()

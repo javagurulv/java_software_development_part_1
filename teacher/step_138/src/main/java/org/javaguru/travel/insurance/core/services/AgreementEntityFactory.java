@@ -3,14 +3,19 @@ package org.javaguru.travel.insurance.core.services;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.domain.entities.AgreementEntity;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementEntityRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 class AgreementEntityFactory {
 
-    @Autowired private AgreementEntityRepository agreementEntityRepository;
-    @Autowired private PersonEntityFactory personEntityFactory;
+    private final AgreementEntityRepository agreementEntityRepository;
+    private final PersonEntityFactory personEntityFactory;
+
+    AgreementEntityFactory(AgreementEntityRepository agreementEntityRepository,
+                           PersonEntityFactory personEntityFactory) {
+        this.agreementEntityRepository = agreementEntityRepository;
+        this.personEntityFactory = personEntityFactory;
+    }
 
     AgreementEntity createAgreementEntity(AgreementDTO agreementDTO) {
         saveAllPersons(agreementDTO);

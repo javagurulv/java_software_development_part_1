@@ -2,7 +2,6 @@ package org.javaguru.travel.insurance.core.validations;
 
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,8 +11,14 @@ import java.util.stream.Stream;
 @Component
 class TravelAgreementValidatorImpl implements TravelAgreementValidator {
 
-    @Autowired private TravelAgreementFieldValidator agreementFieldValidator;
-    @Autowired private TravelPersonFieldValidator personFieldValidator;
+    private final TravelAgreementFieldValidator agreementFieldValidator;
+    private final TravelPersonFieldValidator personFieldValidator;
+
+    TravelAgreementValidatorImpl(TravelAgreementFieldValidator agreementFieldValidator,
+                                 TravelPersonFieldValidator personFieldValidator) {
+        this.agreementFieldValidator = agreementFieldValidator;
+        this.personFieldValidator = personFieldValidator;
+    }
 
     @Override
     public List<ValidationErrorDTO> validate(AgreementDTO agreement) {
