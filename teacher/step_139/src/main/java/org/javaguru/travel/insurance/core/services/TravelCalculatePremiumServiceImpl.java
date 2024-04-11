@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService {
 
     private final TravelAgreementValidator agreementValidator;
