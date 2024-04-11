@@ -9,4 +9,4 @@
 Для этого воспользуйтесь
 следующей аннотацией из Lombok библиотеки:
 
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
