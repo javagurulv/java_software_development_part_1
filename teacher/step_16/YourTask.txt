@@ -10,3 +10,7 @@
 следующей аннотацией из Lombok библиотеки:
 
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
+
+
+Прочитайте документ:
+Oliver Drotbohm - Why field injection is evil.pdf
