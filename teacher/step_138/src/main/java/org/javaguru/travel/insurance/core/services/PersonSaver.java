@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.services;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.domain.PersonEntity;
 import org.javaguru.travel.insurance.core.repositories.PersonEntityRepository;
@@ -8,13 +10,10 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class PersonSaver {
 
     private final PersonEntityRepository repository;
-
-    PersonSaver(PersonEntityRepository repository) {
-        this.repository = repository;
-    }
 
     PersonEntity savePerson(PersonDTO personDTO) {
         Optional<PersonEntity> personOpt = repository.findBy(
