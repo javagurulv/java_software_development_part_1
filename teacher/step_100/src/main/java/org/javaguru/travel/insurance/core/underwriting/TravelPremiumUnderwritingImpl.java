@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.underwriting;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.dto.RiskPremium;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 
@@ -9,13 +11,10 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelPremiumUnderwritingImpl implements TravelPremiumUnderwriting {
 
     private final SelectedRisksPremiumCalculator selectedRisksPremiumCalculator;
-
-    TravelPremiumUnderwritingImpl(SelectedRisksPremiumCalculator selectedRisksPremiumCalculator) {
-        this.selectedRisksPremiumCalculator = selectedRisksPremiumCalculator;
-    }
 
     @Override
     public TravelPremiumCalculationResult calculatePremium(TravelCalculatePremiumRequest request) {
