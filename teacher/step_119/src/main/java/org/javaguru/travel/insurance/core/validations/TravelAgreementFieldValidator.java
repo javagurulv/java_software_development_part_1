@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.validations;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.springframework.stereotype.Component;
@@ -12,13 +14,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelAgreementFieldValidator {
 
     private final List<TravelAgreementFieldValidation> agreementFieldValidations;
-
-    TravelAgreementFieldValidator(List<TravelAgreementFieldValidation> agreementFieldValidations) {
-        this.agreementFieldValidations = agreementFieldValidations;
-    }
 
     List<ValidationErrorDTO> validate(AgreementDTO agreement) {
         List<ValidationErrorDTO> singleErrors = collectSingleAgreementErrors(agreement);

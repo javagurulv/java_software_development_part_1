@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.underwriting;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.RiskDTO;
@@ -9,13 +11,10 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class SelectedRisksPremiumCalculator {
 
     private final List<TravelRiskPremiumCalculator> riskPremiumCalculators;
-
-    SelectedRisksPremiumCalculator(List<TravelRiskPremiumCalculator> riskPremiumCalculators) {
-        this.riskPremiumCalculators = riskPremiumCalculators;
-    }
 
     List<RiskDTO> calculatePremiumForAllRisks(AgreementDTO agreement, PersonDTO person) {
         return agreement.getSelectedRisks().stream()
