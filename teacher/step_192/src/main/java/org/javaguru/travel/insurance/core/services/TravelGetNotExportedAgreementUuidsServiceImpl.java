@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.services;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.command.TravelGetNotExportedAgreementUuidsCoreCommand;
 import org.javaguru.travel.insurance.core.api.command.TravelGetNotExportedAgreementUuidsCoreResult;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementEntityRepository;
@@ -11,14 +13,11 @@ import java.util.List;
 
 @Component
 @Transactional
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelGetNotExportedAgreementUuidsServiceImpl
         implements TravelGetNotExportedAgreementUuidsService {
     
     private final AgreementEntityRepository agreementRepository;
-
-    TravelGetNotExportedAgreementUuidsServiceImpl(AgreementEntityRepository agreementRepository) {
-        this.agreementRepository = agreementRepository;
-    }
 
     @Override
     public TravelGetNotExportedAgreementUuidsCoreResult getAgreementUuids(TravelGetNotExportedAgreementUuidsCoreCommand command) {
