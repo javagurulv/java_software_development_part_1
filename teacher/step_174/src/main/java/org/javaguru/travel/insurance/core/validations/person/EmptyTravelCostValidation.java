@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.validations.person;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
@@ -10,13 +12,10 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class EmptyTravelCostValidation extends TravelPersonFieldValidationImpl {
 
     private final ValidationErrorFactory errorFactory;
-
-    EmptyTravelCostValidation(ValidationErrorFactory errorFactory) {
-        this.errorFactory = errorFactory;
-    }
 
     @Override
     public Optional<ValidationErrorDTO> validate(AgreementDTO agreement, PersonDTO person) {
