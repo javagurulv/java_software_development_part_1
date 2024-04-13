@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.validations.person;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
@@ -13,13 +15,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class PersonCodeFormatValidation extends TravelPersonFieldValidationImpl {
 
     private final ValidationErrorFactory errorFactory;
-
-    PersonCodeFormatValidation(ValidationErrorFactory errorFactory) {
-        this.errorFactory = errorFactory;
-    }
 
     @Override
     public Optional<ValidationErrorDTO> validate(AgreementDTO agreement, PersonDTO person) {

@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.jobs;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.command.TravelGetAgreementCoreCommand;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.services.TravelGetAgreementService;
@@ -14,6 +16,7 @@ import javax.xml.bind.Marshaller;
 import java.io.*;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class AgreementXmlExporter {
 
     private static final Logger logger = LoggerFactory.getLogger(AgreementXmlExporterJob.class);
@@ -22,10 +25,6 @@ class AgreementXmlExporter {
     private String agreementExportPath;
 
     private final TravelGetAgreementService agreementService;
-
-    AgreementXmlExporter(TravelGetAgreementService agreementService) {
-        this.agreementService = agreementService;
-    }
 
     void exportAgreement(String agreementUuid) {
         try {

@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.services;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.command.TravelGetAllAgreementUuidsCoreCommand;
 import org.javaguru.travel.insurance.core.api.command.TravelGetAllAgreementUuidsCoreResult;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementEntityRepository;
@@ -11,14 +13,11 @@ import java.util.List;
 
 @Component
 @Transactional
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelGetAllAgreementUuidsServiceImpl
         implements TravelGetAllAgreementUuidsService {
     
     private final AgreementEntityRepository agreementRepository;
-
-    TravelGetAllAgreementUuidsServiceImpl(AgreementEntityRepository agreementRepository) {
-        this.agreementRepository = agreementRepository;
-    }
 
     @Override
     public TravelGetAllAgreementUuidsCoreResult getAgreement(TravelGetAllAgreementUuidsCoreCommand command) {
