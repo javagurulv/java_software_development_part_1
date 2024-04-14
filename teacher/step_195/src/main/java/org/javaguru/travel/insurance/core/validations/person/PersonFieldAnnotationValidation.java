@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.validations.person;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
@@ -16,13 +18,10 @@ import java.util.List;
 import java.util.Set;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class PersonFieldAnnotationValidation extends TravelPersonFieldValidationImpl {
 
     private final ValidationErrorFactory errorFactory;
-
-    PersonFieldAnnotationValidation(ValidationErrorFactory errorFactory) {
-        this.errorFactory = errorFactory;
-    }
 
     @Override
     public List<ValidationErrorDTO> validateList(AgreementDTO agreement, PersonDTO person) {
