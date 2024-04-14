@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.validations.TravelRequestValidation;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
@@ -10,13 +12,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelCalculatePremiumRequestValidator {
 
     private final List<TravelRequestValidation> travelValidations;
-
-    TravelCalculatePremiumRequestValidator(List<TravelRequestValidation> travelValidations) {
-        this.travelValidations = travelValidations;
-    }
 
     public List<ValidationError> validate(TravelCalculatePremiumRequest request) {
         return travelValidations.stream()
