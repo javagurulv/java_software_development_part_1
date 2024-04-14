@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelPremiumUnderwriting {
 
-    private DateTimeService dateTimeService;
+    private final DateTimeService dateTimeService;
 
     BigDecimal calculatePremium(TravelCalculatePremiumRequest request) {
         var daysBetween = dateTimeService.getDaysBetween(request.getAgreementDateFrom(), request.getAgreementDateTo());
