@@ -1,21 +1,18 @@
 package org.javaguru.travel.insurance.core.services;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.domain.entities.AgreementEntity;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementEntityRepository;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class AgreementEntityFactory {
 
     private final AgreementEntityRepository agreementEntityRepository;
     private final PersonEntityFactory personEntityFactory;
-
-    AgreementEntityFactory(AgreementEntityRepository agreementEntityRepository,
-                           PersonEntityFactory personEntityFactory) {
-        this.agreementEntityRepository = agreementEntityRepository;
-        this.personEntityFactory = personEntityFactory;
-    }
 
     AgreementEntity createAgreementEntity(AgreementDTO agreementDTO) {
         saveAllPersons(agreementDTO);

@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.validations.agreement;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.repositories.ClassifierValueRepository;
@@ -12,16 +14,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class CountryValidation extends TravelAgreementFieldValidationImpl {
 
     private final ClassifierValueRepository classifierValueRepository;
     private final ValidationErrorFactory errorFactory;
-
-    CountryValidation(ClassifierValueRepository classifierValueRepository, 
-                      ValidationErrorFactory errorFactory) {
-        this.classifierValueRepository = classifierValueRepository;
-        this.errorFactory = errorFactory;
-    }
 
     @Override
     public Optional<ValidationErrorDTO> validate(AgreementDTO agreement) {
