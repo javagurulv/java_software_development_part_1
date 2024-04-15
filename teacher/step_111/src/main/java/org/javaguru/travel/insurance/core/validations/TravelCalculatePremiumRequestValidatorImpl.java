@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.validations;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
 import org.javaguru.travel.insurance.dto.ValidationError;
 
@@ -13,17 +15,12 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelCalculatePremiumRequestValidatorImpl
     implements TravelCalculatePremiumRequestValidator {
 
     private final List<TravelAgreementFieldValidation> agreementFieldValidations;
     private final List<TravelPersonFieldValidation> personFieldValidations;
-
-    TravelCalculatePremiumRequestValidatorImpl(List<TravelAgreementFieldValidation> agreementFieldValidations, 
-                                               List<TravelPersonFieldValidation> personFieldValidations) {
-        this.agreementFieldValidations = agreementFieldValidations;
-        this.personFieldValidations = personFieldValidations;
-    }
 
     @Override
     public List<ValidationError> validate(TravelCalculatePremiumRequestV1 request) {

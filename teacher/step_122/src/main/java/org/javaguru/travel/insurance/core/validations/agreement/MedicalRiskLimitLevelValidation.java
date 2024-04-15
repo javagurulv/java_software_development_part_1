@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.validations.agreement;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.repositories.ClassifierValueRepository;
@@ -10,16 +12,11 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class MedicalRiskLimitLevelValidation extends TravelAgreementFieldValidationImpl {
 
     private final ClassifierValueRepository classifierValueRepository;
     private final ValidationErrorFactory errorFactory;
-
-    MedicalRiskLimitLevelValidation(ClassifierValueRepository classifierValueRepository,
-                                    ValidationErrorFactory errorFactory) {
-        this.classifierValueRepository = classifierValueRepository;
-        this.errorFactory = errorFactory;
-    }
 
     @Override
     public Optional<ValidationErrorDTO> validate(AgreementDTO agreement) {

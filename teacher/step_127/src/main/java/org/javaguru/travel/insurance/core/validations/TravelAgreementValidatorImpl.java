@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.validations;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 
@@ -10,16 +12,11 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelAgreementValidatorImpl implements TravelAgreementValidator {
 
     private final TravelAgreementFieldValidator agreementFieldValidator;
     private final TravelPersonFieldValidator personFieldValidator;
-
-    TravelAgreementValidatorImpl(TravelAgreementFieldValidator agreementFieldValidator, 
-                                 TravelPersonFieldValidator personFieldValidator) {
-        this.agreementFieldValidator = agreementFieldValidator;
-        this.personFieldValidator = personFieldValidator;
-    }
 
     @Override
     public List<ValidationErrorDTO> validate(AgreementDTO agreement) {

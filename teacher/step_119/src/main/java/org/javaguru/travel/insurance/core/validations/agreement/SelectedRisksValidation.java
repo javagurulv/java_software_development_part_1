@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.validations.agreement;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.repositories.ClassifierValueRepository;
@@ -12,16 +14,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class SelectedRisksValidation extends TravelAgreementFieldValidationImpl {
 
     private final ClassifierValueRepository classifierValueRepository;
     private final ValidationErrorFactory errorFactory;
-
-    SelectedRisksValidation(ClassifierValueRepository classifierValueRepository,
-                            ValidationErrorFactory errorFactory) {
-        this.classifierValueRepository = classifierValueRepository;
-        this.errorFactory = errorFactory;
-    }
 
     @Override
     public List<ValidationErrorDTO> validateList(AgreementDTO agreement) {

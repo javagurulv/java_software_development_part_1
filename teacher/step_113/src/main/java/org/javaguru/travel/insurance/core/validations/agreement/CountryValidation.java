@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.validations.agreement;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.repositories.ClassifierValueRepository;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
@@ -9,16 +11,11 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class CountryValidation extends TravelAgreementFieldValidationImpl {
 
     private final ClassifierValueRepository classifierValueRepository;
     private final ValidationErrorFactory errorFactory;
-
-    CountryValidation(ClassifierValueRepository classifierValueRepository,
-                      ValidationErrorFactory errorFactory) {
-        this.classifierValueRepository = classifierValueRepository;
-        this.errorFactory = errorFactory;
-    }
 
     @Override
     public Optional<ValidationError> validate(TravelCalculatePremiumRequestV1 request) {

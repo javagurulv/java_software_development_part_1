@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.services;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.command.TravelCalculatePremiumCoreCommand;
 import org.javaguru.travel.insurance.core.api.command.TravelCalculatePremiumCoreResult;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
@@ -11,19 +13,12 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService {
 
     private final TravelAgreementValidator agreementValidator;
     private final AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator;
     private final AgreementTotalPremiumCalculator agreementTotalPremiumCalculator;
-
-    TravelCalculatePremiumServiceImpl(TravelAgreementValidator agreementValidator, 
-                                      AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator, 
-                                      AgreementTotalPremiumCalculator agreementTotalPremiumCalculator) {
-        this.agreementValidator = agreementValidator;
-        this.agreementPersonsPremiumCalculator = agreementPersonsPremiumCalculator;
-        this.agreementTotalPremiumCalculator = agreementTotalPremiumCalculator;
-    }
 
     @Override
     public TravelCalculatePremiumCoreResult calculatePremium(TravelCalculatePremiumCoreCommand command) {

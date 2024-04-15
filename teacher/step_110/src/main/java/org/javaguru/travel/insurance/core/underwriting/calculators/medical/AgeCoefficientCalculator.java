@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.underwriting.calculators.medical;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.domain.AgeCoefficient;
 import org.javaguru.travel.insurance.core.repositories.AgeCoefficientRepository;
 import org.javaguru.travel.insurance.core.util.DateTimeUtil;
@@ -15,6 +17,7 @@ import java.time.ZoneId;
 import java.util.Date;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class AgeCoefficientCalculator {
 
     @Value( "${medical.risk.age.coefficient.enabled:false}" )
@@ -22,12 +25,6 @@ class AgeCoefficientCalculator {
 
     private final DateTimeUtil dateTimeUtil;
     private final AgeCoefficientRepository ageCoefficientRepository;
-
-    AgeCoefficientCalculator(DateTimeUtil dateTimeUtil, 
-                             AgeCoefficientRepository ageCoefficientRepository) {
-        this.dateTimeUtil = dateTimeUtil;
-        this.ageCoefficientRepository = ageCoefficientRepository;
-    }
 
     BigDecimal calculate(TravelCalculatePremiumRequest request) {
         return medicalRiskAgeCoefficientEnabled
