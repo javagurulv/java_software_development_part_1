@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.services;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.RiskDTO;
@@ -16,22 +18,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class AgreementDTOLoader {
 
     private final AgreementEntityRepository agreementEntityRepository;
     private final SelectedRiskEntityRepository selectedRiskEntityRepository;
     private final AgreementPersonEntityRepository agreementPersonEntityRepository;
     private final AgreementPersonRiskEntityRepository agreementPersonRiskEntityRepository;
-
-    AgreementDTOLoader(AgreementEntityRepository agreementEntityRepository,
-                       SelectedRiskEntityRepository selectedRiskEntityRepository,
-                       AgreementPersonEntityRepository agreementPersonEntityRepository,
-                       AgreementPersonRiskEntityRepository agreementPersonRiskEntityRepository) {
-        this.agreementEntityRepository = agreementEntityRepository;
-        this.selectedRiskEntityRepository = selectedRiskEntityRepository;
-        this.agreementPersonEntityRepository = agreementPersonEntityRepository;
-        this.agreementPersonRiskEntityRepository = agreementPersonRiskEntityRepository;
-    }
 
     AgreementDTO load(String uuid) {
         AgreementDTO dto = new AgreementDTO();
