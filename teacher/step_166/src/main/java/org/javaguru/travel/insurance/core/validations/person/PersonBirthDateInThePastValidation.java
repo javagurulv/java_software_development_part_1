@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.validations.person;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
@@ -11,16 +13,11 @@ import java.util.Date;
 import java.util.Optional;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class PersonBirthDateInThePastValidation extends TravelPersonFieldValidationImpl {
 
     private final DateTimeUtil dateTimeUtil;
     private final ValidationErrorFactory errorFactory;
-
-    PersonBirthDateInThePastValidation(DateTimeUtil dateTimeUtil,
-                                       ValidationErrorFactory errorFactory) {
-        this.dateTimeUtil = dateTimeUtil;
-        this.errorFactory = errorFactory;
-    }
 
     @Override
     public Optional<ValidationErrorDTO> validate(AgreementDTO agreement, PersonDTO person) {
