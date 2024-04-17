@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.validations;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.repositories.ClassifierValueRepository;
 import org.javaguru.travel.insurance.core.util.Placeholder;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
@@ -12,16 +14,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class SelectedRisksValidation extends TravelRequestValidationImpl {
 
     private final ClassifierValueRepository classifierValueRepository;
     private final ValidationErrorFactory errorFactory;
-
-    SelectedRisksValidation(ClassifierValueRepository classifierValueRepository,
-                            ValidationErrorFactory errorFactory) {
-        this.classifierValueRepository = classifierValueRepository;
-        this.errorFactory = errorFactory;
-    }
 
     @Override
     public List<ValidationError> validateList(TravelCalculatePremiumRequest request) {

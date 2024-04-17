@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.services;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.underwriting.TravelPremiumCalculationResult;
 import org.javaguru.travel.insurance.core.underwriting.TravelPremiumUnderwriting;
 import org.javaguru.travel.insurance.core.validations.TravelCalculatePremiumRequestValidator;
@@ -11,16 +13,11 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService {
 
     private final TravelCalculatePremiumRequestValidator requestValidator;
     private final TravelPremiumUnderwriting premiumUnderwriting;
-
-    TravelCalculatePremiumServiceImpl(TravelCalculatePremiumRequestValidator requestValidator,
-                                      TravelPremiumUnderwriting premiumUnderwriting) {
-        this.requestValidator = requestValidator;
-        this.premiumUnderwriting = premiumUnderwriting;
-    }
 
     @Override
     public TravelCalculatePremiumResponse calculatePremium(TravelCalculatePremiumRequest request) {

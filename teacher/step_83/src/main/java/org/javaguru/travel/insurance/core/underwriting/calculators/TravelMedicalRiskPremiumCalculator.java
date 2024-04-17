@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.underwriting.calculators;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.domain.CountryDefaultDayRate;
 import org.javaguru.travel.insurance.core.repositories.CountryDefaultDayRateRepository;
 import org.javaguru.travel.insurance.core.underwriting.TravelRiskPremiumCalculator;
@@ -11,16 +13,11 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelMedicalRiskPremiumCalculator implements TravelRiskPremiumCalculator {
 
     private final DateTimeUtil dateTimeUtil;
     private final CountryDefaultDayRateRepository countryDefaultDayRateRepository;
-
-    TravelMedicalRiskPremiumCalculator(DateTimeUtil dateTimeUtil,
-                                       CountryDefaultDayRateRepository countryDefaultDayRateRepository) {
-        this.dateTimeUtil = dateTimeUtil;
-        this.countryDefaultDayRateRepository = countryDefaultDayRateRepository;
-    }
 
     @Override
     public BigDecimal calculatePremium(TravelCalculatePremiumRequest request) {

@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.validations;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.DateTimeService;
 import org.javaguru.travel.insurance.core.ErrorCodeUtil;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
@@ -10,16 +12,11 @@ import java.util.Date;
 import java.util.Optional;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class AgreementDateToInFutureValidation implements TravelRequestValidation {
 
     private final DateTimeService dateTimeService;
     private final ErrorCodeUtil errorCodeUtil;
-
-    AgreementDateToInFutureValidation(DateTimeService dateTimeService,
-                                      ErrorCodeUtil errorCodeUtil) {
-        this.dateTimeService = dateTimeService;
-        this.errorCodeUtil = errorCodeUtil;
-    }
 
     @Override
     public Optional<ValidationError> execute(TravelCalculatePremiumRequest request) {

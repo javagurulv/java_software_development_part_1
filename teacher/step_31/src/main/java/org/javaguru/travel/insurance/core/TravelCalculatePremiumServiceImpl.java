@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumResponse;
 import org.javaguru.travel.insurance.dto.ValidationError;
@@ -9,16 +11,11 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService {
 
     private final TravelCalculatePremiumRequestValidator requestValidator;
     private final TravelPremiumUnderwriting premiumUnderwriting;
-
-    TravelCalculatePremiumServiceImpl(TravelCalculatePremiumRequestValidator requestValidator,
-                                      TravelPremiumUnderwriting premiumUnderwriting) {
-        this.requestValidator = requestValidator;
-        this.premiumUnderwriting = premiumUnderwriting;
-    }
 
     @Override
     public TravelCalculatePremiumResponse calculatePremium(TravelCalculatePremiumRequest request) {
