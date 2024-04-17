@@ -29,5 +29,6 @@ SRP (Single Responsibility Principle). Еще одна проблема связ
 Ваша задача: вынести все валидации из класса
 TravelCalculatePremiumRequestValidator в отдельные классы.
 В классе TravelCalculatePremiumRequestValidator должен остаться код
-вызова каждой валидации. Воспользуйтесь IoC (@Component и @Autowired).
+вызова каждой валидации.
+
 Создайте отдельные тестовые классы для каждой валидации.
