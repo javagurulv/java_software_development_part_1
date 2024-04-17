@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.services;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementEntityRepository;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Component;
 import java.util.UUID;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class AgreementEntityFactory {
 
     private final AgreementEntityRepository agreementEntityRepository;
@@ -20,18 +23,6 @@ class AgreementEntityFactory {
     private final SelectedRiskEntityRepository selectedRiskEntityRepository;
     private final AgreementPersonEntityRepository agreementPersonEntityRepository;
     private final AgreementPersonRiskEntityRepository agreementPersonRiskEntityRepository;
-
-    AgreementEntityFactory(AgreementEntityRepository agreementEntityRepository, 
-                           PersonEntityFactory personEntityFactory,
-                           SelectedRiskEntityRepository selectedRiskEntityRepository, 
-                           AgreementPersonEntityRepository agreementPersonEntityRepository, 
-                           AgreementPersonRiskEntityRepository agreementPersonRiskEntityRepository) {
-        this.agreementEntityRepository = agreementEntityRepository;
-        this.personEntityFactory = personEntityFactory;
-        this.selectedRiskEntityRepository = selectedRiskEntityRepository;
-        this.agreementPersonEntityRepository = agreementPersonEntityRepository;
-        this.agreementPersonRiskEntityRepository = agreementPersonRiskEntityRepository;
-    }
 
     AgreementEntity createAgreementEntity(AgreementDTO agreementDTO) {
         AgreementEntity agreementEntity = saveAgreement(agreementDTO);
