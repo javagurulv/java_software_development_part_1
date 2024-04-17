@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.underwriting.calculators.cancellation;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.domain.TCAgeCoefficient;
 import org.javaguru.travel.insurance.core.repositories.TCAgeCoefficientRepository;
@@ -14,16 +16,11 @@ import java.time.ZoneId;
 import java.util.Date;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TCAgeCoefficientCalculator {
 
     private final DateTimeUtil dateTimeUtil;
     private final TCAgeCoefficientRepository ageCoefficientRepository;
-
-    TCAgeCoefficientCalculator(DateTimeUtil dateTimeUtil, 
-                               TCAgeCoefficientRepository ageCoefficientRepository) {
-        this.dateTimeUtil = dateTimeUtil;
-        this.ageCoefficientRepository = ageCoefficientRepository;
-    }
 
     BigDecimal calculate(PersonDTO person) {
         int age = calculateAge(person);

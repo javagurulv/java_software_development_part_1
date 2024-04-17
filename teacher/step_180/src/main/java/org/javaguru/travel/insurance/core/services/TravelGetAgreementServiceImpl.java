@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.services;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.command.TravelGetAgreementCoreCommand;
 import org.javaguru.travel.insurance.core.api.command.TravelGetAgreementCoreResult;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
@@ -12,16 +14,11 @@ import java.util.List;
 
 @Component
 @Transactional
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelGetAgreementServiceImpl implements TravelGetAgreementService {
 
     private final TravelAgreementUuidValidator agreementUuidValidator;
     private final AgreementDTOLoader agreementDTOLoader;
-
-    TravelGetAgreementServiceImpl(TravelAgreementUuidValidator agreementUuidValidator, 
-                                  AgreementDTOLoader agreementDTOLoader) {
-        this.agreementUuidValidator = agreementUuidValidator;
-        this.agreementDTOLoader = agreementDTOLoader;
-    }
 
     @Override
     public TravelGetAgreementCoreResult getAgreement(TravelGetAgreementCoreCommand command) {

@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.jobs;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.command.TravelGetNotExportedAgreementUuidsCoreCommand;
 import org.javaguru.travel.insurance.core.api.command.TravelGetNotExportedAgreementUuidsCoreResult;
 import org.javaguru.travel.insurance.core.services.TravelGetNotExportedAgreementUuidsService;
@@ -15,6 +17,7 @@ import java.util.List;
 import java.util.concurrent.*;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public class AgreementXmlExporterJob {
 
     private static final Logger logger = LoggerFactory.getLogger(AgreementXmlExporterJob.class);
@@ -27,12 +30,6 @@ public class AgreementXmlExporterJob {
 
     private final TravelGetNotExportedAgreementUuidsService notExportedAgreementUuidsService;
     private final AgreementXmlExporter agreementXmlExporter;
-
-    AgreementXmlExporterJob(TravelGetNotExportedAgreementUuidsService notExportedAgreementUuidsService,
-                            AgreementXmlExporter agreementXmlExporter) {
-        this.notExportedAgreementUuidsService = notExportedAgreementUuidsService;
-        this.agreementXmlExporter = agreementXmlExporter;
-    }
 
     @Scheduled(fixedRate = 5, timeUnit = TimeUnit.SECONDS)
     public void doJob() {
