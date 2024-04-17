@@ -10,10 +10,10 @@
 3) сделать новый интерфейс public;
 4) сделать все классы валидаций packege level access
 (убрать public с классов, чтобы они были доступны только внутри пакета);
-5) В классе TravelCalculatePremiumRequestValidator воспользуйтесь
-вместо @Autowire каждого класса валидации в отдельности
+5) В классе TravelCalculatePremiumRequestValidator в конструктор класса
+добавьте параметр List<TravelRequestValidation> travelValidations
+и сохраните его в свойство:
 
-    @Autowired
     private List<TravelRequestValidation> travelValidations;
 
 Так как все классы валидации реализуют новый интерфейс и являются
