@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.services;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.command.TravelExportAgreementToXmlCoreCommand;
 import org.javaguru.travel.insurance.core.api.command.TravelExportAgreementToXmlCoreResult;
 import org.javaguru.travel.insurance.core.api.command.TravelGetAgreementCoreCommand;
@@ -22,6 +24,7 @@ import java.util.List;
 
 @Component
 @Transactional
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelExportAgreementToXmlServiceImpl
     implements TravelExportAgreementToXmlService {
 
@@ -33,14 +36,6 @@ class TravelExportAgreementToXmlServiceImpl
     private final TravelGetAgreementService agreementService;
     private final AgreementXmlExportEntityRepository agreementXmlExportEntityRepository;
     private final ValidationErrorFactory errorFactory;
-
-    TravelExportAgreementToXmlServiceImpl(TravelGetAgreementService agreementService,
-                                          AgreementXmlExportEntityRepository agreementXmlExportEntityRepository,
-                                          ValidationErrorFactory errorFactory) {
-        this.agreementService = agreementService;
-        this.agreementXmlExportEntityRepository = agreementXmlExportEntityRepository;
-        this.errorFactory = errorFactory;
-    }
 
     @Override
     public TravelExportAgreementToXmlCoreResult export(TravelExportAgreementToXmlCoreCommand command) {

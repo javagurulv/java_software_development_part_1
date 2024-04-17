@@ -1,5 +1,7 @@
 package org.javaguru.travel.insurance.core.underwriting.calculators.medical;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.underwriting.TravelRiskPremiumCalculator;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.springframework.stereotype.Component;
@@ -8,19 +10,12 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 @Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelMedicalRiskPremiumCalculator implements TravelRiskPremiumCalculator {
 
     private final DayCountCalculator dayCountCalculator;
     private final CountryDefaultDayRateCalculator countryDefaultDayRateCalculator;
     private final AgeCoefficientCalculator ageCoefficientCalculator;
-
-    TravelMedicalRiskPremiumCalculator(DayCountCalculator dayCountCalculator,
-                                       CountryDefaultDayRateCalculator countryDefaultDayRateCalculator,
-                                       AgeCoefficientCalculator ageCoefficientCalculator) {
-        this.dayCountCalculator = dayCountCalculator;
-        this.countryDefaultDayRateCalculator = countryDefaultDayRateCalculator;
-        this.ageCoefficientCalculator = ageCoefficientCalculator;
-    }
 
     @Override
     public BigDecimal calculatePremium(TravelCalculatePremiumRequest request) {
