@@ -3,7 +3,7 @@ package org.javaguru.travel.insurance.core.underwriting.calculators.cancellation
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.domain.TCTravelCostCoefficient;
 import org.javaguru.travel.insurance.core.repositories.TCTravelCostCoefficientRepository;
-import org.javaguru.travel.insurance.core.underwriting.calculators.cancellation.TCTravelCostCoefficientCalculator;
+import org.javaguru.travel.insurance.core.underwriting.calculators.cancellation.TravelCostCoefficientCalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,7 +24,7 @@ class TCTravelCostCoefficientCalculatorTest {
     @Mock private TCTravelCostCoefficientRepository TCTravelCostCoefficientRepository;
 
     @InjectMocks
-    private TCTravelCostCoefficientCalculator calculator;
+    private TravelCostCoefficientCalculator calculator;
 
     private PersonDTO person;
 
