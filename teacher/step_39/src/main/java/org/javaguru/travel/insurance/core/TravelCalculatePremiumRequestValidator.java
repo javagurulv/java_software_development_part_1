@@ -1,6 +1,5 @@
 package org.javaguru.travel.insurance.core;
 
-import org.javaguru.travel.insurance.core.validations.*;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.springframework.stereotype.Component;
@@ -34,7 +33,6 @@ class TravelCalculatePremiumRequestValidator {
         this.agreementDateFromInFutureValidation = agreementDateFromInFutureValidation;
         this.agreementDateToInFutureValidation = agreementDateToInFutureValidation;
     }
-
 
     public List<ValidationError> validate(TravelCalculatePremiumRequest request) {
         List<ValidationError> errors = new ArrayList<>();

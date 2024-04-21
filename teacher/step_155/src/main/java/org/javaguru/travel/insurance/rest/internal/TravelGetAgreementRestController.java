@@ -7,7 +7,6 @@ import org.javaguru.travel.insurance.core.services.TravelGetAgreementService;
 import org.javaguru.travel.insurance.dto.internal.GetAgreementDtoConverter;
 import org.javaguru.travel.insurance.dto.internal.TravelGetAgreementResponse;
 import org.javaguru.travel.insurance.rest.common.TravelRestRequestExecutionTimeLogger;
-
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,10 +19,10 @@ public class TravelGetAgreementRestController {
 	private final TravelGetAgreementService getAgreementService;
 	private final GetAgreementDtoConverter dtoConverter;
 
-	TravelGetAgreementRestController(TravelGetAgreementRequestLogger requestLogger, 
-									 TravelGetAgreementResponseLogger responseLogger, 
-									 TravelRestRequestExecutionTimeLogger executionTimeLogger, 
-									 TravelGetAgreementService getAgreementService, 
+	TravelGetAgreementRestController(TravelGetAgreementRequestLogger requestLogger,
+									 TravelGetAgreementResponseLogger responseLogger,
+									 TravelRestRequestExecutionTimeLogger executionTimeLogger,
+									 TravelGetAgreementService getAgreementService,
 									 GetAgreementDtoConverter dtoConverter) {
 		this.requestLogger = requestLogger;
 		this.responseLogger = responseLogger;

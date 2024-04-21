@@ -14,8 +14,8 @@ import java.util.Optional;
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class AgreementDateToInFutureValidation extends TravelRequestValidationImpl {
 
-    private final DateTimeUtil dateTimeUtil;
-    private final ValidationErrorFactory errorFactory;
+    private DateTimeUtil dateTimeUtil;
+    private ValidationErrorFactory errorFactory;
 
     @Override
     public Optional<ValidationError> validate(TravelCalculatePremiumRequest request) {

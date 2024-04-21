@@ -1,7 +1,5 @@
 package org.javaguru.travel.insurance.core;
 
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.ZoneId;

@@ -10,12 +10,12 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
-class PersonFirstNameValidation extends TravelRequestValidationImpl {
+class PersonFirstNameValidation implements TravelRequestValidation {
 
     private final ValidationErrorFactory errorFactory;
 
     @Override
-    public Optional<ValidationError> validate(TravelCalculatePremiumRequest request) {
+    public Optional<ValidationError> execute(TravelCalculatePremiumRequest request) {
         return (request.getPersonFirstName() == null || request.getPersonFirstName().isEmpty())
                 ? Optional.of(errorFactory.buildError("ERROR_CODE_7"))
                 : Optional.empty();

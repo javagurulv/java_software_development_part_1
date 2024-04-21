@@ -4,11 +4,11 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
+import org.javaguru.travel.insurance.core.domain.entities.*;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementEntityRepository;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementPersonEntityRepository;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementPersonRiskEntityRepository;
 import org.javaguru.travel.insurance.core.repositories.entities.SelectedRiskEntityRepository;
-import org.javaguru.travel.insurance.core.domain.entities.*;
 
 import org.springframework.stereotype.Component;
 
@@ -65,7 +65,6 @@ class AgreementEntityFactory {
         agreementPersonEntity.setAgreement(agreementEntity);
         agreementPersonEntity.setPerson(personEntity);
         agreementPersonEntity.setMedicalRiskLimitLevel(personDTO.getMedicalRiskLimitLevel());
-        agreementPersonEntity.setTravelCost(personDTO.getTravelCost());
         agreementPersonEntity = agreementPersonEntityRepository.save(agreementPersonEntity);
         return agreementPersonEntity;
     }
