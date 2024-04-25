@@ -13,7 +13,6 @@
 **/build/
 **/logs/
 **/out/
-!gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###
 .apt_generated
@@ -24,8 +23,7 @@
 .springBeans
 
 ### IntelliJ IDEA ###
-.idea
-/.idea/
+**/.idea
 *.iws
 *.iml
 *.ipr
