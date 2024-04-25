@@ -2,7 +2,7 @@ package org.javaguru.travel.insurance.core.validations.person;
 
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.javaguru.travel.insurance.core.validations.person.EmptyPersonBirthDateValidation;
-import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
+import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,7 +28,7 @@ class EmptyPersonBirthDateValidationTest {
 
     @Test
     public void shouldReturnNoErrorWhenPersonBirthDateIsPresent() {
-        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
         when(request.getPersonBirthDate()).thenReturn(new Date());
         Optional<ValidationError> errorOpt = validation.validate(request);
         assertTrue(errorOpt.isEmpty());
@@ -36,7 +36,7 @@ class EmptyPersonBirthDateValidationTest {
 
     @Test
     public void shouldReturnErrorWhenPersonBirthDateIsNull() {
-        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
         when(request.getPersonBirthDate()).thenReturn(null);
         when(errorFactory.buildError("ERROR_CODE_11"))
                 .thenReturn(new ValidationError("ERROR_CODE_11", "Person Birth Date must be provided when TRAVEL_MEDICAL is selected"));

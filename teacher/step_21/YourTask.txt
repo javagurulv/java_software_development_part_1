@@ -1,16 +1,23 @@
 Ваша задача:
 
-Примените Lombok для генерации конструктора
-в классах
-- TravelCalculatePremiumServiceImpl
-- TravelCalculatePremiumController
-без модификатора доступа.
+Узнайте для чего используют библиотеку Lombok.
+(https://www.baeldung.com/intro-to-project-lombok)
 
-Для этого воспользуйтесь
-следующей аннотацией из Lombok библиотеки:
+Добавьте в проект библиотеку Lombok.
 
-@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
+	compileOnly('org.projectlombok:lombok:1.18.24')
+	annotationProcessor('org.projectlombok:lombok:1.18.24')
 
+	testCompileOnly('org.projectlombok:lombok:1.18.24')
+	testAnnotationProcessor('org.projectlombok:lombok:1.18.24')
 
-Прочитайте документ:
-Oliver Drotbohm - Why field injection is evil.pdf
+В IntelliJIdea File -> Settings -> "Enable annotation processing"
+поставить галочку!
+
+Примените Lombok для генерации get/set методов и конструкторов
+для классов запроса и ответа:
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor

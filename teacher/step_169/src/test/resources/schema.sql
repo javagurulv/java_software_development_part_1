@@ -144,11 +144,3 @@ CREATE TABLE IF NOT EXISTS travel_cancellation_age_coefficient (
   coefficient DECIMAL(10,2) NOT NULL,
   PRIMARY KEY (id)
 );
-
-
-CREATE TABLE travel_cancellation_country_safety_rating (
-  id BIGINT NOT NULL AUTO_INCREMENT,
-  country_ic VARCHAR(200) NOT NULL,
-  coefficient NUMERIC(10,2) NOT NULL,
-  PRIMARY KEY (id)
-);

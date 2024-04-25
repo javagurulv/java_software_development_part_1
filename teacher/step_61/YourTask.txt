@@ -1,71 +1,45 @@
-Ваша задача:
+Ваша задача: ознакомиться с записями вводных лекций по
+SQL и реляционным базам данных.
 
-1. Разобраться в SQL скрипте по созданию базы данных
-и таблиц для хранения значений классификаторов.
+SQL basics:
+Viktor: https://www.youtube.com/watch?v=qIippH729UI
+Ruslan: https://www.youtube.com/watch?v=sBwJOiwizCU
 
-Скрип находится в папке database/mySqlDbCreationScript.sql
+SQL advanced:
+Viktor: https://www.youtube.com/watch?v=H02bJB846GU
+Ruslan: https://www.youtube.com/watch?v=egzYiYNq9hI
 
-2. Создать локальную базу данных и таблицы для хранения значений
-классификаторов с помощью скрипта и MySQL Workbench.
+В этих лекциях и в интернете найти ответы на вопросы:
 
-
-Классификаторы - это наборы не изменяемых значений. Эти значения
-будут использоваться как в коде так и в данных, которые
-обрабатывает приложение. Например, классификатор RISK_TYPE будет
-содержать типы доступных в приложении рисков страхования.
-
-Классификатор: RISK_TYPE
-Доступные значения классификатора RISK_TYPE:
-TRAVEL_MEDICAL
-TRAVEL_CANCELLATION
-TRAVEL_LOSS_BAGGAGE
-TRAVEL_THIRD_PARTY_LIABILITY
-и так далее.
-
-Почему ментор предлагает хранить классификаторы и доступные их
-значения в базе данных, а не в коде приложения (например в виде Java enum)?
-
-Потому, что, во-первых, это часть конфигурации полиса страхования,
-и она может меняться бизнесом, во вторых если значения классификаторов
-будут храниться в базе данных у них появляется уникальное id и на
-них можно ссылаться из других таблиц базы данных, а так же использовать
-поле ic как константу, которую использовать в коде.
+1. Что такое реляционная база данных?
+2. Что такое СУБД?
+3. Что такое SQL?
+4. Как создавать таблицы в базе данных?
+5. Что такое CRUD операции?
+6. Примеры команды SQL insert.
+7. Примеры команды SQL select
+8. Примеры команды SQL update.
+9. Примеры команды SQL delete.
+10. Что такое связи между таблицами и какие они бывают?
+11. Что такое первичный ключ (primary key)?
+12. Что такое вторичный ключ (foreign key)?
+13. Примеры команды SQL join.
 
 
-Для хранения значений классификаторов ментор предложил использовать
-следующие две таблицы в базе данных:
+Если ты не знаком с реляционными базами данных
+или плохо знаешь язык запросов SQL, то
+пройти как можно дальше туториал по SQL:
+https://sqlbolt.com/lesson/select_queries_introduction
 
-CREATE TABLE IF NOT EXISTS `classifiers` (
-  `id` BIGINT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(200) NOT NULL,
-  `description` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`id`)
-)
-ENGINE = InnoDB
-AUTO_INCREMENT = 1002;
+Если хочешь (задание не обязательное), то можешь пройти
+мини курс по SQL. В этом шага есть папки:
+practice-DDL (практические проекты по Data Definition Language)
+practice-DML (практические проекты по Data Manipulation Language)
 
+DDL и DML это две основные части языка SQL.
 
-CREATE TABLE IF NOT EXISTS `classifier_values` (
-  `id` BIGINT NOT NULL AUTO_INCREMENT,
-  `classifier_id` BIGINT NOT NULL,
-  `ic` VARCHAR(200) NOT NULL,
-  `description` VARCHAR(500) NOT NULL,
-  PRIMARY KEY (id)
-)
-ENGINE = InnoDB
-AUTO_INCREMENT = 1002;
+Начните с проектов practice-DML, а потом переходи к practice-DDL.
 
-
-Пример данных из таблиц classifiers и classifiers_values:
-
-classifiers
-1, RISK_TYPE, travel policy risk type classifier
-2, COUNTRY, country classifier
-
-classifier_values
-1, 1 (foreign key to classifiers table), TRAVEL_MEDICAL, travel policy medical risk
-2, 1 (foreign key to classifiers table), TRAVEL_CANCELLATION, travel policy trip cancellation risk
-3, 1 (foreign key to classifiers table), TRAVEL_LOSS_BAGGAGE, travel policy baggage lose risk
-4, 2 (foreign key to classifiers table), LATVIA, country Latvia
-4, 2 (foreign key to classifiers table), SPAIN, country Spain
-и так далее.
+Если решишь все практические задачи мини курса по SQL,
+то получишь уверенность и практические знания в SQL,
+которые тебе понадобятся в следующих шагах проекта.

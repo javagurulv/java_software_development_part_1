@@ -23,7 +23,7 @@ class AgreementDateFromValidationTest {
     public void shouldReturnErrorWhenAgreementDateFromIsNull() {
         TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
         when(request.getAgreementDateFrom()).thenReturn(null);
-        Optional<ValidationError> errorOpt = validation.execute(request);
+        Optional<ValidationError> errorOpt = validation.validateAgreementDateFrom(request);
         assertTrue(errorOpt.isPresent());
         assertEquals(errorOpt.get().getField(), "agreementDateFrom");
         assertEquals(errorOpt.get().getMessage(), "Must not be empty!");
@@ -33,7 +33,7 @@ class AgreementDateFromValidationTest {
     public void shouldNotReturnErrorWhenAgreementDateFromIsPresent() {
         TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
         when(request.getAgreementDateFrom()).thenReturn(createDate("01.01.2025"));
-        Optional<ValidationError> errorOpt = validation.execute(request);
+        Optional<ValidationError> errorOpt = validation.validateAgreementDateFrom(request);
         assertTrue(errorOpt.isEmpty());
     }
 

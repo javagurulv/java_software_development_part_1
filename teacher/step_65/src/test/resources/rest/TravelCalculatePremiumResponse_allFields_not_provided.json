@@ -12,11 +12,11 @@
     "message":"Must not be empty!"
   },
   {
-    "field":"personLastName",
+    "field":"personFirstName",
     "message":"Must not be empty!"
   },
   {
-    "field":"personFirstName",
+    "field":"personLastName",
     "message":"Must not be empty!"
   }
 ],

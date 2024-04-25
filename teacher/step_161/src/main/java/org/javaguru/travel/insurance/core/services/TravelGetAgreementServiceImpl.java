@@ -6,7 +6,6 @@ import org.javaguru.travel.insurance.core.api.command.TravelGetAgreementCoreComm
 import org.javaguru.travel.insurance.core.api.command.TravelGetAgreementCoreResult;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.validations.TravelAgreementUuidValidator;
-
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
