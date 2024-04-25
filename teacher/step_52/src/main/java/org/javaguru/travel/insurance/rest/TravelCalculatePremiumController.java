@@ -13,14 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class TravelCalculatePremiumController {
 
 	private final TravelCalculatePremiumRequestLogger requestLogger;
-	private final TravelCalculatePremiumResponseLogger responseLogger;
 	private final TravelCalculatePremiumService calculatePremiumService;
 
 	TravelCalculatePremiumController(TravelCalculatePremiumRequestLogger requestLogger,
-									 TravelCalculatePremiumResponseLogger responseLogger,
 									 TravelCalculatePremiumService calculatePremiumService) {
 		this.requestLogger = requestLogger;
-		this.responseLogger = responseLogger;
 		this.calculatePremiumService = calculatePremiumService;
 	}
 
@@ -29,9 +26,7 @@ public class TravelCalculatePremiumController {
 			produces = "application/json")
 	public TravelCalculatePremiumResponse calculatePremium(@RequestBody TravelCalculatePremiumRequest request) {
 		requestLogger.log(request);
-		TravelCalculatePremiumResponse response = calculatePremiumService.calculatePremium(request);
-		responseLogger.log(response);
-		return response;
+		return calculatePremiumService.calculatePremium(request);
 	}
 
 }

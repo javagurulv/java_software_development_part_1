@@ -4,7 +4,7 @@ import org.javaguru.travel.insurance.core.underwriting.SelectedRisksPremiumCalcu
 import org.javaguru.travel.insurance.core.underwriting.TravelPremiumCalculationResult;
 import org.javaguru.travel.insurance.core.underwriting.TravelPremiumUnderwritingImpl;
 import org.javaguru.travel.insurance.dto.RiskPremium;
-import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
+import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -28,7 +28,7 @@ public class TravelPremiumUnderwritingTest {
 
     @Test
     void shouldCalculateTotalPremiumAsSumOfRiskPremiums() {
-        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
         List<RiskPremium> riskPremiums = List.of(
                 new RiskPremium("TRAVEL_MEDICAL", BigDecimal.ONE),
                 new RiskPremium("TRAVEL_EVACUATION", BigDecimal.ONE)

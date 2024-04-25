@@ -1,7 +1,5 @@
 package org.javaguru.travel.insurance.core;
 
-import org.javaguru.travel.insurance.core.DateTimeService;
-import org.javaguru.travel.insurance.core.TravelPremiumUnderwriting;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,7 +25,7 @@ public class TravelPremiumUnderwritingTest {
     private TravelPremiumUnderwriting premiumUnderwriting;
 
     @Test
-    void shouldReturnResponseWithCorrectAgreementPrice() {
+    public void shouldReturnResponseWithCorrectAgreementPrice() {
         TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
         when(request.getAgreementDateFrom()).thenReturn(createDate("01.01.2023"));
         when(request.getAgreementDateTo()).thenReturn(createDate("10.01.2023"));

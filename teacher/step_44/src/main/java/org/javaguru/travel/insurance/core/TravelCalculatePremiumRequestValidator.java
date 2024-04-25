@@ -1,7 +1,5 @@
 package org.javaguru.travel.insurance.core;
 
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.springframework.stereotype.Component;
@@ -12,10 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelCalculatePremiumRequestValidator {
-
-    private final DateTimeService dateTimeService;
 
     public List<ValidationError> validate(TravelCalculatePremiumRequest request) {
         List<ValidationError> errors = new ArrayList<>();
@@ -24,8 +19,6 @@ class TravelCalculatePremiumRequestValidator {
         validateAgreementDateFrom(request).ifPresent(errors::add);
         validateAgreementDateTo(request).ifPresent(errors::add);
         validateDateFromLessThenDateTo(request).ifPresent(errors::add);
-        validateDateFromInFuture(request).ifPresent(errors::add);
-        validateDateToInFuture(request).ifPresent(errors::add);
         return errors;
     }
 
@@ -62,20 +55,5 @@ class TravelCalculatePremiumRequestValidator {
                 : Optional.empty();
     }
 
-    private Optional<ValidationError> validateDateFromInFuture(TravelCalculatePremiumRequest request) {
-        Date dateFrom = request.getAgreementDateFrom();
-        Date currentDateTime = dateTimeService.getCurrentDateTime();
-        return (dateFrom != null && dateFrom.before(currentDateTime))
-                ? Optional.of(new ValidationError("agreementDateFrom", "Must be in the future!"))
-                : Optional.empty();
-    }
-
-    private Optional<ValidationError> validateDateToInFuture(TravelCalculatePremiumRequest request) {
-        Date dateTo = request.getAgreementDateTo();
-        Date currentDateTime = dateTimeService.getCurrentDateTime();
-        return (dateTo != null && dateTo.before(currentDateTime))
-                ? Optional.of(new ValidationError("agreementDateTo", "Must be in the future!"))
-                : Optional.empty();
-    }
 
 }
