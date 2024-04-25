@@ -15,14 +15,13 @@ import java.util.Optional;
 class AgreementDateToInFutureValidation implements TravelRequestValidation {
 
     private final DateTimeService dateTimeService;
-    private final ValidationErrorFactory errorFactory;
 
     @Override
     public Optional<ValidationError> execute(TravelCalculatePremiumRequest request) {
         Date dateTo = request.getAgreementDateTo();
         Date currentDateTime = dateTimeService.getCurrentDateTime();
         return (dateTo != null && dateTo.before(currentDateTime))
-                ? Optional.of(errorFactory.buildError("ERROR_CODE_3"))
+                ? Optional.of(new ValidationError("agreementDateTo", "Must be in the future!"))
                 : Optional.empty();
     }
 

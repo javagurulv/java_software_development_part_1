@@ -23,7 +23,6 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TravelCalculatePremiumResponseV1 extends CoreResponse {
 
-    private String uuid;
     private String personFirstName;
     private String personLastName;
     private String personCode;

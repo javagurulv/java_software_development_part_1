@@ -1,30 +1,29 @@
-Для реализации расчёта премии на основе рисков ментор предлагает
-сделать следующие архитектурные изменения в пакете core.underwriting:
+Ментор предлагает воспользоваться классом ClassifierValueRepository
+и его методом findByClassifierTitleAndIc(...) для создания
+новой валидации. Новая валидация должна проверять значения selected_risks
+в запросе. Все значения указанные в selected_risks должны
+быть значениями ic (ClassifierValue.ic) классификатора RISK_TYPE
+из базы данных. Для каждого не верного значения в selected_risks
+валидация должна возвращать ошибку:
+Риск с ic = NOT_EXISTING_RISK не поддерживается системой.
 
-Создать интерфейс TravelRiskPremiumCalculator с методами
+Перед тем как читать дальше: проанализируйте можно ли с текущей
+реализацией создать валидацию, которая бы возвращала не одну ошибку,
+а список ошибок?
 
-BigDecimal calculatePremium(TravelCalculatePremiumRequest request);
-String getRiskIc();
+interface TravelRequestValidation {
 
-Для каждого из следующих рисков:
-               TRAVEL_MEDICAL
-               TRAVEL_CANCELLATION
-               TRAVEL_LOSS_BAGGAGE
-               TRAVEL_THIRD_PARTY_LIABILITY
-               TRAVEL_EVACUATION
-               TRAVEL_SPORT_ACTIVITIES
-создать свою реализацию интерфейса TravelRiskPremiumCalculator.
-Метод getRiskIc() каждой реализации будет возвращать ic код риска
-для которого он содержит алгоритм расчёта премии.
+    Optional<ValidationError> execute(TravelCalculatePremiumRequest request);
 
-По дефолту метод calculatePremium(...) должен возвращать 0 (BigDecimal.ZERO).
+}
 
-Для TRAVEL_MEDICAL риска на данный момент оставить текущую
-формулу расчёта из класса TravelPremiumUnderwritingImpl.
+Без изменения интерфейса TravelRequestValidation это сделать невозможно.
 
-Далее в TravelPremiumUnderwritingImpl в зависимости получить
-список всех TravelRiskPremiumCalculator и с помощью него
-посчитать премии для каждого выбранного в запросе риска (selected_risks)
-и сложить их.
+Перед тем как читать дальше: попробуйте подумать и предложить идеи
+какие изменения нужно внести в код для того, чтобы стало возможно создать
+валидацию, которая бы возвращала список ошибок. Было бы хорошо
+оставить поддержку двух вариантов:
+- старого, когда валидация возвращает одну ошибку;
+- нового, когда валидация возвращает список ошибок.
 
-Ваша задача: реализовать предложение ментора.
+Попробуйте реализовать и обсудите ваши идеи с ментором.

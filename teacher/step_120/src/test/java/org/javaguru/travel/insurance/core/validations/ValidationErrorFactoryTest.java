@@ -1,9 +1,9 @@
 package org.javaguru.travel.insurance.core.validations;
 
-import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.util.ErrorCodeUtil;
 import org.javaguru.travel.insurance.core.util.Placeholder;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
+import org.javaguru.travel.insurance.dto.ValidationError;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -27,7 +27,7 @@ class ValidationErrorFactoryTest {
     public void shouldReturnValidationErrorWithDescription() {
         when(errorCodeUtil.getErrorDescription("ERROR_CODE"))
                 .thenReturn("error description");
-        ValidationErrorDTO error = factory.buildError("ERROR_CODE");
+        ValidationError error = factory.buildError("ERROR_CODE");
         assertEquals(error.getErrorCode(), "ERROR_CODE");
         assertEquals(error.getDescription(), "error description");
     }
@@ -37,7 +37,7 @@ class ValidationErrorFactoryTest {
         Placeholder placeholder = new Placeholder("PLACEHOLDER", "AAA");
         when(errorCodeUtil.getErrorDescription("ERROR_CODE", List.of(placeholder)))
                 .thenReturn("error AAA description");
-        ValidationErrorDTO error = factory.buildError("ERROR_CODE", List.of(placeholder));
+        ValidationError error = factory.buildError("ERROR_CODE", List.of(placeholder));
         assertEquals(error.getErrorCode(), "ERROR_CODE");
         assertEquals(error.getDescription(), "error AAA description");
     }

@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
+
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -11,7 +12,7 @@ import java.util.Optional;
 @Component
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class AgreementDateToValidation extends TravelRequestValidationImpl {
-
+    
     private final ValidationErrorFactory errorFactory;
 
     @Override

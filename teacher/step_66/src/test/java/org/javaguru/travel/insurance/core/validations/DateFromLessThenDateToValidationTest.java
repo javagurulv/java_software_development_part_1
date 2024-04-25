@@ -1,7 +1,7 @@
 package org.javaguru.travel.insurance.core.validations;
 
+import org.javaguru.travel.insurance.core.ErrorCodeUtil;
 import org.javaguru.travel.insurance.core.validations.DateFromLessThenDateToValidation;
-import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.junit.jupiter.api.Test;
@@ -15,14 +15,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class DateFromLessThenDateToValidationTest {
 
-    @Mock private ValidationErrorFactory errorFactory;
+    @Mock private ErrorCodeUtil errorCodeUtil;
 
     @InjectMocks
     private DateFromLessThenDateToValidation validation;
@@ -32,11 +32,11 @@ class DateFromLessThenDateToValidationTest {
         TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
         when(request.getAgreementDateFrom()).thenReturn(createDate("10.01.2025"));
         when(request.getAgreementDateTo()).thenReturn(createDate("01.01.2025"));
-        ValidationError validationError = mock(ValidationError.class);
-        when(errorFactory.buildError("ERROR_CODE_5")).thenReturn(validationError);
+        when(errorCodeUtil.getErrorDescription("ERROR_CODE_5")).thenReturn("error description");
         Optional<ValidationError> errorOpt = validation.execute(request);
         assertTrue(errorOpt.isPresent());
-        assertSame(errorOpt.get(), validationError);
+        assertEquals(errorOpt.get().getErrorCode(), "ERROR_CODE_5");
+        assertEquals(errorOpt.get().getDescription(), "error description");
     }
 
     @Test
@@ -44,11 +44,11 @@ class DateFromLessThenDateToValidationTest {
         TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
         when(request.getAgreementDateFrom()).thenReturn(createDate("01.01.2025"));
         when(request.getAgreementDateTo()).thenReturn(createDate("01.01.2025"));
-        ValidationError validationError = mock(ValidationError.class);
-        when(errorFactory.buildError("ERROR_CODE_5")).thenReturn(validationError);
+        when(errorCodeUtil.getErrorDescription("ERROR_CODE_5")).thenReturn("error description");
         Optional<ValidationError> errorOpt = validation.execute(request);
         assertTrue(errorOpt.isPresent());
-        assertSame(errorOpt.get(), validationError);
+        assertEquals(errorOpt.get().getErrorCode(), "ERROR_CODE_5");
+        assertEquals(errorOpt.get().getDescription(), "error description");
     }
 
     @Test
@@ -58,7 +58,7 @@ class DateFromLessThenDateToValidationTest {
         when(request.getAgreementDateTo()).thenReturn(createDate("10.01.2025"));
         Optional<ValidationError> errorOpt = validation.execute(request);
         assertTrue(errorOpt.isEmpty());
-        verifyNoInteractions(errorFactory);
+        verifyNoInteractions(errorCodeUtil);
     }
 
     private Date createDate(String dateStr) {

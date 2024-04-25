@@ -1,69 +1,16 @@
-Ментор предлагает начать разработку поддержки нескольких
-персон в полисе с создания структуры нового запроса и нового ответа.
+Клиент прислал нам еще один баг!
+
+Тест кейс:
+selected_risks={"TRAVEL_EVACUATION"}
+country=null or country=empty
+Нет сообщения об ошибке (ERROR_CODE_10).
+
+Клиент просит нас сделать поле country в запросе обязательным,
+в не зависимости от того какие типы рисков были выбраны. Мотивация
+клиента: это travel policy и страна должна быть обязательно указана!
+
+Клиент просит исправить эту ошибку как можно быстрее!
 
 Ваша задача:
-разработать новую структуру запроса и ответа в JSON формате
-и обсудить ее с ментором.
-
-
-
-
-
-New Request format:
-
-{
-  "agreementDateFrom" : "2025-05-25",
-  "agreementDateTo" : "2025-05-29",
-  "country" : "SPAIN",
-  "medicalRiskLimitLevel" : "LEVEL_10000",
-  "selected_risks":["TRAVEL_MEDICAL"],
-  "persons" : [
-        {
-          "personFirstName" : "Vasja",
-          "personLastName" : "Pupkin",
-          "personBirthDate" : "2000-05-29"
-        },
-        {
-          "personFirstName" : "Petja",
-          "personLastName" : "Pupkin",
-          "personBirthDate" : "2000-02-29"
-        }
-  ]
-}
-
-
-New Response format:
-{
-    "errors": null,
-    "agreementDateFrom": "2025-05-25",
-    "agreementDateTo": "2025-05-29",
-    "country": "SPAIN",
-    "medicalRiskLimitLevel" : "LEVEL_10000",
-    "agreementPremium": 22.00,
-    "persons" : [
-        {
-            "personFirstName" : "Vasja",
-            "personLastName" : "Pupkin",
-            "personBirthDate" : "2000-05-29",
-            "personPremium" : 11.00,
-            "risks": [
-                    {
-                        "riskIc": "TRAVEL_MEDICAL",
-                        "premium": 11.00
-                    }
-            ]
-        },
-        {
-          "personFirstName" : "Petja",
-          "personLastName" : "Pupkin",
-          "personBirthDate" : "2000-02-29",
-          "personPremium" : 11.00,
-            "risks": [
-                    {
-                        "riskIc": "TRAVEL_MEDICAL",
-                        "premium": 11.00
-                    }
-            ]
-        }
-    ]
-}
+исправить ошибку, описанную клиентом и собрать новую версию
+приложения insurance-calculator-1.0.2.jar.

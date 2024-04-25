@@ -1,76 +1,21 @@
-Ментор предлагает продолжить подготовку программного кода для внедрения
-новой версии (поддерживающей нескольких персон) с создания DTO для
-запроса и ответа новой версии.
+Клиент в срочном порядке попросил создать в приложении
+веб страницу с расчётом премии. Клиент хочет дать возможность
+своим сотрудникам и партнёрам использовать веб страницу для
+более удобной работы сотрудников с приложением.
 
-New Request format:
+Ментор внёс изменения в приложение и создал требуемую веб страницу.
 
-{
-  "agreementDateFrom" : "2025-05-25",
-  "agreementDateTo" : "2025-05-29",
-  "country" : "SPAIN",
-  "medicalRiskLimitLevel" : "LEVEL_10000",
-  "selected_risks":["TRAVEL_MEDICAL"],
-  "persons" : [
-        {
-          "personFirstName" : "Vasja",
-          "personLastName" : "Pupkin",
-          "personBirthDate" : "2000-05-29"
-        },
-        {
-          "personFirstName" : "Petja",
-          "personLastName" : "Pupkin",
-          "personBirthDate" : "2000-02-29"
-        }
-  ]
-}
-
-New Response format:
-{
-    "errors": null,
-    "agreementDateFrom": "2025-05-25",
-    "agreementDateTo": "2025-05-29",
-    "country": "SPAIN",
-    "medicalRiskLimitLevel" : "LEVEL_10000",
-    "agreementPremium": 22.00,
-    "persons" : [
-        {
-            "personFirstName" : "Vasja",
-            "personLastName" : "Pupkin",
-            "personBirthDate" : "2000-05-29",
-            "personPremium" : 11.00,
-            "risks": [
-                    {
-                        "riskIc": "TRAVEL_MEDICAL",
-                        "premium": 11.00
-                    }
-            ]
-        },
-        {
-          "personFirstName" : "Petja",
-          "personLastName" : "Pupkin",
-          "personBirthDate" : "2000-02-29",
-          "personPremium" : 11.00,
-            "risks": [
-                    {
-                        "riskIc": "TRAVEL_MEDICAL",
-                        "premium": 11.00
-                    }
-            ]
-        }
-    ]
-}
-
+Изменения коснулись:
+build.gradle - добавлена зависимость Thymeleaf
+src/main/resources/application.properties - добавлена конфигурация Thymeleaf
+src/main/resources/templates - добавлен шаблон страницы на Thymeleaf
+src/main/java/org/javaguru/java2/insurance/web - добавлен контроллер веб страницы
+src/main/java/org/javaguru/java2/insurance/rest/TravelCalculatePremiumController.java - изменён URL
+src/test/java/org/javaguru/java2/insurance/rest/TravelCalculatePremiumControllerTestCase.java - изменён URL
 
 Ваша задача:
-1. В пакете insurance/dto создать пакет v1 и переместить в него
-классы запроса и ответа первой версии приложения (поддерживающие
-только одну персону).
 
-2. Переименовать классы запроса и ответа первой версии приложения
-TravelCalculatePremiumRequest -> TravelCalculatePremiumRequestV1
-TravelCalculatePremiumResponse -> TravelCalculatePremiumResponseV1
-
-3. В пакете insurance/dto создать пакет v2 и в этом пакете создать
-классы запроса и ответа для новой (второй) версии приложения
-поддерживающие много персон:
-TravelCalculatePremiumRequestV2, TravelCalculatePremiumResponseV2.
+Разобраться с изменениями сделанными менторов в приложении.
+Узнать про HTTP GET, POST, Thymeleaf, URL, HTML.
+Прояснить при помощи интернета или задать все возникшие вопросы ментору.
+Запустить приложение и по тестировать созданную ментором веб страницу.

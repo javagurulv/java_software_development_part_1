@@ -1,20 +1,9 @@
 Ваша задача:
 
-1. Скопируйте в /version_2 класс TravelPremiumCalculationResult.
-
-2. В классе TravelPremiumCalculationResult замените
-   private List<RiskPremium> riskPremiums;
-   на
-   private List<RiskDTO> risks.
-
-3. Скопируйте в /version_2 интерфейс TravelPremiumUnderwriting.
-
-4. Измените сигнатуру метода в TravelPremiumUnderwriting интерфейсе на
-TravelPremiumCalculationResult calculatePremium(AgreementDTO agreement, PersonDTO person);
-- данный интерфейс будет рассчитывать стоимость всех рисков для одной персоны.
-
-5. Скопируйте в /version_2 класс TravelPremiumUnderwritingImpl.
-
-4. Переведите класс TravelPremiumUnderwritingImpl на использование
-классов из пакета /core/api, и измените его сигнатуру метода согласно
-сделанным в пункте 4 изменениям.
+1. Скопировать в /version_2 интерфейс TravelPersonFieldValidation.
+2. Перевести интерфейс TravelPersonFieldValidation на использование
+   классов из пакета /core/api. Вместо TravelCalculatePremiumRequestV1
+   подавать на валидацию класс PersonDTO.
+3. Скопировать в /version_2 пакет /core/validations/person + тесты.
+6. Перевести скопированные /core/validations/person + тесты на
+   использование классов из пакета /core/api.

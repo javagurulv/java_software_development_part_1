@@ -59,7 +59,6 @@ public class DtoV2Converter {
         PersonResponseDTO person = new PersonResponseDTO();
         person.setPersonFirstName(personDTO.getPersonFirstName());
         person.setPersonLastName(personDTO.getPersonLastName());
-        person.setPersonCode(personDTO.getPersonCode());
         person.setPersonBirthDate(personDTO.getPersonBirthDate());
         person.setMedicalRiskLimitLevel(personDTO.getMedicalRiskLimitLevel());
 
@@ -79,7 +78,6 @@ public class DtoV2Converter {
         PersonDTO person = new PersonDTO();
         person.setPersonFirstName(personRequestDTO.getPersonFirstName());
         person.setPersonLastName(personRequestDTO.getPersonLastName());
-        person.setPersonCode(personRequestDTO.getPersonCode());
         person.setPersonBirthDate(personRequestDTO.getPersonBirthDate());
         person.setMedicalRiskLimitLevel(personRequestDTO.getMedicalRiskLimitLevel());
         return person;
@@ -92,19 +90,12 @@ public class DtoV2Converter {
         agreement.setCountry(request.getCountry());
         agreement.setSelectedRisks(request.getSelectedRisks());
 
-        agreement.setPersons(buildPersonDTOFromRequest(request));
+        List<PersonDTO> persons = request.getPersons().stream()
+                .map(this::buildPersonFromRequest)
+                        .collect(Collectors.toList());
+        agreement.setPersons(persons);
 
         return agreement;
-    }
-
-    private List<PersonDTO> buildPersonDTOFromRequest(TravelCalculatePremiumRequestV2 request) {
-        if (request.getPersons() == null) {
-            return List.of();
-        } else {
-            return request.getPersons().stream()
-                    .map(this::buildPersonFromRequest)
-                    .collect(Collectors.toList());
-        }
     }
 
 }

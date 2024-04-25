@@ -22,6 +22,4 @@ public class PersonRequestDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date personBirthDate;
 
-    private String medicalRiskLimitLevel;
-
 }

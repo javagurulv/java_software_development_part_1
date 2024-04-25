@@ -1,19 +1,33 @@
-
-
 Ваша задача:
-1. Создайте в /version_2 пакет /core/underwriting.
-2. Скопируйте в /version_2 интерфейс TravelRiskPremiumCalculator.
-3. Измените сигнатуру метода TravelRiskPremiumCalculator
-с
-BigDecimal calculatePremium(TravelCalculatePremiumRequestV1 request);
-на
-BigDecimal calculatePremium(AgreementDTO agreement, PersonDTO person);
 
-так как в версии 2 приложения риск премия будет считаться для
-конкретной персоны.
+Изучить зависимости между пакетами:
+/core/domain
+/core/repositories
+/core/util
+/core/validations
+/core/underwriting
+/core/services
 
-4. Скопируйте в /version_2 пакет /underwriting/calculators.
-5. Переведите пакет /underwriting/calculators на использование
-   классов из /core/api и с учётом изменения сигнатуры метода
-   из пункта 3.
-6. Для расчёта AgeCoefficientCalculator передавать так же PersonDTO.
+Правильная зависимость между пакетами должна быть следующей:
+
+/core/util - не зависит от других /core пакетов
+/core/domain - не зависит от других /core пакетов
+/core/repositories - зависит от /core/domain
+/core/validations - зависит от:
+        /core/util
+        /core/domain
+        /core/repositories
+/core/underwriting - зависит от:
+        /core/util
+        /core/domain
+        /core/repositories
+/core/services - зависит от:
+        /core/validations
+        /core/underwriting
+
+
+1. Скопировать в /version_2 пакет /core/domain.
+2. Скопировать в /version_2 пакет /core/repositories + тесты.
+3. Скопировать в /version_2 пакет /core/util + тесты.
+4. Скопировать в /version_2 папку resources как в /main так и в /test.
+5. Скопировать в /version_2 класс InsuranceApplication.

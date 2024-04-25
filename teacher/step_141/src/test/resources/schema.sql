@@ -52,25 +52,3 @@ CREATE TABLE IF NOT EXISTS medical_risk_limit_level (
 
 CREATE UNIQUE INDEX ix_medical_risk_limit_level_limit_level_ic
 ON medical_risk_limit_level (medical_risk_limit_level_ic);
-
-
-CREATE TABLE persons (
-  id BIGINT NOT NULL AUTO_INCREMENT,
-  first_name VARCHAR(200) NOT NULL,
-  last_name VARCHAR(200) NOT NULL,
-  person_code VARCHAR(200) NOT NULL,
-  birth_date TIMESTAMP NOT NULL,
-  PRIMARY KEY (id)
-);
-
-CREATE UNIQUE INDEX ix_unique_persons ON persons(first_name, last_name, person_code);
-
-
-CREATE TABLE agreements (
-  id BIGINT NOT NULL AUTO_INCREMENT,
-  date_from TIMESTAMP NOT NULL,
-  date_to TIMESTAMP NOT NULL,
-  country VARCHAR(100) NOT NULL,
-  premium DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (id)
-);

@@ -20,9 +20,6 @@ public class TravelCalculatePremiumRequest {
     private String personLastName;
 
     @JsonFormat(pattern="yyyy-MM-dd")
-    private Date personBirthDate;
-
-    @JsonFormat(pattern="yyyy-MM-dd")
     private Date agreementDateFrom;
 
     @JsonFormat(pattern="yyyy-MM-dd")

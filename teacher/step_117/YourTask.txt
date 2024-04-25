@@ -1,33 +1,52 @@
+Ментор предлагает начать подготовку программного кода для внедрения
+новой версии (поддерживающей нескольких персон) с разделения валидаций
+на два уровня: полис (agreement) и персона.
+
+Ментор обосновывает свое предложение так: из новой структуры запроса
+
+New Request format:
+
+{
+  "agreementDateFrom" : "2025-05-25",
+  "agreementDateTo" : "2025-05-29",
+  "country" : "SPAIN",
+  "medicalRiskLimitLevel" : "LEVEL_10000",
+  "selected_risks":["TRAVEL_MEDICAL"],
+  "persons" : [
+        {
+          "personFirstName" : "Vasja",
+          "personLastName" : "Pupkin",
+          "personBirthDate" : "2000-05-29"
+        },
+        {
+          "personFirstName" : "Petja",
+          "personLastName" : "Pupkin",
+          "personBirthDate" : "2000-02-29"
+        }
+  ]
+}
+
+видно, что есть поля относящиеся к самому полису
+  "agreementDateFrom" : "2025-05-25",
+  "agreementDateTo" : "2025-05-29",
+  "country" : "SPAIN",
+  "medicalRiskLimitLevel" : "LEVEL_10000",
+  "selected_risks":["TRAVEL_MEDICAL"]
+
+а есть поля, которые относятся к персоне:
+        {
+          "personFirstName" : "Vasja",
+          "personLastName" : "Pupkin",
+          "personBirthDate" : "2000-05-29"
+        }
+
+Валидации для полей полиса нужно в новой версии выполнить только
+один раз, а поля персоны нужно проверить для каждой персоны отдельно.
+
+Поэтому нужен способ, который позволит разделить валидации на
+два уровня: полис и персона.
+
+
 Ваша задача:
-
-Изучить зависимости между пакетами:
-/core/domain
-/core/repositories
-/core/util
-/core/validations
-/core/underwriting
-/core/services
-
-Правильная зависимость между пакетами должна быть следующей:
-
-/core/util - не зависит от других /core пакетов
-/core/domain - не зависит от других /core пакетов
-/core/repositories - зависит от /core/domain
-/core/validations - зависит от:
-        /core/util
-        /core/domain
-        /core/repositories
-/core/underwriting - зависит от:
-        /core/util
-        /core/domain
-        /core/repositories
-/core/services - зависит от:
-        /core/validations
-        /core/underwriting
-
-
-1. Скопировать в /version_2 пакет /core/domain.
-2. Скопировать в /version_2 пакет /core/repositories + тесты.
-3. Скопировать в /version_2 пакет /core/util + тесты.
-4. Скопировать в /version_2 папку resources как в /main так и в /test.
-5. Скопировать в /version_2 класс InsuranceApplication.
+придумать как можно реализовать предложение ментора, обсудить
+вашу идею с ментором и реализовать ее.

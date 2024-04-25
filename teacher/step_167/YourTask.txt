@@ -1,14 +1,10 @@
-Ментор обратил ваше внимание на следующий
-фрагмент кода в классе AgreementPersonEntity:
+Ваша задача:
+разработайте код для задачи 2: реализация AgeCoefficient.
 
-    @Column(name = "medical_risk_limit_level", nullable = false)
-    private String medicalRiskLimitLevel;
-
-Этот маппинг содержит ограничение nullable = false.
-Это ошибочное ограничение, так как поле medical_risk_limit_level
-может быть не указано если в запросе нет риска TRAVEL_MEDICAL.
-
-
-Ваша задача: убрать ограничение NOT NULL с поля в таблице
-agreement_persons и исправить маппинг. Убрать ограничение
-на уровне базы данных надо Liquibase скриптом.
+AgeCoefficient - возраст путешественника в целых годах
+на момент начала поездки.
+Возраст 0 - 9 лет -> AgeCoefficient = 5 евро
+Возраст 10 - 17 лет -> AgeCoefficient = 10 евро
+Возраст 18 - 39 лет -> AgeCoefficient = 20 евро
+Возраст 40 - 64 лет -> AgeCoefficient = 30 евро
+Возраст 65 и далее лет -> AgeCoefficient = 50 евро.

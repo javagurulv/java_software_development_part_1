@@ -19,14 +19,12 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
     private final TravelAgreementValidator agreementValidator;
     private final AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator;
     private final AgreementTotalPremiumCalculator agreementTotalPremiumCalculator;
-    private final AgreementEntityFactory agreementEntityFactory;
 
     @Override
     public TravelCalculatePremiumCoreResult calculatePremium(TravelCalculatePremiumCoreCommand command) {
         List<ValidationErrorDTO> errors = agreementValidator.validate(command.getAgreement());
         if (errors.isEmpty()) {
             calculatePremium(command.getAgreement());
-            agreementEntityFactory.createAgreementEntity(command.getAgreement());
             return buildResponse(command.getAgreement());
         } else {
             return buildResponse(errors);

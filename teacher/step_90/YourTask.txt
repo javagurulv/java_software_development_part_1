@@ -1,12 +1,8 @@
-Ваша задача на данный момент:
-1. Создать в базе данных таблицу AGE_COEFFICIENT с полями:
-age_from, age_to, coefficient.
-2. Заполнить таблицу AGE_COEFFICIENT данными.
-Пример данных в таблице:
-age_from, age_to, coefficient
-0          5        1.1
-6          10       0.7
-11         17       1.0
-18         40       1.1
-41         65       1.2
-66         150      1.5
+Ваша задача:
+
+1. Создать доменный класс с маппингом для таблицы COUNTRY_DEFAULT_DAY_RATE в Java.
+2. Добавить класс репозитория для написания запросов к таблице
+   COUNTRY_DEFAULT_DAY_RATE.
+3. Написать запрос по получению default_day_rate по стране.
+4. Изменить формулу расчёта медицинского риска:
+   premium = CountryDefaultDayPremium * DayCount.

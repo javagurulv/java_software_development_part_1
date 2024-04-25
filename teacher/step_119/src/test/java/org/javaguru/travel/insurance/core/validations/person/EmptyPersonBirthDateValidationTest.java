@@ -1,9 +1,9 @@
 package org.javaguru.travel.insurance.core.validations.person;
 
-import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
-import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.javaguru.travel.insurance.core.validations.person.EmptyPersonBirthDateValidation;
+import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
+import org.javaguru.travel.insurance.dto.ValidationError;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -28,19 +28,19 @@ class EmptyPersonBirthDateValidationTest {
 
     @Test
     public void shouldReturnNoErrorWhenPersonBirthDateIsPresent() {
-        PersonDTO person = mock(PersonDTO.class);
-        when(person.getPersonBirthDate()).thenReturn(new Date());
-        Optional<ValidationErrorDTO> errorOpt = validation.validate(person);
+        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        when(request.getPersonBirthDate()).thenReturn(new Date());
+        Optional<ValidationError> errorOpt = validation.validate(request);
         assertTrue(errorOpt.isEmpty());
     }
 
     @Test
     public void shouldReturnErrorWhenPersonBirthDateIsNull() {
-        PersonDTO person = mock(PersonDTO.class);
-        when(person.getPersonBirthDate()).thenReturn(null);
+        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        when(request.getPersonBirthDate()).thenReturn(null);
         when(errorFactory.buildError("ERROR_CODE_11"))
-                .thenReturn(new ValidationErrorDTO("ERROR_CODE_11", "Person Birth Date must be provided when TRAVEL_MEDICAL is selected"));
-        Optional<ValidationErrorDTO> errorOpt = validation.validate(person);
+                .thenReturn(new ValidationError("ERROR_CODE_11", "Person Birth Date must be provided when TRAVEL_MEDICAL is selected"));
+        Optional<ValidationError> errorOpt = validation.validate(request);
         assertTrue(errorOpt.isPresent());
         assertEquals("ERROR_CODE_11", errorOpt.get().getErrorCode());
         assertEquals("Person Birth Date must be provided when TRAVEL_MEDICAL is selected", errorOpt.get().getDescription());

@@ -1,15 +1,69 @@
-Ментор выполнил первые шаги плана по реализации второй версии приложения
-для смены направления зависимости:  /core <- /rest/v1 and /web/v1:
+Ментор предлагает начать разработку поддержки нескольких
+персон в полисе с создания структуры нового запроса и нового ответа.
 
-1. Создать отдельный модуль для реализации второй версии приложения.
-Идея заключается в том, чтобы создать постепенно новый вариант
-решения и потом удалить старый. Изменить старый постепенно не получится,
-там надо менять всё сразу - а это слишком большие и не контролируемые
-изменения в коде.
-
-2. В новом модуле создать пакет /core/api. В этом пакете реализовать
-новый API для core, от которого будут зависеть в будущем REST и WEB.
+Ваша задача:
+разработать новую структуру запроса и ответа в JSON формате
+и обсудить ее с ментором.
 
 
-Ваша задача: изучить структуру классов и их код в новом модуле.
-При необходимости уточнить все возникшие вопросы у ментора.
+
+
+
+New Request format:
+
+{
+  "agreementDateFrom" : "2025-05-25",
+  "agreementDateTo" : "2025-05-29",
+  "country" : "SPAIN",
+  "medicalRiskLimitLevel" : "LEVEL_10000",
+  "selected_risks":["TRAVEL_MEDICAL"],
+  "persons" : [
+        {
+          "personFirstName" : "Vasja",
+          "personLastName" : "Pupkin",
+          "personBirthDate" : "2000-05-29"
+        },
+        {
+          "personFirstName" : "Petja",
+          "personLastName" : "Pupkin",
+          "personBirthDate" : "2000-02-29"
+        }
+  ]
+}
+
+
+New Response format:
+{
+    "errors": null,
+    "agreementDateFrom": "2025-05-25",
+    "agreementDateTo": "2025-05-29",
+    "country": "SPAIN",
+    "medicalRiskLimitLevel" : "LEVEL_10000",
+    "agreementPremium": 22.00,
+    "persons" : [
+        {
+            "personFirstName" : "Vasja",
+            "personLastName" : "Pupkin",
+            "personBirthDate" : "2000-05-29",
+            "personPremium" : 11.00,
+            "risks": [
+                    {
+                        "riskIc": "TRAVEL_MEDICAL",
+                        "premium": 11.00
+                    }
+            ]
+        },
+        {
+          "personFirstName" : "Petja",
+          "personLastName" : "Pupkin",
+          "personBirthDate" : "2000-02-29",
+          "personPremium" : 11.00,
+            "risks": [
+                    {
+                        "riskIc": "TRAVEL_MEDICAL",
+                        "premium": 11.00
+                    }
+            ]
+        }
+    ]
+}

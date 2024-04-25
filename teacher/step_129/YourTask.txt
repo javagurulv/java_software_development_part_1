@@ -1,71 +1,20 @@
 Ваша задача:
-по аналогии с /rest/v1 реализовать /rest/v2.
-Новая версия должна использовать классы из /dto/v2 поддерживающие
-много персон для полиса.
 
-При реализации класс TravelCalculatePremiumRequestExecutionTimeLogger
-вынесите в пакет /rest/common, сделайте его public и воспользуйтесь
-им в /rest/v1 и /rest/v2.
+1. Скопируйте в /version_2 класс TravelPremiumCalculationResult.
 
-Протестируйте созданную вами реализацию /rest/v2 через Postman
-воспользовавшись приведённым ниже запросом и ответом.
+2. В классе TravelPremiumCalculationResult замените
+   private List<RiskPremium> riskPremiums;
+   на
+   private List<RiskDTO> risks.
 
+3. Скопируйте в /version_2 интерфейс TravelPremiumUnderwriting.
 
-Request for /rest/v2:
+4. Измените сигнатуру метода в TravelPremiumUnderwriting интерфейсе на
+TravelPremiumCalculationResult calculatePremium(AgreementDTO agreement, PersonDTO person);
+- данный интерфейс будет рассчитывать стоимость всех рисков для одной персоны.
 
-{
-  "agreementDateFrom" : "2025-05-25",
-  "agreementDateTo" : "2025-05-29",
-  "country" : "SPAIN",
-  "medicalRiskLimitLevel" : "LEVEL_10000",
-  "selected_risks":["TRAVEL_MEDICAL"],
-  "persons" : [
-        {
-          "personFirstName" : "Vasja",
-          "personLastName" : "Pupkin",
-          "personBirthDate" : "2000-05-29"
-        },
-        {
-          "personFirstName" : "Petja",
-          "personLastName" : "Pupkin",
-          "personBirthDate" : "1950-02-29"
-        }
-  ]
-}
+5. Скопируйте в /version_2 класс TravelPremiumUnderwritingImpl.
 
-
-Expected result:
-{
-    "errors": null,
-    "agreementDateFrom": "2025-05-25",
-    "agreementDateTo": "2025-05-29",
-    "country": "SPAIN",
-    "medicalRiskLimitLevel": "LEVEL_10000",
-    "agreementPremium": 26.00,
-    "persons": [
-        {
-            "personFirstName": "Vasja",
-            "personLastName": "Pupkin",
-            "personBirthDate": "2000-05-29",
-            "personPremium": 11.00,
-            "personRisks": [
-                {
-                    "riskIc": "TRAVEL_MEDICAL",
-                    "premium": 11.00
-                }
-            ]
-        },
-        {
-            "personFirstName": "Petja",
-            "personLastName": "Pupkin",
-            "personBirthDate": "1950-03-01",
-            "personPremium": 15.00,
-            "personRisks": [
-                {
-                    "riskIc": "TRAVEL_MEDICAL",
-                    "premium": 15.00
-                }
-            ]
-        }
-    ]
-}
+4. Переведите класс TravelPremiumUnderwritingImpl на использование
+классов из пакета /core/api, и измените его сигнатуру метода согласно
+сделанным в пункте 4 изменениям.

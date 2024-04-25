@@ -1,9 +1,9 @@
 package org.javaguru.travel.insurance.core.validations.agreement;
 
-import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
-import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.javaguru.travel.insurance.core.validations.agreement.AgreementDateFromValidation;
+import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
+import org.javaguru.travel.insurance.dto.ValidationError;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -29,20 +29,20 @@ class AgreementDateFromValidationTest {
 
     @Test
     public void shouldReturnErrorWhenAgreementDateFromIsNull() {
-        AgreementDTO agreement = mock(AgreementDTO.class);
-        when(agreement.getAgreementDateFrom()).thenReturn(null);
-        ValidationErrorDTO validationError = mock(ValidationErrorDTO.class);
+        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        when(request.getAgreementDateFrom()).thenReturn(null);
+        ValidationError validationError = mock(ValidationError.class);
         when(errorFactory.buildError("ERROR_CODE_2")).thenReturn(validationError);
-        Optional<ValidationErrorDTO> errorOpt = validation.validate(agreement);
+        Optional<ValidationError> errorOpt = validation.validate(request);
         assertTrue(errorOpt.isPresent());
         assertSame(errorOpt.get(), validationError);
     }
 
     @Test
     public void shouldNotReturnErrorWhenAgreementDateFromIsPresent() {
-        AgreementDTO agreement = mock(AgreementDTO.class);
-        when(agreement.getAgreementDateFrom()).thenReturn(createDate("01.01.2025"));
-        Optional<ValidationErrorDTO> errorOpt = validation.validate(agreement);
+        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        when(request.getAgreementDateFrom()).thenReturn(createDate("01.01.2025"));
+        Optional<ValidationError> errorOpt = validation.validate(request);
         assertTrue(errorOpt.isEmpty());
         verifyNoInteractions(errorFactory);
     }

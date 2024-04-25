@@ -1,7 +1,16 @@
-Бизнес требование гласит, запрос без даты окончания поездки
-(agreementDateTo) должен считаться не валидным.
+Ваша задача:
 
-Ваша задача: реализуйте это бизнес правило.
-Добавить валидацию на agreementDateTo из запроса.
+Примените Lombok для генерации конструктора
+в классах
+- TravelCalculatePremiumServiceImpl
+- TravelCalculatePremiumController
+без модификатора доступа.
 
-PS: Не забудьте про тесты! Решение без тестов не принимается!
+Для этого воспользуйтесь
+следующей аннотацией из Lombok библиотеки:
+
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
+
+
+Прочитайте документ:
+Oliver Drotbohm - Why field injection is evil.pdf

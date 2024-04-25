@@ -1,11 +1,19 @@
-Следующая задача - это добавление конфигурации JPA.
-Ментор добавил в приложение нужную конфигурацию
-(файл application.properties).
+Ментор обратил ваше внимание на то, что после перевода системы
+на коды ошибок в коде осталось много повторений. Это касается
+кода создания экземпляров класса ValidationError:
 
-Ваша задача: разобраться в сделанных ментором изменениях
-и прояснить все возникшие у вас вопросы.
+    private ValidationError buildError(String errorCode) {
+        String errorDescription = errorCodeUtil.getErrorDescription(errorCode);
+        return new ValidationError(errorCode, errorDescription);
+    }
+
+Ментор предлагает вынести этот кусочек кода в класс
+ValidationErrorFactory и пользоваться этим классом
+во всех местах программы где нужно создавать экземпляр
+класса ошибки.
 
 
-Как дополнительный материал по теме можно послушать одну из лекций:
-Viktor: https://www.youtube.com/watch?v=CM1ovXWBAGk
-Ruslan: https://www.youtube.com/watch?v=Ol3MxDW3rwg
+Ваша задача: реализовать предложение ментора.
+
+PS: так же найдите информацию про дизайн паттерн Factory
+в интернете и ознакомьтесь с ней.

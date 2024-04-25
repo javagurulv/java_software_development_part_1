@@ -1,19 +1,14 @@
-Ментор обратил ваше внимание на то, что после перевода системы
-на коды ошибок в коде осталось много повторений. Это касается
-кода создания экземпляров класса ValidationError:
+Ваша задача: написать SQL скрипт по заполнению таблиц
+classifiers и classifier_values значениями для классификатора
+RISK_TYPE.
 
-    private ValidationError buildError(String errorCode) {
-        String errorDescription = errorCodeUtil.getErrorDescription(errorCode);
-        return new ValidationError(errorCode, errorDescription);
-    }
+RISK_TYPE возможные значения:
+TRAVEL_MEDICAL
+TRAVEL_CANCELLATION
+TRAVEL_LOSS_BAGGAGE
+TRAVEL_THIRD_PARTY_LIABILITY
+TRAVEL_EVACUATION
+TRAVEL_SPORT_ACTIVITIES
 
-Ментор предлагает вынести этот кусочек кода в класс
-ValidationErrorFactory и пользоваться этим классом
-во всех местах программы где нужно создавать экземпляр
-класса ошибки.
-
-
-Ваша задача: реализовать предложение ментора.
-
-PS: так же найдите информацию про дизайн паттерн Factory
-в интернете и ознакомьтесь с ней.
+Созданный SQL скрипт протестируйте на созданной базе данных
+и сохраните в файле database/mySqlDataScript.sql.

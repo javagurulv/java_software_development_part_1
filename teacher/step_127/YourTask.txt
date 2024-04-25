@@ -1,10 +1,19 @@
+
+
 Ваша задача:
-1. Скопировать в /version_2 пакет /dto.
-2. Скопировать в /version_2 пакет /rest.
-3. В /version_2 пакете /rest создать пакет /v1
-   и перенести туда классы первой версии rest.
-4. Перевести на использование /core/api классы из пакета /rest/v1.
-5. Поменять URL первой версии rest c /insurance/travel/api
-   на "/insurance/travel/api/v1".
-5. Скопировать в /version_2 все тесты rest контролера с первой
-   версии и убедиться, что они работают правильно.
+1. Создайте в /version_2 пакет /core/underwriting.
+2. Скопируйте в /version_2 интерфейс TravelRiskPremiumCalculator.
+3. Измените сигнатуру метода TravelRiskPremiumCalculator
+с
+BigDecimal calculatePremium(TravelCalculatePremiumRequestV1 request);
+на
+BigDecimal calculatePremium(AgreementDTO agreement, PersonDTO person);
+
+так как в версии 2 приложения риск премия будет считаться для
+конкретной персоны.
+
+4. Скопируйте в /version_2 пакет /underwriting/calculators.
+5. Переведите пакет /underwriting/calculators на использование
+   классов из /core/api и с учётом изменения сигнатуры метода
+   из пункта 3.
+6. Для расчёта AgeCoefficientCalculator передавать так же PersonDTO.

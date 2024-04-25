@@ -2,9 +2,9 @@ package org.javaguru.travel.insurance.core.validations.agreement;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
-import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
-import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
+import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
+import org.javaguru.travel.insurance.dto.ValidationError;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -21,10 +21,10 @@ class EmptyMedicalRiskLimitLevelValidation extends TravelAgreementFieldValidatio
     private final ValidationErrorFactory errorFactory;
 
     @Override
-    public Optional<ValidationErrorDTO> validate(AgreementDTO agreement) {
+    public Optional<ValidationError> validate(TravelCalculatePremiumRequestV1 request) {
         return (isMedicalRiskLimitLevelEnabled()
-                    && containsTravelMedical(agreement)
-                    && isMedicalRiskLimitLevelIsNullOrBlank(agreement))
+                    && containsTravelMedical(request)
+                    && isMedicalRiskLimitLevelIsNullOrBlank(request))
                 ? Optional.of(errorFactory.buildError("ERROR_CODE_13"))
                 : Optional.empty();
     }
@@ -33,13 +33,13 @@ class EmptyMedicalRiskLimitLevelValidation extends TravelAgreementFieldValidatio
         return medicalRiskLimitLevelEnabled;
     }
 
-    private boolean containsTravelMedical(AgreementDTO agreement) {
-        return agreement.getSelectedRisks() != null
-                && agreement.getSelectedRisks().contains("TRAVEL_MEDICAL");
+    private boolean containsTravelMedical(TravelCalculatePremiumRequestV1 request) {
+        return request.getSelectedRisks() != null
+                && request.getSelectedRisks().contains("TRAVEL_MEDICAL");
     }
 
-    private boolean isMedicalRiskLimitLevelIsNullOrBlank(AgreementDTO agreement) {
-        return agreement.getMedicalRiskLimitLevel() == null || agreement.getMedicalRiskLimitLevel().isBlank();
+    private boolean isMedicalRiskLimitLevelIsNullOrBlank(TravelCalculatePremiumRequestV1 request) {
+        return request.getMedicalRiskLimitLevel() == null || request.getMedicalRiskLimitLevel().isBlank();
     }
 
 }

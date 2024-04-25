@@ -1,9 +1,9 @@
 package org.javaguru.travel.insurance.core.validations.person;
 
-import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
-import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.javaguru.travel.insurance.core.validations.person.PersonLastNameValidation;
+import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
+import org.javaguru.travel.insurance.dto.ValidationError;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -26,31 +26,31 @@ class PersonLastNameValidationTest {
 
     @Test
     public void shouldReturnErrorWhenPersonLastNameIsNull() {
-        PersonDTO person = mock(PersonDTO.class);
-        when(person.getPersonLastName()).thenReturn(null);
-        ValidationErrorDTO validationError = mock(ValidationErrorDTO.class);
+        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        when(request.getPersonLastName()).thenReturn(null);
+        ValidationError validationError = mock(ValidationError.class);
         when(errorFactory.buildError("ERROR_CODE_8")).thenReturn(validationError);
-        Optional<ValidationErrorDTO> errorOpt = validation.validate(person);
+        Optional<ValidationError> errorOpt = validation.validate(request);
         assertTrue(errorOpt.isPresent());
         assertSame(errorOpt.get(), validationError);
     }
 
     @Test
     public void shouldReturnErrorWhenPersonLastNameIsEmpty() {
-        PersonDTO person = mock(PersonDTO.class);
-        when(person.getPersonLastName()).thenReturn("");
-        ValidationErrorDTO validationError = mock(ValidationErrorDTO.class);
+        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        when(request.getPersonLastName()).thenReturn("");
+        ValidationError validationError = mock(ValidationError.class);
         when(errorFactory.buildError("ERROR_CODE_8")).thenReturn(validationError);
-        Optional<ValidationErrorDTO> errorOpt = validation.validate(person);
+        Optional<ValidationError> errorOpt = validation.validate(request);
         assertTrue(errorOpt.isPresent());
         assertSame(errorOpt.get(), validationError);
     }
 
     @Test
     public void shouldNotReturnErrorWhenPersonLastNameIsPresent() {
-        PersonDTO person = mock(PersonDTO.class);
-        when(person.getPersonLastName()).thenReturn("Petrov");
-        Optional<ValidationErrorDTO> errorOpt = validation.validate(person);
+        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        when(request.getPersonLastName()).thenReturn("Petrov");
+        Optional<ValidationError> errorOpt = validation.validate(request);
         assertTrue(errorOpt.isEmpty());
         verifyNoInteractions(errorFactory);
     }

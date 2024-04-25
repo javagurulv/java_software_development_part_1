@@ -1,26 +1,10 @@
-Ментор сообщил радостную новость!
-
-Бизнес начал тестировать вторую версию приложения.
-
-Среди тестов проведённых бизнесом были следующие:
-
-Test Case:
-Request: selectedRisks is not supported (one risk).
-Response: error code = ERROR_CODE_6.
-
-Test Case:
-Request: selectedRisks is not supported (two risks).
-Response: multiple error codes = ERROR_CODE_6.
-
-Test Case:
-Request: country is null, RISK_TYPE - TRAVEL_MEDICAL.
-Response: error code = ERROR_CODE_10.
-
-Test Case:
-Request: country is empty, RISK_TYPE - TRAVEL_MEDICAL.
-Response: error code = ERROR_CODE_10.
-
-Ментор просит вас, проверить есть ли автоматические
-тесты на указанные выше сценарии. Если их нет, то создайте их.
-
-Ваша задача: выполнить пожелание ментора.
+Ваша задача:
+1. Скопировать в /version_2 пакет /dto.
+2. Скопировать в /version_2 пакет /rest.
+3. В /version_2 пакете /rest создать пакет /v1
+   и перенести туда классы первой версии rest.
+4. Перевести на использование /core/api классы из пакета /rest/v1.
+5. Поменять URL первой версии rest c /insurance/travel/api
+   на "/insurance/travel/api/v1".
+5. Скопировать в /version_2 все тесты rest контролера с первой
+   версии и убедиться, что они работают правильно.

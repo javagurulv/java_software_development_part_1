@@ -1,8 +1,30 @@
+
+На данный момент ответ приложения выглядит так:
+
+{
+  "errors": null,
+  "personFirstName": "Vasja",
+  "personLastName": "Pupkin",
+  "agreementDateFrom": "2025-05-25",
+  "agreementDateTo": "2025-05-29",
+  "agreementPremium": 4,
+  "risks": [
+          {
+            "riskIc": "TRAVEL_MEDICAL",
+            "premium": 2.00
+          },
+          {
+             "riskIc": "TRAVEL_CANCELLATION",
+             "premium": 5.00
+          },
+  ]
+}
+
+
 Ваша задача:
 
-1. Создать таблицу в базе данных COUNTRY_DEFAULT_DAY_RATE
-   (country ic -> country default day rate).
-2. Написать скрипт заполнения таблицы COUNTRY_DEFAULT_DAY_RATE значениями:
-    LATVIA -> 1.00
-    SPAIN -> 2.50
-    JAPAN -> 3.50
+1. Заполнить секцию "risks" в ответе реальными данными полученными
+при расчёте премии для каждого выбранного риска.
+
+Придумайте решение как это можно сделать, обсудите своё решение
+с ментором и потом реализуйте.

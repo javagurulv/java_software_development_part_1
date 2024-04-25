@@ -14,10 +14,10 @@ import java.math.BigDecimal;
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TCTravelCostCoefficientCalculator {
 
-    private final TCTravelCostCoefficientRepository tcTravelCostCoefficientRepository;
+    private final TCTravelCostCoefficientRepository TCTravelCostCoefficientRepository;
 
     BigDecimal calculate(PersonDTO person) {
-        return tcTravelCostCoefficientRepository.findCoefficient(person.getTravelCost())
+        return TCTravelCostCoefficientRepository.findCoefficient(person.getTravelCost())
                 .map(TCTravelCostCoefficient::getCoefficient)
                 .orElseThrow(() -> new RuntimeException("Travel Cost coefficient not found for travel cost = " + person.getTravelCost()));
     }

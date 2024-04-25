@@ -1,11 +1,11 @@
 package org.javaguru.travel.insurance.core.validations.agreement;
 
-import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
-import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.domain.ClassifierValue;
 import org.javaguru.travel.insurance.core.repositories.ClassifierValueRepository;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.javaguru.travel.insurance.core.validations.agreement.SelectedRisksValidation;
+import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
+import org.javaguru.travel.insurance.dto.ValidationError;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -32,36 +32,36 @@ class SelectedRisksValidationTest {
 
     @Test
     public void shouldNotValidateWhenSelectedRisksIsNull() {
-        AgreementDTO agreement = mock(AgreementDTO.class);
-        when(agreement.getSelectedRisks()).thenReturn(null);
-        assertTrue(validation.validateList(agreement).isEmpty());
+        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        when(request.getSelectedRisks()).thenReturn(null);
+        assertTrue(validation.validateList(request).isEmpty());
         verifyNoInteractions(classifierValueRepository, errorFactory);
     }
 
     @Test
     public void shouldValidateWithoutErrors() {
-        AgreementDTO agreement = mock(AgreementDTO.class);
-        when(agreement.getSelectedRisks()).thenReturn(List.of("RISK_IC_1", "RISK_IC_2"));
+        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        when(request.getSelectedRisks()).thenReturn(List.of("RISK_IC_1", "RISK_IC_2"));
         when(classifierValueRepository.findByClassifierTitleAndIc("RISK_TYPE", "RISK_IC_1"))
                 .thenReturn(Optional.of(mock(ClassifierValue.class)));
         when(classifierValueRepository.findByClassifierTitleAndIc("RISK_TYPE", "RISK_IC_2"))
                 .thenReturn(Optional.of(mock(ClassifierValue.class)));
-        assertTrue(validation.validateList(agreement).isEmpty());
+        assertTrue(validation.validateList(request).isEmpty());
     }
 
     @Test
     public void shouldValidateWithErrors() {
-        AgreementDTO agreement = mock(AgreementDTO.class);
-        when(agreement.getSelectedRisks()).thenReturn(List.of("RISK_IC_1", "RISK_IC_2"));
+        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        when(request.getSelectedRisks()).thenReturn(List.of("RISK_IC_1", "RISK_IC_2"));
         when(classifierValueRepository.findByClassifierTitleAndIc("RISK_TYPE", "RISK_IC_1"))
                 .thenReturn(Optional.empty());
         when(classifierValueRepository.findByClassifierTitleAndIc("RISK_TYPE", "RISK_IC_2"))
                 .thenReturn(Optional.empty());
 
-        ValidationErrorDTO error = mock(ValidationErrorDTO.class);
+        ValidationError error = mock(ValidationError.class);
         when(errorFactory.buildError(eq("ERROR_CODE_9"), anyList())).thenReturn(error);
 
-        assertEquals(validation.validateList(agreement).size(), 2);
+        assertEquals(validation.validateList(request).size(), 2);
     }
 
 }

@@ -1,9 +1,9 @@
 package org.javaguru.travel.insurance.core.validations.agreement;
 
-import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
-import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.javaguru.travel.insurance.core.validations.agreement.EmptyCountryValidation;
+import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
+import org.javaguru.travel.insurance.dto.ValidationError;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -27,19 +27,19 @@ class EmptyCountryValidationTest {
 
     @Test
     public void shouldReturnNoErrorWhenCountryIsPresent() {
-        AgreementDTO agreement = mock(AgreementDTO.class);
-        when(agreement.getCountry()).thenReturn("SPAIN");
-        Optional<ValidationErrorDTO> errorOpt = validation.validate(agreement);
+        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        when(request.getCountry()).thenReturn("SPAIN");
+        Optional<ValidationError> errorOpt = validation.validate(request);
         assertTrue(errorOpt.isEmpty());
     }
 
     @Test
     public void shouldReturnErrorWhenCountryIsNull() {
-        AgreementDTO agreement = mock(AgreementDTO.class);
-        when(agreement.getCountry()).thenReturn(null);
+        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        when(request.getCountry()).thenReturn(null);
         when(errorFactory.buildError("ERROR_CODE_10"))
-                .thenReturn(new ValidationErrorDTO("ERROR_CODE_10", "Country must be provided when TRAVEL_MEDICAL is selected"));
-        Optional<ValidationErrorDTO> errorOpt = validation.validate(agreement);
+                .thenReturn(new ValidationError("ERROR_CODE_10", "Country must be provided when TRAVEL_MEDICAL is selected"));
+        Optional<ValidationError> errorOpt = validation.validate(request);
         assertTrue(errorOpt.isPresent());
         assertEquals("ERROR_CODE_10", errorOpt.get().getErrorCode());
         assertEquals("Country must be provided when TRAVEL_MEDICAL is selected", errorOpt.get().getDescription());
@@ -47,11 +47,11 @@ class EmptyCountryValidationTest {
 
     @Test
     public void shouldReturnErrorWhenCountryIsEmpty() {
-        AgreementDTO agreement = mock(AgreementDTO.class);
-        when(agreement.getCountry()).thenReturn("");
+        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        when(request.getCountry()).thenReturn("");
         when(errorFactory.buildError("ERROR_CODE_10"))
-                .thenReturn(new ValidationErrorDTO("ERROR_CODE_10", "Country must be provided when TRAVEL_MEDICAL is selected"));
-        Optional<ValidationErrorDTO> errorOpt = validation.validate(agreement);
+                .thenReturn(new ValidationError("ERROR_CODE_10", "Country must be provided when TRAVEL_MEDICAL is selected"));
+        Optional<ValidationError> errorOpt = validation.validate(request);
         assertTrue(errorOpt.isPresent());
         assertEquals("ERROR_CODE_10", errorOpt.get().getErrorCode());
         assertEquals("Country must be provided when TRAVEL_MEDICAL is selected", errorOpt.get().getDescription());

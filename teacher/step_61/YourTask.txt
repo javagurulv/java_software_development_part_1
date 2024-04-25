@@ -1,68 +1,71 @@
-Ментор обратил ваше внимание на то, как система возвращает ошибки
-(класс ValidationError). По его мнению привязывать ошибки к полю
-в запросе (private String field) не совсем корректно. Например, могут
-быть ошибки связанные сразу с несколькими полями запроса.
+Ваша задача:
 
-Ментор предлагает поменять в классе ValidationError
+1. Разобраться в SQL скрипте по созданию базы данных
+и таблиц для хранения значений классификаторов.
 
-private String field;
-на
-private String errorCode;
+Скрип находится в папке database/mySqlDbCreationScript.sql
 
-а так же
-private String message;
-на
-private String description;
+2. Создать локальную базу данных и таблицы для хранения значений
+классификаторов с помощью скрипта и MySQL Workbench.
 
-Далее ментор предлагает создать в папке main/resources
-файл errorCodes.properties и разместить в этом файле список
-всех кодов ошибок и соответствующих им описаний:
-ERROR_CODE_1=Field personFirstName is empty!
-ERROR_CODE_2=Field personLastName is empty!
-ERROR_CODE_3=Field agreementDateFrom is empty!
+
+Классификаторы - это наборы не изменяемых значений. Эти значения
+будут использоваться как в коде так и в данных, которые
+обрабатывает приложение. Например, классификатор RISK_TYPE будет
+содержать типы доступных в приложении рисков страхования.
+
+Классификатор: RISK_TYPE
+Доступные значения классификатора RISK_TYPE:
+TRAVEL_MEDICAL
+TRAVEL_CANCELLATION
+TRAVEL_LOSS_BAGGAGE
+TRAVEL_THIRD_PARTY_LIABILITY
 и так далее.
 
-Таким образом файл errorCodes.properties будет содержать список
-всех кодов ошибок и их описаний.
+Почему ментор предлагает хранить классификаторы и доступные их
+значения в базе данных, а не в коде приложения (например в виде Java enum)?
 
-Далее ментор предлагает убрать из кода приложения все описания
-ошибок и доставать их во время работы приложения из файла
-errorCodes.properties по коду ошибки. Для этого нужно разобраться
-как в Spring можно загрузить файл с параметрами во время запуска
-приложения в память и как потом из него читать значения параметров.
-Написать компонент/класс который позволит по коду ошибки получать
-ее описание из файла errorCodes.properties во время выполнения программы
-и внедрить его в приложение.
-
-После указанных изменений все коды ошибок и их описания будут лежать
-в одном месте, в файле errorCodes.properties. Это позволит поддерживать
-уникальный набор кодов ошибок в одном месте приложения. В коде приложения
-останутся только коды ошибок.
+Потому, что, во-первых, это часть конфигурации полиса страхования,
+и она может меняться бизнесом, во вторых если значения классификаторов
+будут храниться в базе данных у них появляется уникальное id и на
+них можно ссылаться из других таблиц базы данных, а так же использовать
+поле ic как константу, которую использовать в коде.
 
 
-План реализации предложенных изменений:
-1. Поменять названия полей в классе ValidationError
-field -> errorCode
-message -> description
+Для хранения значений классификаторов ментор предложил использовать
+следующие две таблицы в базе данных:
 
-2. Исправить названия полей ошибок во всех файлах так,
-чтобы все тесты проходили.
-
-3. Создать файл errorCodes.properties.
-
-4. Найти в интернете способ, как во время выполнения приложения в Spring
-доставать из файла с ресурсами значения свойств.
-
-5. Реализовать найденный из предыдущего пункта способ так, чтобы
-по коду ошибки можно было получить ее описание из errorCodes.properties.
-
-6. Пройтись по всем местам, где приложение создаёт ошибки.
-Каждой ошибке присвоить уникальный код (ERROR_CODE_1, ERROR_CODE_2, ...)
-и добавить ее в файл errorCodes.properties вместе с описанием. Если
-необходимо, то подкорректировать описание ошибки. Убрать из кода описание
-ошибки и внедрить код по получению описания ошибки по коду ошибки.
-
-7. Убедиться, что все тесты корректно работают.
+CREATE TABLE IF NOT EXISTS `classifiers` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(200) NOT NULL,
+  `description` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`)
+)
+ENGINE = InnoDB
+AUTO_INCREMENT = 1002;
 
 
-Ваша задача: реализовать предложение ментора.
+CREATE TABLE IF NOT EXISTS `classifier_values` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `classifier_id` BIGINT NOT NULL,
+  `ic` VARCHAR(200) NOT NULL,
+  `description` VARCHAR(500) NOT NULL,
+  PRIMARY KEY (id)
+)
+ENGINE = InnoDB
+AUTO_INCREMENT = 1002;
+
+
+Пример данных из таблиц classifiers и classifiers_values:
+
+classifiers
+1, RISK_TYPE, travel policy risk type classifier
+2, COUNTRY, country classifier
+
+classifier_values
+1, 1 (foreign key to classifiers table), TRAVEL_MEDICAL, travel policy medical risk
+2, 1 (foreign key to classifiers table), TRAVEL_CANCELLATION, travel policy trip cancellation risk
+3, 1 (foreign key to classifiers table), TRAVEL_LOSS_BAGGAGE, travel policy baggage lose risk
+4, 2 (foreign key to classifiers table), LATVIA, country Latvia
+4, 2 (foreign key to classifiers table), SPAIN, country Spain
+и так далее.

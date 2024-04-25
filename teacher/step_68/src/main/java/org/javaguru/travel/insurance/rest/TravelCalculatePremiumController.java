@@ -1,7 +1,7 @@
 package org.javaguru.travel.insurance.rest;
 
 import com.google.common.base.Stopwatch;
-import org.javaguru.travel.insurance.core.services.TravelCalculatePremiumService;
+import org.javaguru.travel.insurance.core.TravelCalculatePremiumService;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumResponse;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/insurance/travel")
 public class TravelCalculatePremiumController {
 
-	private TravelCalculatePremiumRequestLogger requestLogger;
-	private TravelCalculatePremiumResponseLogger responseLogger;
-	private TravelCalculatePremiumRequestExecutionTimeLogger executionTimeLogger;
-	private TravelCalculatePremiumService calculatePremiumService;
+	private final TravelCalculatePremiumRequestLogger requestLogger;
+	private final TravelCalculatePremiumResponseLogger responseLogger;
+	private final TravelCalculatePremiumRequestExecutionTimeLogger executionTimeLogger;
+	private final TravelCalculatePremiumService calculatePremiumService;
 
 	TravelCalculatePremiumController(TravelCalculatePremiumRequestLogger requestLogger,
 									 TravelCalculatePremiumResponseLogger responseLogger,
