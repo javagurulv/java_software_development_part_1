@@ -4,7 +4,6 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
-
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -17,7 +16,7 @@ import java.util.stream.Stream;
 @Component
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelPersonFieldValidator {
-    
+
     private final List<TravelPersonFieldValidation> personFieldValidations;
 
     List<ValidationErrorDTO> validate(List<PersonDTO> persons) {

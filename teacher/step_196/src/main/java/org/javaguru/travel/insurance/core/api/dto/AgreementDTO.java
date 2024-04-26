@@ -2,7 +2,6 @@ package org.javaguru.travel.insurance.core.api.dto;
 
 import lombok.*;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -12,7 +11,6 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@XmlRootElement
 public class AgreementDTO {
 
     private String uuid;

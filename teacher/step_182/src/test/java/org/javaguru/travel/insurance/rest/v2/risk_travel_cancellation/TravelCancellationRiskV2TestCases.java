@@ -10,8 +10,8 @@ public class TravelCancellationRiskV2TestCases extends TravelCalculatePremiumCon
 
     @Test
     @DisplayName("ERROR_CODE_19 two persons travelCost is NULL, must not be empty")
-    public void check_ERROR_CODE_19() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_19_travelCost_is_null");
+    public void executeTestCase36() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_36");
     }
 
 }

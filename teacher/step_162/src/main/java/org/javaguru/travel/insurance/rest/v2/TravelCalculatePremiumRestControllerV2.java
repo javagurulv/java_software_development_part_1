@@ -8,7 +8,6 @@ import org.javaguru.travel.insurance.dto.v2.DtoV2Converter;
 import org.javaguru.travel.insurance.dto.v2.TravelCalculatePremiumRequestV2;
 import org.javaguru.travel.insurance.dto.v2.TravelCalculatePremiumResponseV2;
 import org.javaguru.travel.insurance.rest.common.TravelRestRequestExecutionTimeLogger;
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,10 +23,10 @@ public class TravelCalculatePremiumRestControllerV2 {
 	private final TravelCalculatePremiumService calculatePremiumService;
 	private final DtoV2Converter dtoV2Converter;
 
-	TravelCalculatePremiumRestControllerV2(TravelCalculatePremiumRequestLoggerV2 requestLogger, 
-										   TravelCalculatePremiumResponseLoggerV2 responseLogger, 
-										   TravelRestRequestExecutionTimeLogger executionTimeLogger, 
-										   TravelCalculatePremiumService calculatePremiumService, 
+	TravelCalculatePremiumRestControllerV2(TravelCalculatePremiumRequestLoggerV2 requestLogger,
+										   TravelCalculatePremiumResponseLoggerV2 responseLogger,
+										   TravelRestRequestExecutionTimeLogger executionTimeLogger,
+										   TravelCalculatePremiumService calculatePremiumService,
 										   DtoV2Converter dtoV2Converter) {
 		this.requestLogger = requestLogger;
 		this.responseLogger = responseLogger;

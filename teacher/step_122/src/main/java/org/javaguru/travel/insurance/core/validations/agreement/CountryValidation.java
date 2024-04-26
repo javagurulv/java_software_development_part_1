@@ -17,6 +17,7 @@ class CountryValidation extends TravelAgreementFieldValidationImpl {
     private final ClassifierValueRepository classifierValueRepository;
     private final ValidationErrorFactory errorFactory;
 
+
     @Override
     public Optional<ValidationError> validate(TravelCalculatePremiumRequestV1 request) {
         return (isCountryNotBlank(request))

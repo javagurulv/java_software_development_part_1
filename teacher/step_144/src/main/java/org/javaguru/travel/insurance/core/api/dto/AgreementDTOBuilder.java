@@ -59,8 +59,8 @@ public class AgreementDTOBuilder {
         return this;
     }
 
-    public AgreementDTOBuilder withPerson(PersonDTOBuilder personDTOBuilder) {
-        this.persons.add(personDTOBuilder.build());
+    public AgreementDTOBuilder withPersons(List<PersonDTO> persons) {
+        this.persons = persons;
         return this;
     }
 

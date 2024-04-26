@@ -1,6 +1,5 @@
 package org.javaguru.travel.insurance.core.api.dto;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,8 +11,6 @@ public class PersonDTOBuilder {
     private String personCode;
     private Date personBirthDate;
     private String medicalRiskLimitLevel;
-    private BigDecimal travelCost;
-
     private List<RiskDTO> risks = new ArrayList<>();
 
     public static PersonDTOBuilder createPersonDTO() {
@@ -27,7 +24,6 @@ public class PersonDTOBuilder {
         personDTO.setPersonCode(personCode);
         personDTO.setPersonBirthDate(personBirthDate);
         personDTO.setMedicalRiskLimitLevel(medicalRiskLimitLevel);
-        personDTO.setTravelCost(travelCost);
         personDTO.setRisks(risks);
         return personDTO;
     }
@@ -54,11 +50,6 @@ public class PersonDTOBuilder {
 
     public PersonDTOBuilder withMedicalRiskLimitLevel(String medicalRiskLimitLevel) {
         this.medicalRiskLimitLevel = medicalRiskLimitLevel;
-        return this;
-    }
-
-    public PersonDTOBuilder withTravelCost(BigDecimal travelCost) {
-        this.travelCost = travelCost;
         return this;
     }
 

@@ -12,34 +12,18 @@ class TravelCalculatePremiumServiceImplTest {
 
     private TravelCalculatePremiumServiceImpl service = new TravelCalculatePremiumServiceImpl();
     @Test
-    public void shouldPopulatePersonFirstName() {
+    public void shouldPopulateResponse() {
         TravelCalculatePremiumRequest request = new TravelCalculatePremiumRequest();
         request.setPersonFirstName("John");
-        TravelCalculatePremiumResponse response = service.calculatePremium(request);
-        assertEquals(response.getPersonFirstName(), request.getPersonFirstName());
-    }
-
-    @Test
-    public void shouldPopulatePersonLastName() {
-        TravelCalculatePremiumRequest request = new TravelCalculatePremiumRequest();
         request.setPersonLastName("Peterson");
-        TravelCalculatePremiumResponse response = service.calculatePremium(request);
-        assertEquals(response.getPersonLastName(), request.getPersonLastName());
-    }
-
-    @Test
-    public void shouldPopulateAgreementDateFrom() {
-        TravelCalculatePremiumRequest request = new TravelCalculatePremiumRequest();
         request.setAgreementDateFrom(new Date());
-        TravelCalculatePremiumResponse response = service.calculatePremium(request);
-        assertEquals(response.getAgreementDateFrom(), request.getAgreementDateFrom());
-    }
-
-    @Test
-    public void shouldPopulateAgreementDateTo() {
-        TravelCalculatePremiumRequest request = new TravelCalculatePremiumRequest();
         request.setAgreementDateTo(new Date());
+
         TravelCalculatePremiumResponse response = service.calculatePremium(request);
+
+        assertEquals(response.getPersonFirstName(), request.getPersonFirstName());
+        assertEquals(response.getPersonLastName(), request.getPersonLastName());
+        assertEquals(response.getAgreementDateFrom(), request.getAgreementDateFrom());
         assertEquals(response.getAgreementDateTo(), request.getAgreementDateTo());
     }
 

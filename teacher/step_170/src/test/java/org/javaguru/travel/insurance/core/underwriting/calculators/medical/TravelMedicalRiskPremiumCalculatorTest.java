@@ -19,10 +19,10 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class TravelMedicalRiskPremiumCalculatorTest {
 
-    @Mock private TMDayCountCalculator dayCountCalculator;
-    @Mock private TMCountryDefaultDayRateCalculator countryDefaultDayRateCalculator;
-    @Mock private TMAgeCoefficientCalculator ageCoefficientCalculator;
-    @Mock private TMRiskLimitLevelCalculator riskLimitLevelCalculator;
+    @Mock private DayCountCalculator dayCountCalculator;
+    @Mock private CountryDefaultDayRateCalculator countryDefaultDayRateCalculator;
+    @Mock private AgeCoefficientCalculator ageCoefficientCalculator;
+    @Mock private RiskLimitLevelCalculator riskLimitLevelCalculator;
 
     @InjectMocks
     private TravelMedicalRiskPremiumCalculator calculator;

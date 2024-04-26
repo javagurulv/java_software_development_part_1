@@ -207,6 +207,7 @@ include 'teacher:step_202'
 include 'teacher:step_203'
 include 'teacher:step_204'
 include 'teacher:step_205'
+include 'teacher:step_206'
 
 
 include 'teacher:step_utils'
