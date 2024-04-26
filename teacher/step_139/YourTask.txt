@@ -1,14 +1,10 @@
-Ментор сообщил радостную новость!
-Бизнес начал тестировать вторую версию приложения.
+Ваша задача:
+по аналогии с /rest/v1, написать тесты на /rest/v2
+(столько сколько сможете :) - тест кейсов будет много).
 
-И при тестировании обнаружилось, что параметр medicalRiskLimitLevel
-находится на уровне полиса. Это значит, что для всех персон
-уровень медицинского риска будет один и тот же.
+PS: если при тестировании подметите недочёты или идеи для
+улучшения структур запроса и ответа зафиксируйте их и обсудите с ментором.
 
-Бизнес просит во второй версии приложения перенести
-параметр medicalRiskLimitLevel на уровень персоны.
-Это позволит задавать параметр medicalRiskLimitLevel
-для каждой персоны отдельно.
 
 Request for /rest/v2:
 
@@ -16,19 +12,18 @@ Request for /rest/v2:
   "agreementDateFrom" : "2025-05-25",
   "agreementDateTo" : "2025-05-29",
   "country" : "SPAIN",
+  "medicalRiskLimitLevel" : "LEVEL_10000",
   "selected_risks":["TRAVEL_MEDICAL"],
   "persons" : [
         {
           "personFirstName" : "Vasja",
           "personLastName" : "Pupkin",
-          "personBirthDate" : "2000-05-29",
-          "medicalRiskLimitLevel": "LEVEL_10000"
+          "personBirthDate" : "2000-05-29"
         },
         {
           "personFirstName" : "Petja",
           "personLastName" : "Pupkin",
-          "personBirthDate" : "1950-02-29",
-          "medicalRiskLimitLevel": "LEVEL_20000"
+          "personBirthDate" : "1950-02-29"
         }
   ]
 }
@@ -40,13 +35,13 @@ Response for /rest/v2:
     "agreementDateFrom": "2025-05-25",
     "agreementDateTo": "2025-05-29",
     "country": "SPAIN",
+    "medicalRiskLimitLevel": "LEVEL_10000",
     "agreementPremium": 26.00,
     "persons": [
         {
             "personFirstName": "Vasja",
             "personLastName": "Pupkin",
             "personBirthDate": "2000-05-29",
-            "medicalRiskLimitLevel": "LEVEL_10000",
             "personPremium": 11.00,
             "personRisks": [
                 {
@@ -59,7 +54,6 @@ Response for /rest/v2:
             "personFirstName": "Petja",
             "personLastName": "Pupkin",
             "personBirthDate": "1950-03-01",
-            "medicalRiskLimitLevel": "LEVEL_20000",
             "personPremium": 15.00,
             "personRisks": [
                 {
@@ -70,6 +64,3 @@ Response for /rest/v2:
         }
     ]
 }
-
-
-Ваша задача: выполнить требования бизнеса.

@@ -6,7 +6,6 @@ import org.javaguru.travel.insurance.core.services.TravelCalculatePremiumService
 import org.javaguru.travel.insurance.dto.v2.DtoV2Converter;
 import org.javaguru.travel.insurance.dto.v2.TravelCalculatePremiumRequestV2;
 import org.javaguru.travel.insurance.dto.v2.TravelCalculatePremiumResponseV2;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +18,7 @@ public class TravelInsuranceControllerV2 {
     private final TravelCalculatePremiumService service;
     private final DtoV2Converter dtoV2Converter;
 
-    TravelInsuranceControllerV2(TravelCalculatePremiumService service, 
+    TravelInsuranceControllerV2(TravelCalculatePremiumService service,
                                 DtoV2Converter dtoV2Converter) {
         this.service = service;
         this.dtoV2Converter = dtoV2Converter;

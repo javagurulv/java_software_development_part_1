@@ -10,12 +10,12 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
-class EmptySelectedRisksValidation extends TravelRequestValidationImpl {
+class EmptySelectedRisksValidation implements TravelRequestValidation {
 
     private final ValidationErrorFactory errorFactory;
 
     @Override
-    public Optional<ValidationError> validate(TravelCalculatePremiumRequest request) {
+    public Optional<ValidationError> execute(TravelCalculatePremiumRequest request) {
         return (request.getSelectedRisks() == null || request.getSelectedRisks().isEmpty())
                 ? Optional.of(errorFactory.buildError("ERROR_CODE_6"))
                 : Optional.empty();

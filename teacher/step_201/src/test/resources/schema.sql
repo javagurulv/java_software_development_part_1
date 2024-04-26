@@ -160,11 +160,3 @@ ALTER TABLE agreement_persons
 
 ALTER TABLE agreement_persons
 ALTER COLUMN medical_risk_limit_level DROP NOT NULL;
-
-CREATE TABLE agreements_xml_export (
-  id BIGINT NOT NULL AUTO_INCREMENT,
-  agreement_uuid VARCHAR(255) NOT NULL,
-  already_exported BOOL NOT NULL,
-  PRIMARY KEY (id),
-  foreign key (agreement_uuid) references agreements(uuid)
-);
