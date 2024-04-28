@@ -42,7 +42,6 @@ public class DtoV2Converter {
     private TravelCalculatePremiumResponseV2 buildSuccessfulResponse(TravelCalculatePremiumCoreResult coreResult) {
         AgreementDTO agreement = coreResult.getAgreement();
         TravelCalculatePremiumResponseV2 response = new TravelCalculatePremiumResponseV2();
-        response.setUuid(agreement.getUuid());
         response.setAgreementDateFrom(agreement.getAgreementDateFrom());
         response.setAgreementDateTo(agreement.getAgreementDateTo());
         response.setCountry(agreement.getCountry());

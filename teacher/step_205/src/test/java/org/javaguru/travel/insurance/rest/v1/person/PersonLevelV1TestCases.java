@@ -62,16 +62,4 @@ public class PersonLevelV1TestCases extends TravelCalculatePremiumControllerV1Te
         executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_21_personCode_invalid_format");
     }
 
-    @Test
-    @DisplayName("ERROR_CODE_22 personFirstName invalid format")
-    public void check_ERROR_CODE_22_InvalidFormat() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_22_personFirstName_invalid_format");
-    }
-
-    @Test
-    @DisplayName("ERROR_CODE_23 personLastName invalid format")
-    public void check_ERROR_CODE_23_InvalidFormat() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_23_personLastName_invalid_format");
-    }
-
 }

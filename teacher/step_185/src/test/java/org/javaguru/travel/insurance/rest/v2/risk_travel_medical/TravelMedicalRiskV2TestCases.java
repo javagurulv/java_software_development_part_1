@@ -10,38 +10,38 @@ public class TravelMedicalRiskV2TestCases extends TravelCalculatePremiumControll
 
     @Test
     @DisplayName("ERROR_CODE_13 one person medicalRiskLimitLevel is NULL [TRAVEL_MEDICAL], must not be empty")
-    public void check_ERROR_CODE_13_NULL() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_13_medicalRiskLimitLevel_is_null");
+    public void executeTestCase26() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_26");
     }
 
     @Test
     @DisplayName("ERROR_CODE_13 one person medicalRiskLimitLevel is empty [TRAVEL_MEDICAL], must not be empty")
-    public void check_ERROR_CODE_13_EMPTY() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_13_medicalRiskLimitLevel_is_empty");
+    public void executeTestCase27() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_27");
     }
 
     @Test
     @DisplayName("ERROR_CODE_13 two persons medicalRiskLimitLevel is NULL [TRAVEL_MEDICAL], must not be empty")
-    public void check_ERROR_CODE_13_two_medicalRiskLimitLevel_NULL() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_13_two_medicalRiskLimitLevel_is_null");
+    public void executeTestCase28() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_28");
     }
 
     @Test
     @DisplayName("ERROR_CODE_13 two persons medicalRiskLimitLevel is empty [TRAVEL_MEDICAL], must not be empty")
-    public void check_ERROR_CODE_13_two_medicalRiskLimitLevel_EMPTY() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_13_two_medicalRiskLimitLevel_is_empty");
+    public void executeTestCase29() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_29");
     }
 
     @Test
     @DisplayName("ERROR_CODE_14 one person medicalRiskLimitLevel is not supported [TRAVEL_MEDICAL]")
-    public void check_ERROR_CODE_14() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_14_medicalRiskLimitLevel_is_not_supported");
+    public void executeTestCase30() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_30");
     }
 
     @Test
     @DisplayName("ERROR_CODE_14 two persons medicalRiskLimitLevel is not supported [TRAVEL_MEDICAL]")
-    public void check_ERROR_CODE_14_two() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_14_two_medicalRiskLimitLevel_is_not_supported");
+    public void executeTestCase31() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_31");
     }
 
 }

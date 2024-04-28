@@ -1,33 +1,22 @@
-Наше приложение подверглось тщательному тестированию
-перед выходом на прод. При тестировании было обнаружено
-следующее: в ответе REST сервиса при ошибке мы возвращаем
-так же все остальные поля со значениями = null. Нас просят
-при возвращении ошибки не возвращать остальные поля.
+Ментор решил показать вам, как можно документировать REST API.
 
-Сейчас есть:
-{
-  "errors": [
-    {
-      "errorCode": "ERROR_CODE_7",
-      "description": "Field personFirstName must not be empty!"
-    }
-  ],
-  "agreementDateFrom": null,
-  "agreementDateTo": null,
-  "country": null,
-  "agreementPremium": null,
-  "persons": null
-}
+Ментор подключил к приложению OPEN API:
+<dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-ui</artifactId>
+    <version>1.6.4</version>
+</dependency>
 
-Должно быть:
-{
-  "errors": [
-    {
-      "errorCode": "ERROR_CODE_7",
-      "description": "Field personFirstName must not be empty!"
-    }
-  ]
-}
+Ресурс с описанием:
+https://www.baeldung.com/spring-rest-openapi-documentation
 
-Ваша задача: найти способ не показывать пустые поля если в
-запросе есть ошибки. Это надо исправить в REST v1 и v2.
+
+To use a custom path, we can indicate in the application.properties file:
+springdoc.api-docs.path=/insurance/travel/api-docs
+
+
+Swagger UI link:
+http://localhost:8080/swagger-ui.html
+
+Ваша задача: ознакомиться с Swagger UI и попробовать выполнить
+через него запросы к REST API /v1 и /v2.
