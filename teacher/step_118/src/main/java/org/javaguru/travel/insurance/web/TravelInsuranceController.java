@@ -3,7 +3,6 @@ package org.javaguru.travel.insurance.web;
 import org.javaguru.travel.insurance.core.services.TravelCalculatePremiumService;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumResponse;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;

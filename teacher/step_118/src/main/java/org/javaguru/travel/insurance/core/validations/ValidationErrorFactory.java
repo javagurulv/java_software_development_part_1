@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.util.ErrorCodeUtil;
 import org.javaguru.travel.insurance.core.util.Placeholder;
 import org.javaguru.travel.insurance.dto.ValidationError;
-
 import org.springframework.stereotype.Component;
 
 import java.util.List;

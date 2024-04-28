@@ -1,8 +1,3 @@
-Ваша задача:
-1. По аналогии с AgreementDTOBuilder и PersonDTOBuilder
-создайте билдер для класса RiskDTO.
-
-2. Напишите самостоятельно по примеру
-AgreementDateFromValidationIntegrationTest интеграционные тесты
-для нескольких других классов (для проверки других полей). При написании
-тестов воспользуйтесь созданными классами Builders.
+Ваша задача: по аналогии с AgreementDTOBuilder создайте билдер для
+класса PersonDTO и воспользуйтесь им в коде тестового класса
+AgreementDateFromValidationIntegrationTest.

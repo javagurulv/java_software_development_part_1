@@ -6,36 +6,34 @@ import org.junit.jupiter.api.Test;
 
 public class RiskLevelV2TestCases extends TravelCalculatePremiumControllerV2TestCase {
 
-    private static final String TEST_FILE_BASE_FOLDER = "risks";
-
     @Test
     @DisplayName("Success case with [TRAVEL_MEDICAL, TRAVEL_CANCELLATION]")
     public void executeTestCase1() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_1",true);
+        executeAndCompare("test_case_1",true);
     }
 
     @Test
     @DisplayName("ERROR_CODE_6 selectedRisks is NULL, must not be empty")
     public void executeTestCase19() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_19");
+        executeAndCompare("test_case_19");
     }
 
     @Test
     @DisplayName("ERROR_CODE_6 selectedRisks is [], must not be empty")
     public void executeTestCase20() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_20");
+        executeAndCompare("test_case_20");
     }
 
     @Test
     @DisplayName("ERROR_CODE_9 one selectedRisks is not supported")
     public void executeTestCase21() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_21");
+        executeAndCompare("test_case_21");
     }
 
     @Test
     @DisplayName("ERROR_CODE_9 two selectedRisks is not supported")
     public void executeTestCase22() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_22");
+        executeAndCompare("test_case_22");
     }
 
 }
