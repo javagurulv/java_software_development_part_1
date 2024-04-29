@@ -1,13 +1,75 @@
-В целях обучения ментор решил вам показать как можно использовать
-дизайн паттерн Builder. Для этого ментор создал интеграционный
-тест на код валидации (смотри класс в тестовой директории
-core.validations.integration.AgreementDateFromValidationIntegrationTest).
+Ментор сообщил радостную новость!
+Бизнес начал тестировать вторую версию приложения.
 
-Идея интеграционного теста заключается в том, что в процессе разработки
-мы можем протестировать как работают несколько классов вместе (интеграцию
-нескольких классов) отдельно от всего остального кода приложения. Это
-порой бывает необходимо с целью проверить, как работает целый модуль
-(в нашем случае модуль валидации).
+И при тестировании обнаружилось, что параметр medicalRiskLimitLevel
+находится на уровне полиса. Это значит, что для всех персон
+уровень медицинского риска будет один и тот же.
 
-Ваша задача: разобрать и понять код класса AgreementDateFromValidationIntegrationTest
-и используемом в нём классе AgreementDTOBuilder.
+Бизнес просит во второй версии приложения перенести
+параметр medicalRiskLimitLevel на уровень персоны.
+Это позволит задавать параметр medicalRiskLimitLevel
+для каждой персоны отдельно.
+
+Request for /rest/v2:
+
+{
+  "agreementDateFrom" : "2025-05-25",
+  "agreementDateTo" : "2025-05-29",
+  "country" : "SPAIN",
+  "selected_risks":["TRAVEL_MEDICAL"],
+  "persons" : [
+        {
+          "personFirstName" : "Vasja",
+          "personLastName" : "Pupkin",
+          "personBirthDate" : "2000-05-29",
+          "medicalRiskLimitLevel": "LEVEL_10000"
+        },
+        {
+          "personFirstName" : "Petja",
+          "personLastName" : "Pupkin",
+          "personBirthDate" : "1950-02-29",
+          "medicalRiskLimitLevel": "LEVEL_20000"
+        }
+  ]
+}
+
+
+Response for /rest/v2:
+{
+    "errors": null,
+    "agreementDateFrom": "2025-05-25",
+    "agreementDateTo": "2025-05-29",
+    "country": "SPAIN",
+    "agreementPremium": 26.00,
+    "persons": [
+        {
+            "personFirstName": "Vasja",
+            "personLastName": "Pupkin",
+            "personBirthDate": "2000-05-29",
+            "medicalRiskLimitLevel": "LEVEL_10000",
+            "personPremium": 11.00,
+            "personRisks": [
+                {
+                    "riskIc": "TRAVEL_MEDICAL",
+                    "premium": 11.00
+                }
+            ]
+        },
+        {
+            "personFirstName": "Petja",
+            "personLastName": "Pupkin",
+            "personBirthDate": "1950-03-01",
+            "medicalRiskLimitLevel": "LEVEL_20000",
+            "personPremium": 15.00,
+            "personRisks": [
+                {
+                    "riskIc": "TRAVEL_MEDICAL",
+                    "premium": 15.00
+                }
+            ]
+        }
+    ]
+}
+
+
+Ваша задача: выполнить требования бизнеса.

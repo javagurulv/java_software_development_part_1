@@ -12,15 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/insurance/travel")
 public class TravelCalculatePremiumController {
 
-	private final TravelCalculatePremiumRequestLogger requestLogger;
-	private final TravelCalculatePremiumResponseLogger responseLogger;
 	private final TravelCalculatePremiumService calculatePremiumService;
 
-	TravelCalculatePremiumController(TravelCalculatePremiumRequestLogger requestLogger,
-									 TravelCalculatePremiumResponseLogger responseLogger,
-									 TravelCalculatePremiumService calculatePremiumService) {
-		this.requestLogger = requestLogger;
-		this.responseLogger = responseLogger;
+	TravelCalculatePremiumController(TravelCalculatePremiumService calculatePremiumService) {
 		this.calculatePremiumService = calculatePremiumService;
 	}
 
@@ -28,10 +22,7 @@ public class TravelCalculatePremiumController {
 			consumes = "application/json",
 			produces = "application/json")
 	public TravelCalculatePremiumResponse calculatePremium(@RequestBody TravelCalculatePremiumRequest request) {
-		requestLogger.log(request);
-		TravelCalculatePremiumResponse response = calculatePremiumService.calculatePremium(request);
-		responseLogger.log(response);
-		return response;
+		return calculatePremiumService.calculatePremium(request);
 	}
 
 }

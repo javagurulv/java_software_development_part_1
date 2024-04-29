@@ -1,10 +1,69 @@
-Ментор обратил ваше внимание на то, что класс BigDecimalSerializer
-используется только в пакете insurance.dto, а сам находится
-в пакете insurance.core.util.
+Ментор предлагает начать разработку поддержки нескольких
+персон в полисе с создания структуры нового запроса и нового ответа.
 
-Следуя принципу Single Responsibility Principle класс BigDecimalSerializer
-должен находиться в пакете insurance.dto.common, так как он используется
-при преобразовании Java классов в JSON документы в обе версиях.
+Ваша задача:
+разработать новую структуру запроса и ответа в JSON формате
+и обсудить ее с ментором.
 
-Ваша задача: выполнить просьбу ментора и перенести класс
-BigDecimalSerializer в пакет insurance.dto.util.
+
+
+
+
+New Request format:
+
+{
+  "agreementDateFrom" : "2025-05-25",
+  "agreementDateTo" : "2025-05-29",
+  "country" : "SPAIN",
+  "medicalRiskLimitLevel" : "LEVEL_10000",
+  "selected_risks":["TRAVEL_MEDICAL"],
+  "persons" : [
+        {
+          "personFirstName" : "Vasja",
+          "personLastName" : "Pupkin",
+          "personBirthDate" : "2000-05-29"
+        },
+        {
+          "personFirstName" : "Petja",
+          "personLastName" : "Pupkin",
+          "personBirthDate" : "2000-02-29"
+        }
+  ]
+}
+
+
+New Response format:
+{
+    "errors": null,
+    "agreementDateFrom": "2025-05-25",
+    "agreementDateTo": "2025-05-29",
+    "country": "SPAIN",
+    "medicalRiskLimitLevel" : "LEVEL_10000",
+    "agreementPremium": 22.00,
+    "persons" : [
+        {
+            "personFirstName" : "Vasja",
+            "personLastName" : "Pupkin",
+            "personBirthDate" : "2000-05-29",
+            "personPremium" : 11.00,
+            "risks": [
+                    {
+                        "riskIc": "TRAVEL_MEDICAL",
+                        "premium": 11.00
+                    }
+            ]
+        },
+        {
+          "personFirstName" : "Petja",
+          "personLastName" : "Pupkin",
+          "personBirthDate" : "2000-02-29",
+          "personPremium" : 11.00,
+            "risks": [
+                    {
+                        "riskIc": "TRAVEL_MEDICAL",
+                        "premium": 11.00
+                    }
+            ]
+        }
+    ]
+}

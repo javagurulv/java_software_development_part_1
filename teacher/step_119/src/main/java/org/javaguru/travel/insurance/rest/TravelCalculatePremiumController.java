@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/insurance/travel/api")
+@RequestMapping("/insurance/travel")
 public class TravelCalculatePremiumController {
 
 	private final TravelCalculatePremiumRequestLogger requestLogger;

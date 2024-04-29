@@ -1,16 +1,38 @@
-Ваша задача: создать понятную структуру в файлах тестовых
-запросов и ответов. Это поможет быстро ориентироваться и понимать,
-где какие файлы находятся. На данный момент все папки тест кейсов
-для каждой версии свалены в одну большую кучу, в них сложно понять
-что где находится. В этой части проекта нужно навести порядок.
+На взгляд ментора в структуре acceptance тестов
+есть следующие проблемы:
 
-Для этого сгруппируйте файлы запросов и ответов
-по уровням в папках /resources/rest/v1 и /resources/rest/v2.
+- в коде много почти одинаковых классов:
+TravelCalculatePremiumControllerTestCase1
+TravelCalculatePremiumControllerTestCase2
+TravelCalculatePremiumControllerTestCase3
+...
 
-Создайте следующие папки в каждой из версий
-и перенесите каждый тест кейс в соответствующую папку:
-- agreement
-- person
-- risks
-- risk_travel_medical
-- risk_travel_cancellation
+- названия тестовых сценариев никак не связаны с бизнес правилами:
+TestCase1
+TestCase2
+TestCase3
+...
+
+- в тестах нет структуры, всё свалено в одну большую кучу
+(внутри каждой версии /v1, /v2)!
+По хорошему требуется создание определённой структуры,
+например разделить все тесты на уровни:
+    agreement_level
+    person_level
+    risk_travel_medical
+    risk_travel_cancellation
+Эта структура позволит лучше ориентироваться в тестах.
+
+
+Давайте решим все эти проблемы одну за другой!
+
+
+Ваша задача:
+- в коде много почти одинаковых классов:
+TravelCalculatePremiumControllerTestCase1
+TravelCalculatePremiumControllerTestCase2
+TravelCalculatePremiumControllerTestCase3
+...
+
+Придумайте решение этой проблемы и реализуйте его
+для тестов в папках rest/v1 и rest/v2!

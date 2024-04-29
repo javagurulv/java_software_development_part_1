@@ -1,6 +1,5 @@
 package org.javaguru.travel.insurance.rest;
 
-import com.google.common.base.Stopwatch;
 import org.javaguru.travel.insurance.core.TravelCalculatePremiumService;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumResponse;
@@ -15,16 +14,13 @@ public class TravelCalculatePremiumController {
 
 	private final TravelCalculatePremiumRequestLogger requestLogger;
 	private final TravelCalculatePremiumResponseLogger responseLogger;
-	private final TravelCalculatePremiumRequestExecutionTimeLogger executionTimeLogger;
 	private final TravelCalculatePremiumService calculatePremiumService;
 
 	TravelCalculatePremiumController(TravelCalculatePremiumRequestLogger requestLogger,
 									 TravelCalculatePremiumResponseLogger responseLogger,
-									 TravelCalculatePremiumRequestExecutionTimeLogger executionTimeLogger,
 									 TravelCalculatePremiumService calculatePremiumService) {
 		this.requestLogger = requestLogger;
 		this.responseLogger = responseLogger;
-		this.executionTimeLogger = executionTimeLogger;
 		this.calculatePremiumService = calculatePremiumService;
 	}
 
@@ -32,13 +28,6 @@ public class TravelCalculatePremiumController {
 			consumes = "application/json",
 			produces = "application/json")
 	public TravelCalculatePremiumResponse calculatePremium(@RequestBody TravelCalculatePremiumRequest request) {
-		Stopwatch stopwatch = Stopwatch.createStarted();
-		TravelCalculatePremiumResponse response = processRequest(request);
-		executionTimeLogger.logExecutionTime(stopwatch);
-		return response;
-	}
-
-	private TravelCalculatePremiumResponse processRequest(TravelCalculatePremiumRequest request) {
 		requestLogger.log(request);
 		TravelCalculatePremiumResponse response = calculatePremiumService.calculatePremium(request);
 		responseLogger.log(response);

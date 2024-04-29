@@ -6,60 +6,70 @@ import org.junit.jupiter.api.Test;
 
 public class AgreementLevelV1TestCases extends TravelCalculatePremiumControllerV1TestCase {
 
-    private static final String TEST_FILE_BASE_FOLDER = "agreement";
-
     @Test
     @DisplayName("ERROR_CODE_2 agreementDateFrom is NULL")
-    public void check_ERROR_CODE_2() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_2_agreementDateFrom_is_null");
+    public void executeTestCase8() throws Exception {
+        executeAndCompare("test_case_8");
     }
 
     @Test
     @DisplayName("ERROR_CODE_4 agreementDateTo is NULL")
-    public void check_ERROR_CODE_4() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_4_agreementDateTo_is_null");
+    public void executeTestCase9() throws Exception {
+        executeAndCompare("test_case_9");
     }
 
     @Test
     @DisplayName("ERROR_CODE_1 agreementDateFrom must be in the future")
-    public void check_ERROR_CODE_1() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_1_agreementDateFrom_must_be_in_the_future");
+    public void executeTestCase10() throws Exception {
+        executeAndCompare("test_case_10");
     }
 
     @Test
     @DisplayName("ERROR_CODE_3 agreementDateTo must be in the future")
-    public void check_ERROR_CODE_3() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_3_agreementDateTo_must_be_in_the_future");
+    public void executeTestCase11() throws Exception {
+        executeAndCompare("test_case_11");
     }
 
     @Test
     @DisplayName("ERROR_CODE_5 agreementDateFrom must be less than agreementDateTo")
-    public void check_ERROR_CODE_5() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_5_agreementDateFrom_must_be_less_then_agreementDateTo");
+    public void executeTestCase12() throws Exception {
+        executeAndCompare("test_case_12");
     }
 
     @Test
-    @DisplayName("ERROR_CODE_10 country is empty, must not be empty")
-    public void check_ERROR_CODE_10_EMPTY() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_10_country_is_empty");
+    @DisplayName("ERROR_CODE_10 TRAVEL_MEDICAL country is empty, must not be empty")
+    public void executeTestCase17() throws Exception {
+        executeAndCompare("test_case_17");
     }
 
     @Test
-    @DisplayName("ERROR_CODE_10 country is NULL, must not be empty")
-    public void check_ERROR_CODE_10_NULL() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_10_country_is_null");
+    @DisplayName("ERROR_CODE_10 TRAVEL_MEDICAL country is NULL, must not be empty")
+    public void executeTestCase18() throws Exception {
+        executeAndCompare("test_case_18");
     }
 
     @Test
     @DisplayName("Multiple errors all field is NULL except selected_risks")
-    public void check_MultipleErrors_allFieldsNull_except_selectedRisks() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/Multiple_errors_all_all_fields_NULL_except_selectedRisks");
+    public void executeTestCase19() throws Exception {
+        executeAndCompare("test_case_19");
     }
 
     @Test
     @DisplayName("Multiple errors all field is NULL")
-    public void check_Multiple_errors_all_fields_NULL() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/Multiple_errors_all_fields_NULL");
+    public void executeTestCase20() throws Exception {
+        executeAndCompare("test_case_20");
+    }
+
+    @Test
+    @DisplayName("ERROR_CODE_10 TRAVEL_EVACUATION country is NULL, must not be empty")
+    public void executeTestCase21() throws Exception {
+        executeAndCompare("test_case_21");
+    }
+
+    @Test
+    @DisplayName("ERROR_CODE_10 TRAVEL_EVACUATION country is empty, must not be empty")
+    public void executeTestCase22() throws Exception {
+        executeAndCompare("test_case_22");
     }
 
 }

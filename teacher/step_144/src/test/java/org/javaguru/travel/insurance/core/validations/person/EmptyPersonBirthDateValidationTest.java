@@ -1,6 +1,5 @@
 package org.javaguru.travel.insurance.core.validations.person;
 
-import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
@@ -29,21 +28,19 @@ class EmptyPersonBirthDateValidationTest {
 
     @Test
     public void shouldReturnNoErrorWhenPersonBirthDateIsPresent() {
-        AgreementDTO agreement = mock(AgreementDTO.class);
         PersonDTO person = mock(PersonDTO.class);
         when(person.getPersonBirthDate()).thenReturn(new Date());
-        Optional<ValidationErrorDTO> errorOpt = validation.validate(agreement, person);
+        Optional<ValidationErrorDTO> errorOpt = validation.validate(person);
         assertTrue(errorOpt.isEmpty());
     }
 
     @Test
     public void shouldReturnErrorWhenPersonBirthDateIsNull() {
-        AgreementDTO agreement = mock(AgreementDTO.class);
         PersonDTO person = mock(PersonDTO.class);
         when(person.getPersonBirthDate()).thenReturn(null);
         when(errorFactory.buildError("ERROR_CODE_11"))
                 .thenReturn(new ValidationErrorDTO("ERROR_CODE_11", "Person Birth Date must be provided when TRAVEL_MEDICAL is selected"));
-        Optional<ValidationErrorDTO> errorOpt = validation.validate(agreement, person);
+        Optional<ValidationErrorDTO> errorOpt = validation.validate(person);
         assertTrue(errorOpt.isPresent());
         assertEquals("ERROR_CODE_11", errorOpt.get().getErrorCode());
         assertEquals("Person Birth Date must be provided when TRAVEL_MEDICAL is selected", errorOpt.get().getDescription());

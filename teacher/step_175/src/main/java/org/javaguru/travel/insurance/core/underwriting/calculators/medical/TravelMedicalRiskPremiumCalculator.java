@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.underwriting.TravelRiskPremiumCalculator;
-
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -15,10 +14,10 @@ import java.math.RoundingMode;
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelMedicalRiskPremiumCalculator implements TravelRiskPremiumCalculator {
 
-    private final TMDayCountCalculator dayCountCalculator;
-    private final TMCountryDefaultDayRateCalculator countryDefaultDayRateCalculator;
-    private final TMAgeCoefficientCalculator ageCoefficientCalculator;
-    private final TMRiskLimitLevelCalculator riskLimitLevelCalculator;
+    private final DayCountCalculator dayCountCalculator;
+    private final CountryDefaultDayRateCalculator countryDefaultDayRateCalculator;
+    private final AgeCoefficientCalculator ageCoefficientCalculator;
+    private final RiskLimitLevelCalculator riskLimitLevelCalculator;
 
     @Override
     public BigDecimal calculatePremium(AgreementDTO agreement, PersonDTO person) {

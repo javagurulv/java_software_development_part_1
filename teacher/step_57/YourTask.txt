@@ -1,8 +1,6 @@
-Ментор предложил добавить функционал сохранения запросов
-и ответов (JSON) в отдельный лог файл (не со всеми логами
-как это сделано сейчас). Это может быть полезно для их
-дальнейшего анализа.
+Ваша задача: превратите ответ (TravelCalculatePremiumResponse)
+в строку (формат JSON) и залогируйте его в систему логирования.
 
-Ваша задача: добавить конфигурацию еще одного file appender
-в logback.xml (с названием файла request-response-logger.log),
-а так же конфигурацию для логирования запроса и ответа в новый аппендер.
+
+Примерный ожидаемый результат на консоли:
+2023-03-13 07:54:56,629 [http-nio-8080-exec-2] INFO  l.j.j.i.r.TravelCalculatePremiumResponseLogger - RESPONSE: {"errors":null,"personFirstName":"Vasja","personLastName":"Pupkin","agreementDateFrom":"2025-01-01","agreementDateTo":"2025-01-10","agreementPrice":9}

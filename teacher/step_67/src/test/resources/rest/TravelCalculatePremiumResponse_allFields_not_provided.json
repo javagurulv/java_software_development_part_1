@@ -8,10 +8,6 @@
     "message":"Must not be empty!"
   },
   {
-    "field":"selectedRisks",
-    "message":"Must not be empty!"
-  },
-  {
     "field":"personFirstName",
     "message":"Must not be empty!"
   },

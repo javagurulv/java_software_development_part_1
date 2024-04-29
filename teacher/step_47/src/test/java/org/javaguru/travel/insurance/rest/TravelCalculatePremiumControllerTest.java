@@ -1,6 +1,7 @@
 package org.javaguru.travel.insurance.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,74 +27,106 @@ public class TravelCalculatePremiumControllerTest {
     @Autowired private JsonFileReader jsonFileReader;
 
     @Test
-    public void successRequest() throws Exception {
-        executeAndCompare(
-                "rest/TravelCalculatePremiumRequest_success.json",
-                "rest/TravelCalculatePremiumResponse_success.json"
-        );
-    }
-
-    @Test
+    @DisplayName("Test case 1: firstName is not provided")
     public void firstNameNotProvided() throws Exception {
-        executeAndCompare(
-                "rest/TravelCalculatePremiumRequest_firstName_not_provided.json",
-                "rest/TravelCalculatePremiumResponse_firstName_not_provided.json"
-        );
-    }
-
-    @Test
-    public void lastNameNotProvided() throws Exception {
-        executeAndCompare(
-                "rest/TravelCalculatePremiumRequest_lastName_not_provided.json",
-                "rest/TravelCalculatePremiumResponse_lastName_not_provided.json"
-        );
-    }
-
-    @Test
-    public void agreementDateFromNotProvided() throws Exception {
-        executeAndCompare(
-                "rest/TravelCalculatePremiumRequest_agreementDateFrom_not_provided.json",
-                "rest/TravelCalculatePremiumResponse_agreementDateFrom_not_provided.json"
-        );
-    }
-
-    @Test
-    public void agreementDateToNotProvided() throws Exception {
-        executeAndCompare(
-                "rest/TravelCalculatePremiumRequest_agreementDateTo_not_provided.json",
-                "rest/TravelCalculatePremiumResponse_agreementDateTo_not_provided.json"
-        );
-    }
-
-    @Test
-    public void agreementDateToLessThenAgreementDateFrom() throws Exception {
-        executeAndCompare(
-                "rest/TravelCalculatePremiumRequest_dateTo_lessThen_dateFrom.json",
-                "rest/TravelCalculatePremiumResponse_dateTo_lessThen_dateFrom.json"
-        );
-    }
-
-    @Test
-    public void allFieldsNotProvided() throws Exception {
-        executeAndCompare(
-                "rest/TravelCalculatePremiumRequest_allFields_not_provided.json",
-                "rest/TravelCalculatePremiumResponse_allFields_not_provided.json"
-        );
-    }
-
-    private void executeAndCompare(String jsonRequestFilePath,
-                                   String jsonResponseFilePath) throws Exception {
-        String jsonRequest = jsonFileReader.readJsonFromFile(jsonRequestFilePath);
-
         MvcResult result = mockMvc.perform(post("/insurance/travel/")
-                        .content(jsonRequest)
+                        .content(jsonFileReader.readJsonFromFile("rest/TravelCalculatePremiumRequest_firstName_not_provided.json"))
                         .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
                 .andReturn();
 
         String responseBodyContent = result.getResponse().getContentAsString();
+        String jsonResponse = jsonFileReader.readJsonFromFile("rest/TravelCalculatePremiumResponse_firstName_not_provided.json");
 
-        String jsonResponse = jsonFileReader.readJsonFromFile(jsonResponseFilePath);
+        ObjectMapper mapper = new ObjectMapper();
+        assertEquals(mapper.readTree(responseBodyContent), mapper.readTree(jsonResponse));
+    }
+
+    @Test
+    @DisplayName("Test case 2: lastName is not provided")
+    public void lastNameNotProvided() throws Exception {
+        MvcResult result = mockMvc.perform(post("/insurance/travel/")
+                        .content(jsonFileReader.readJsonFromFile("rest/TravelCalculatePremiumRequest_lastName_not_provided.json"))
+                        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk())
+                .andReturn();
+        String responseBodyContent = result.getResponse().getContentAsString();
+        String jsonResponse = jsonFileReader.readJsonFromFile("rest/TravelCalculatePremiumResponse_lastName_not_provided.json");
+
+        ObjectMapper mapper = new ObjectMapper();
+        assertEquals(mapper.readTree(responseBodyContent), mapper.readTree(jsonResponse));
+    }
+
+    @Test
+    @DisplayName("Test case 3: agreementDateFrom is not provided")
+    public void agreementDateFromNotProvided() throws Exception {
+        MvcResult result = mockMvc.perform(post("/insurance/travel/")
+                        .content(jsonFileReader.readJsonFromFile("rest/TravelCalculatePremiumRequest_agreementDateFrom_not_provided.json"))
+                        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk())
+                .andReturn();
+        String responseBodyContent = result.getResponse().getContentAsString();
+        String jsonResponse = jsonFileReader.readJsonFromFile("rest/TravelCalculatePremiumResponse_agreementDateFrom_not_provided.json");
+
+        ObjectMapper mapper = new ObjectMapper();
+        assertEquals(mapper.readTree(responseBodyContent), mapper.readTree(jsonResponse));
+    }
+
+    @Test
+    @DisplayName("Test case 4: agreementDateTo is not provided")
+    public void agreementDateToNotProvided() throws Exception {
+        MvcResult result = mockMvc.perform(post("/insurance/travel/")
+                        .content(jsonFileReader.readJsonFromFile("rest/TravelCalculatePremiumRequest_agreementDateTo_not_provided.json"))
+                        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk())
+                .andReturn();
+        String responseBodyContent = result.getResponse().getContentAsString();
+        String jsonResponse = jsonFileReader.readJsonFromFile("rest/TravelCalculatePremiumResponse_agreementDateTo_not_provided.json");
+
+        ObjectMapper mapper = new ObjectMapper();
+        assertEquals(mapper.readTree(responseBodyContent), mapper.readTree(jsonResponse));
+    }
+
+    @Test
+    @DisplayName("Test case 5: all fields is not provided")
+    public void allFieldsNotProvided() throws Exception {
+        MvcResult result = mockMvc.perform(post("/insurance/travel/")
+                        .content(jsonFileReader.readJsonFromFile("rest/TravelCalculatePremiumRequest_allFields_not_provided.json"))
+                        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk())
+                .andReturn();
+        String responseBodyContent = result.getResponse().getContentAsString();
+        String jsonResponse = jsonFileReader.readJsonFromFile("rest/TravelCalculatePremiumResponse_allFields_not_provided.json");
+
+        ObjectMapper mapper = new ObjectMapper();
+        assertEquals(mapper.readTree(responseBodyContent), mapper.readTree(jsonResponse));
+    }
+
+    @Test
+    @DisplayName("Test case 6: agreementDateTo < agreementDateFrom")
+    public void agreementDateToLessThenAgreementDateFrom() throws Exception {
+        MvcResult result = mockMvc.perform(post("/insurance/travel/")
+                        .content(jsonFileReader.readJsonFromFile("rest/TravelCalculatePremiumRequest_dateTo_lessThen_dateFrom.json"))
+                        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk())
+                .andReturn();
+        String responseBodyContent = result.getResponse().getContentAsString();
+        String jsonResponse = jsonFileReader.readJsonFromFile("rest/TravelCalculatePremiumResponse_dateTo_lessThen_dateFrom.json");
+
+        ObjectMapper mapper = new ObjectMapper();
+        assertEquals(mapper.readTree(responseBodyContent), mapper.readTree(jsonResponse));
+    }
+
+    @Test
+    @DisplayName("Test case 7: success")
+    public void success() throws Exception {
+        MvcResult result = mockMvc.perform(post("/insurance/travel/")
+                        .content(jsonFileReader.readJsonFromFile("rest/TravelCalculatePremiumRequest_success.json"))
+                        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk())
+                .andReturn();
+        String responseBodyContent = result.getResponse().getContentAsString();
+        String jsonResponse = jsonFileReader.readJsonFromFile("rest/TravelCalculatePremiumResponse_success.json");
 
         ObjectMapper mapper = new ObjectMapper();
         assertEquals(mapper.readTree(responseBodyContent), mapper.readTree(jsonResponse));

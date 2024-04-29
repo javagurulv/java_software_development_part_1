@@ -1,4 +1,7 @@
-Ваша задача: познакомиться с
-семантическими правилами версионирования.
+Ваша задача:
 
-Изучите информацию на странице: https://semver.org/
+1. Создать доменный объект и репозиторий для таблицы
+MEDICAL_RISK_LIMIT_LEVEL.
+
+2. Поменять формулу расчёта медицинского риска на:
+premium = CountryDefaultDayRate * DayCount * AgeCoefficient * InsuranceLimitCoefficient.

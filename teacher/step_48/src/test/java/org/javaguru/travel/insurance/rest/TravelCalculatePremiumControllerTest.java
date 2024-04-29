@@ -26,14 +26,6 @@ public class TravelCalculatePremiumControllerTest {
     @Autowired private JsonFileReader jsonFileReader;
 
     @Test
-    public void successRequest() throws Exception {
-        executeAndCompare(
-                "rest/TravelCalculatePremiumRequest_success.json",
-                "rest/TravelCalculatePremiumResponse_success.json"
-        );
-    }
-
-    @Test
     public void firstNameNotProvided() throws Exception {
         executeAndCompare(
                 "rest/TravelCalculatePremiumRequest_firstName_not_provided.json",
@@ -78,6 +70,14 @@ public class TravelCalculatePremiumControllerTest {
         executeAndCompare(
                 "rest/TravelCalculatePremiumRequest_allFields_not_provided.json",
                 "rest/TravelCalculatePremiumResponse_allFields_not_provided.json"
+        );
+    }
+
+    @Test
+    public void successRequest() throws Exception {
+        executeAndCompare(
+                "rest/TravelCalculatePremiumRequest_success.json",
+                "rest/TravelCalculatePremiumResponse_success.json"
         );
     }
 

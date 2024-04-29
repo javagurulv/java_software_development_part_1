@@ -20,7 +20,7 @@ class PersonFirstNameValidationTest {
     public void shouldReturnErrorWhenPersonFirstNameIsNull() {
         TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
         when(request.getPersonFirstName()).thenReturn(null);
-        Optional<ValidationError> errorOpt = validation.execute(request);
+        Optional<ValidationError> errorOpt = validation.validatePersonFirstName(request);
         assertTrue(errorOpt.isPresent());
         assertEquals(errorOpt.get().getField(), "personFirstName");
         assertEquals(errorOpt.get().getMessage(), "Must not be empty!");
@@ -30,7 +30,7 @@ class PersonFirstNameValidationTest {
     public void shouldReturnErrorWhenPersonFirstNameIsEmpty() {
         TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
         when(request.getPersonFirstName()).thenReturn("");
-        Optional<ValidationError> errorOpt = validation.execute(request);
+        Optional<ValidationError> errorOpt = validation.validatePersonFirstName(request);
         assertTrue(errorOpt.isPresent());
         assertEquals(errorOpt.get().getField(), "personFirstName");
         assertEquals(errorOpt.get().getMessage(), "Must not be empty!");
@@ -40,7 +40,7 @@ class PersonFirstNameValidationTest {
     public void shouldNotReturnErrorWhenPersonFirstNameIsPresent() {
         TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
         when(request.getPersonFirstName()).thenReturn("Vasja");
-        Optional<ValidationError> errorOpt = validation.execute(request);
+        Optional<ValidationError> errorOpt = validation.validatePersonFirstName(request);
         assertTrue(errorOpt.isEmpty());
     }
 

@@ -1,34 +1,53 @@
-Знакомство с дизайн паттерном Factory.
+Ментор обратил ваше внимание на проблему возникшую при
+написании тестов на контроллер. Суть проблемы в следующем.
+Для сравнения JSON строк на данный момент используется
+следующий код из класса TravelCalculatePremiumControllerTest:
 
-Ментор предлагает обратить внимание на код класса ValidationErrorFactory.
+ObjectMapper mapper = new ObjectMapper();
+assertEquals(mapper.readTree(responseBodyContent), mapper.readTree(jsonResponse));
 
-@Component
-@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
-class ValidationErrorFactory {
+Проблема в том, что если сравниваемые JSON строки отличаются
+друг от друга только перестановкой элементов, содержат одни
+и те же элементы только в разном порядке то код выше считает
+такие JSON строки разными.
 
-    private final ErrorCodeUtil errorCodeUtil;
+Например, следующие два JSON строки будут разные:
 
-    ValidationError buildError(String errorCode) {
-        String errorDescription = errorCodeUtil.getErrorDescription(errorCode);
-        return new ValidationError(errorCode, errorDescription);
+{"errors":[
+  {
+    "field":"agreementDateFrom",
+    "message":"Must not be empty!"
+  },
+  {
+    "field":"agreementDateTo",
+    "message":"Must not be empty!"
+  }
+]}
+
+{"errors":[
+  {
+    "field":"agreementDateTo",
+    "message":"Must not be empty!"
+  },
+  {
+      "field":"agreementDateFrom",
+      "message":"Must not be empty!"
     }
+]}
 
-}
 
-Этот класс является примером реализации дизайн паттерна Factory.
+Ваша задача: проверить проблему на которую обратил внимание ментор
+и найти решение этой проблемы. Цель - найти решение для сравнения
+контента JSON строк без учёта порядка расположения элементов.
+Проверить найденное решение и заменить старое решение на новое
+в проекте.
 
-Если приглядеться, то можно увидеть что этот класс содержит
-логику создания объектов класса ValidationError.
+Подсказка от ментора:
+https://www.baeldung.com/json-modelassert
+testImplementation('uk.org.webcompere:model-assert:1.0.0')
 
-Аналогия Factory из реального мира это завод, завод по созданию объектов типа ValidationError.
-
-Если создание объектов определенного класса сложное, или повторяется во многих частях системы,
-то обычно код, который занимается созданием таких объектов
-выносят в отдельный класс и в название класса добавляют слово Factory.
-
-Слово Factory в названии класса указывает на то, что в классе
-содержится код связанный с дизайн паттерном Factory, код, который
-в системе занимается созданием экземпляров определенного класса.
-
-PS: в дополнение к этому шагу вы можете найти и прочитать дополнительную
-информацию по дизайн паттерну Factory.
+        assertJson(responseBodyContent)
+                .where()
+                    .keysInAnyOrder()
+                    .arrayInAnyOrder()
+                .isEqualTo(jsonResponse);

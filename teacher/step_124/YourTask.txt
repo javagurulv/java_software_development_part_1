@@ -1,76 +1,28 @@
-Ментор предлагает продолжить подготовку программного кода для внедрения
-новой версии (поддерживающей нескольких персон) с создания DTO для
-запроса и ответа новой версии.
+Клиент прислал позитивный отзыв о нашем приложении.
+После установки приложения на прод среду, им начали
+пользоваться реальные пользователи. Пока наш клиент
+использует наш калькулятор стоимости travel policy
+как рекламный инструмент для привлечения новых покупателей.
 
-New Request format:
+От пользователей бизнес получил отзыв о том, что их
+очень часто интересует полис страхования путешествия
+сразу для нескольких человек. Например: семья из 4
+человек планирует отдых за границей и хочет узнать
+стоимость полиса для всей семьи (4 человека).
 
-{
-  "agreementDateFrom" : "2025-05-25",
-  "agreementDateTo" : "2025-05-29",
-  "country" : "SPAIN",
-  "medicalRiskLimitLevel" : "LEVEL_10000",
-  "selected_risks":["TRAVEL_MEDICAL"],
-  "persons" : [
-        {
-          "personFirstName" : "Vasja",
-          "personLastName" : "Pupkin",
-          "personBirthDate" : "2000-05-29"
-        },
-        {
-          "personFirstName" : "Petja",
-          "personLastName" : "Pupkin",
-          "personBirthDate" : "2000-02-29"
-        }
-  ]
-}
+К сожалению, наше приложение на данный момент не
+поддерживает расчёт стоимости полиса для нескольких
+человек.
 
-New Response format:
-{
-    "errors": null,
-    "agreementDateFrom": "2025-05-25",
-    "agreementDateTo": "2025-05-29",
-    "country": "SPAIN",
-    "medicalRiskLimitLevel" : "LEVEL_10000",
-    "agreementPremium": 22.00,
-    "persons" : [
-        {
-            "personFirstName" : "Vasja",
-            "personLastName" : "Pupkin",
-            "personBirthDate" : "2000-05-29",
-            "personPremium" : 11.00,
-            "risks": [
-                    {
-                        "riskIc": "TRAVEL_MEDICAL",
-                        "premium": 11.00
-                    }
-            ]
-        },
-        {
-          "personFirstName" : "Petja",
-          "personLastName" : "Pupkin",
-          "personBirthDate" : "2000-02-29",
-          "personPremium" : 11.00,
-            "risks": [
-                    {
-                        "riskIc": "TRAVEL_MEDICAL",
-                        "premium": 11.00
-                    }
-            ]
-        }
-    ]
-}
+Бизнес просит нас реализовать эту функциональность!
+
+Но с одним ограничением, первая версия веб и rest api
+по прежнему должна поддерживаться и работать согласно
+требованиям. Обоснование: некоторые клиенты бизнеса уже
+встроили интеграции со старой версией в свои бизнес процессы
+и их перевод на новую версию займёт определённое время.
 
 
 Ваша задача:
-1. В пакете insurance/dto создать пакет v1 и переместить в него
-классы запроса и ответа первой версии приложения (поддерживающие
-только одну персону).
-
-2. Переименовать классы запроса и ответа первой версии приложения
-TravelCalculatePremiumRequest -> TravelCalculatePremiumRequestV1
-TravelCalculatePremiumResponse -> TravelCalculatePremiumResponseV1
-
-3. В пакете insurance/dto создать пакет v2 и в этом пакете создать
-классы запроса и ответа для новой (второй) версии приложения
-поддерживающие много персон:
-TravelCalculatePremiumRequestV2, TravelCalculatePremiumResponseV2.
+придумать идеи, как можно реализовать требование бизнеса
+и обсудить эти идеи с ментором.

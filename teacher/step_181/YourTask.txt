@@ -1,38 +1,14 @@
-На взгляд ментора в структуре acceptance тестов
-есть следующие проблемы:
+Ментор обратил ваше внимание на следующий
+фрагмент кода в классе AgreementPersonEntity:
 
-- в коде много почти одинаковых классов:
-TravelCalculatePremiumControllerTestCase1
-TravelCalculatePremiumControllerTestCase2
-TravelCalculatePremiumControllerTestCase3
-...
+    @Column(name = "medical_risk_limit_level", nullable = false)
+    private String medicalRiskLimitLevel;
 
-- названия тестовых сценариев никак не связаны с бизнес правилами:
-TestCase1
-TestCase2
-TestCase3
-...
-
-- в тестах нет структуры, всё свалено в одну большую кучу
-(внутри каждой версии /v1, /v2)!
-По хорошему требуется создание определённой структуры,
-например разделить все тесты на уровни:
-    agreement_level
-    person_level
-    risk_travel_medical
-    risk_travel_cancellation
-Эта структура позволит лучше ориентироваться в тестах.
+Этот маппинг содержит ограничение nullable = false.
+Это ошибочное ограничение, так как поле medical_risk_limit_level
+может быть не указано если в запросе нет риска TRAVEL_MEDICAL.
 
 
-Давайте решим все эти проблемы одну за другой!
-
-
-Ваша задача:
-- в коде много почти одинаковых классов:
-TravelCalculatePremiumControllerTestCase1
-TravelCalculatePremiumControllerTestCase2
-TravelCalculatePremiumControllerTestCase3
-...
-
-Придумайте решение этой проблемы и реализуйте его
-для тестов в папках rest/v1 и rest/v2!
+Ваша задача: убрать ограничение NOT NULL с поля в таблице
+agreement_persons и исправить маппинг. Убрать ограничение
+на уровне базы данных надо Liquibase скриптом.

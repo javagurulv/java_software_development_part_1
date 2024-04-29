@@ -1,14 +1,7 @@
-Ваша задача: написать SQL скрипт по заполнению таблиц
-classifiers и classifier_values значениями для классификатора
-RISK_TYPE.
+Ваша задача:
 
-RISK_TYPE возможные значения:
-TRAVEL_MEDICAL
-TRAVEL_CANCELLATION
-TRAVEL_LOSS_BAGGAGE
-TRAVEL_THIRD_PARTY_LIABILITY
-TRAVEL_EVACUATION
-TRAVEL_SPORT_ACTIVITIES
+1. Установить на локальный компьютер MySQL Community Server
+реляционную базу данных, которую будет использовать приложение.
 
-Созданный SQL скрипт протестируйте на созданной базе данных
-и сохраните в файле database/mySqlDataScript.sql.
+2. Установить на локальный компьютер MySQL Workbench приложение для
+написания и выполнения SQL запросов к MySQL Community Server.

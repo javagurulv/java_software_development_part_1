@@ -1,22 +1,66 @@
-В ходе написания дополнительных тестов вам с ментором удалось
-выявить следующие возможности улучшения:
+Ваша задача:
+по аналогии с /rest/v1, написать тесты на /rest/v2
+(столько сколько сможете :) - тест кейсов будет много).
 
-Test Case 25:
-Request: country is not supported, RISK_TYPE - TRAVEL_MEDICAL.
-Response: error code = ERROR_CODE_15.
-
-В этом тест кейсе можно улучшить описание ошибки включив в него
-не корректное значение, так чтобы на стороне клиента сразу было
-понятно какое значение country не поддерживается.
+PS: если при тестировании подметите недочёты или идеи для
+улучшения структур запроса и ответа зафиксируйте их и обсудите с ментором.
 
 
-Test Case 30:
-Request: medicalRiskLimitLevel is not supported, RISK_TYPE - TRAVEL_MEDICAL.
-Response: error code = ERROR_CODE_14.
+Request for /rest/v2:
 
-В этом тест кейсе можно улучшить описание ошибки включив в него
-не корректное значение, так чтобы на стороне клиента сразу было
-понятно какое значение medicalRiskLimitLevel не поддерживается.
+{
+  "agreementDateFrom" : "2025-05-25",
+  "agreementDateTo" : "2025-05-29",
+  "country" : "SPAIN",
+  "medicalRiskLimitLevel" : "LEVEL_10000",
+  "selected_risks":["TRAVEL_MEDICAL"],
+  "persons" : [
+        {
+          "personFirstName" : "Vasja",
+          "personLastName" : "Pupkin",
+          "personBirthDate" : "2000-05-29"
+        },
+        {
+          "personFirstName" : "Petja",
+          "personLastName" : "Pupkin",
+          "personBirthDate" : "1950-02-29"
+        }
+  ]
+}
 
 
-Ваша задача: реализовать описанные выше улучшения.
+Response for /rest/v2:
+{
+    "errors": null,
+    "agreementDateFrom": "2025-05-25",
+    "agreementDateTo": "2025-05-29",
+    "country": "SPAIN",
+    "medicalRiskLimitLevel": "LEVEL_10000",
+    "agreementPremium": 26.00,
+    "persons": [
+        {
+            "personFirstName": "Vasja",
+            "personLastName": "Pupkin",
+            "personBirthDate": "2000-05-29",
+            "personPremium": 11.00,
+            "personRisks": [
+                {
+                    "riskIc": "TRAVEL_MEDICAL",
+                    "premium": 11.00
+                }
+            ]
+        },
+        {
+            "personFirstName": "Petja",
+            "personLastName": "Pupkin",
+            "personBirthDate": "1950-03-01",
+            "personPremium": 15.00,
+            "personRisks": [
+                {
+                    "riskIc": "TRAVEL_MEDICAL",
+                    "premium": 15.00
+                }
+            ]
+        }
+    ]
+}

@@ -6,30 +6,29 @@ import org.junit.jupiter.api.Test;
 
 public class RiskLevelV1TestCases extends TravelCalculatePremiumControllerV1TestCase {
 
-    private static final String TEST_FILE_BASE_FOLDER = "risks";
-
     @Test
     @DisplayName("ERROR_CODE_6 selectedRisks is NULL, must not be empty")
-    public void check_ERROR_CODE_6_NULL() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_6_selectedRisks_is_null");
+    public void executeTestCase13() throws Exception {
+        executeAndCompare("test_case_13");
     }
 
     @Test
     @DisplayName("ERROR_CODE_6 selectedRisks is [], must not be empty")
-    public void check_ERROR_CODE_6_EMPTY() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_6_selectedRisks_is_empty");
+    public void executeTestCase14() throws Exception {
+        executeAndCompare("test_case_14");
     }
 
     @Test
     @DisplayName("ERROR_CODE_9 one invalid selected_risks ic not supported")
-    public void check_ERROR_CODE_9_one() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_9_one_invalid_selectedRisk");
+    public void executeTestCase15() throws Exception {
+        executeAndCompare("test_case_15");
     }
 
     @Test
     @DisplayName("ERROR_CODE_9 two invalid selected_risks not supported")
-    public void check_ERROR_CODE_9_two() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_9_two_invalid_selectedRisks");
+    public void executeTestCase16() throws Exception {
+        executeAndCompare("test_case_16");
     }
+
 
 }
