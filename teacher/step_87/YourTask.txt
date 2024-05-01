@@ -9,55 +9,45 @@
 Риск с ic = NOT_EXISTING_RISK не поддерживается системой.
 
 
-Ментор обратил ваше внимание на то, что при генерации ошибок
-может возникнуть проблема. Например, в selected_risks будут
-два значения и оба не валидные. В таком случае нужно сгенерировать
-две ошибки с описаниями:
-Риск с ic = NOT_EXISTING_RISK_1 не поддерживается системой.
-Риск с ic = NOT_EXISTING_RISK_2 не поддерживается системой.
+Для реализации поставленного выше задания ментор предлагает
+внести в код следующие архитектурные изменения:
 
-Как вы видите тексты обоих этих ошибок практически одинаковые,
-за исключением самого названия не существующего риска. Проблема
-заключается ещё и в том, что мы незнаем значения не существующих
-рисков заранее, и поэтому мы не можем внести их в файл
-errorCodes.properties.
+В интерфейсе TravelRequestValidation переименовать метод
+execute(...) -> validate(...).
 
-Ментор предлагает добавить функциональность placeholder в описание
-ошибок.
+Добавить в интерфейс TravelRequestValidation новый метод:
+List<ValidationError> validateList(TravelCalculatePremiumRequest request);
+Этот новый метод позволит возвращать список ошибок при валидации.
 
-Идея заключается в следующем (в файле errorCodes.properties
-в описании ошибок разрешить использовать символы {}, внутри
-них указывается название (placeholder), который будет заменён
-на значение указанное в программном коде):
-Риск с ic = {NOT_EXISTING_RISK} не поддерживается системой.
+Для минимизации эффекта изменений в интерфейсе TravelRequestValidation
+на уже существующий код (чтобы не реализовывать новый метод в каждом
+классе валидации) предлагается создать абстрактный класс с дефолтными
+реализациями методов:
 
-Ментор предлагает создать класс:
+abstract class TravelRequestValidationImpl
+    implements TravelRequestValidation {
 
-@Getter
-@AllArgsConstructor
-public class Placeholder {
+    @Override
+    Optional<ValidationError> validate(TravelCalculatePremiumRequest request) {
+        return Optional.empty();
+    }
 
-    private String placeholderName;
-
-    private String placeholderValue;
+    @Override
+    List<ValidationError> validateList(TravelCalculatePremiumRequest request) {
+        return List.of();
+    }
 
 }
 
-И добавить в класс ErrorCodeUtil новый метод:
-public String getErrorDescription(String errorCode, List<Placeholder> placeholders).
+После этого все классы валидаций должны наследоваться от
+TravelRequestValidationImpl и переопределять только тот метод
+валидации, который им нужен.
 
-Идея этого метода заключается в следующем:
-- в файле errorCodes.properties регистрируем error code с placeholder
-  в описании (placeholder может быть и много, но у каждого должно быть
-  своё уникальное название внутри одного описания ошибки);
-- при генерации ошибки в приложении Java код создаёт экземпляры класса
-  Placeholder и вызывает новый метод в классе ErrorCodeUtil;
-- ErrorCodeUtil по errorCode достаёт описание ошибки из файла
-  errorCodes.properties и заменяет все placeholder на предоставленные
-  значения в описании ошибки.
 
-Добавить в класс ValidationErrorFactory метод:
+Далее внести в класс TravelCalculatePremiumRequestValidatorImpl
+изменения, так чтобы он вызывал у валидации оба метода
+(как validate(...) так и validateList(...)) и собирал полученные
+ошибки в один список.
 
-ValidationError buildError(String errorCode, List<Placeholder> placeholders).
 
 Ваша задача: реализовать предложение ментора.

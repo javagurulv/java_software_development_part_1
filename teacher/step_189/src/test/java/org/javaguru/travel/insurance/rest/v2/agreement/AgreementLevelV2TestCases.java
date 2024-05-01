@@ -10,50 +10,50 @@ public class AgreementLevelV2TestCases extends TravelCalculatePremiumControllerV
 
     @Test
     @DisplayName("ERROR_CODE_2 agreementDateFrom must not be empty")
-    public void check_ERROR_CODE_2() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_2_agreementDateFrom_is_null");
+    public void executeTestCase14() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_14");
     }
 
     @Test
     @DisplayName("ERROR_CODE_4 agreementDateTo must not be empty")
-    public void check_ERROR_CODE_4() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_2_agreementDateTo_is_null");
+    public void executeTestCase15() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_15");
     }
 
     @Test
     @DisplayName("ERROR_CODE_1 agreementDateFrom must be in the future")
-    public void check_ERROR_CODE_1() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_1_agreementDateFrom_must_be_in_the_future");
+    public void executeTestCase16() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_16");
     }
 
     @Test
     @DisplayName("ERROR_CODE_3 agreementDateTo must be in the future")
-    public void check_ERROR_CODE_3() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_3_agreementDateTo_must_be_in_the_future");
+    public void executeTestCase17() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_17");
     }
 
     @Test
     @DisplayName("ERROR_CODE_5 agreementDateFrom must be less than agreementDateTo")
-    public void check_ERROR_CODE_5() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_5_agreementDateFrom_must_be_less_then_agreementDateTo");
+    public void executeTestCase18() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_18");
     }
 
     @Test
     @DisplayName("ERROR_CODE_10 country is NULL, must not be empty")
-    public void check_ERROR_CODE_10_NULL() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_10_country_is_null");
+    public void executeTestCase23() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_23");
     }
 
     @Test
     @DisplayName("ERROR_CODE_10 country is empty, must not be empty")
-    public void check_ERROR_CODE_10_EMPTY() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_10_country_is_empty");
+    public void executeTestCase24() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_24");
     }
 
     @Test
     @DisplayName("ERROR_CODE_15 country not supported")
-    public void check_ERROR_CODE_15() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_15_country_not_supported");
+    public void executeTestCase25() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_25");
     }
 
 }
