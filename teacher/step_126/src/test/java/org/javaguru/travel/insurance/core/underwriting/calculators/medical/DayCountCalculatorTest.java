@@ -1,6 +1,5 @@
 package org.javaguru.travel.insurance.core.underwriting.calculators.medical;
 
-import org.javaguru.travel.insurance.core.underwriting.calculators.medical.DayCountCalculator;
 import org.javaguru.travel.insurance.core.util.DateTimeUtil;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.junit.jupiter.api.BeforeEach;

@@ -3,7 +3,10 @@ package org.javaguru.travel.insurance.rest.internal;
 import com.google.common.base.Stopwatch;
 import org.javaguru.travel.insurance.dto.internal.TravelGetAgreementResponse;
 import org.javaguru.travel.insurance.rest.common.TravelRestRequestExecutionTimeLogger;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 

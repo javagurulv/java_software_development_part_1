@@ -1,7 +1,5 @@
 package org.javaguru.travel.insurance.core;
 
-import org.javaguru.travel.insurance.core.DateTimeService;
-import org.javaguru.travel.insurance.core.TravelCalculatePremiumRequestValidator;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.junit.jupiter.api.Test;
@@ -15,7 +13,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

@@ -6,7 +6,6 @@ import org.javaguru.travel.insurance.core.services.TravelCalculatePremiumService
 import org.javaguru.travel.insurance.dto.v1.DtoV1Converter;
 import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
 import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumResponseV1;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,7 +1,6 @@
 package org.javaguru.travel.insurance.core.validations;
 
 import org.javaguru.travel.insurance.core.ErrorCodeUtil;
-import org.javaguru.travel.insurance.core.validations.DateFromLessThenDateToValidation;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.junit.jupiter.api.Test;
@@ -17,7 +16,9 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class DateFromLessThenDateToValidationTest {

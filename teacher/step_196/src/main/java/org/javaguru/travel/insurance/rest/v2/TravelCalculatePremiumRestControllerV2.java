@@ -8,7 +8,6 @@ import org.javaguru.travel.insurance.dto.v2.DtoV2Converter;
 import org.javaguru.travel.insurance.dto.v2.TravelCalculatePremiumRequestV2;
 import org.javaguru.travel.insurance.dto.v2.TravelCalculatePremiumResponseV2;
 import org.javaguru.travel.insurance.rest.common.TravelRestRequestExecutionTimeLogger;
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

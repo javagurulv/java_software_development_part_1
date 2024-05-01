@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.command.TravelGetAllAgreementUuidsCoreCommand;
 import org.javaguru.travel.insurance.core.api.command.TravelGetAllAgreementUuidsCoreResult;
 import org.javaguru.travel.insurance.core.repositories.entities.AgreementEntityRepository;
-
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -4,7 +4,6 @@ import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
-import org.javaguru.travel.insurance.core.validations.person.EmptyMedicalRiskLimitLevelValidation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

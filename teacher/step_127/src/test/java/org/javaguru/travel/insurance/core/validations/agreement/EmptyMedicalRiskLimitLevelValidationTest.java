@@ -1,9 +1,8 @@
 package org.javaguru.travel.insurance.core.validations.agreement;
 
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
-import org.javaguru.travel.insurance.core.validations.agreement.EmptyMedicalRiskLimitLevelValidation;
-import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
 import org.javaguru.travel.insurance.dto.ValidationError;
+import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

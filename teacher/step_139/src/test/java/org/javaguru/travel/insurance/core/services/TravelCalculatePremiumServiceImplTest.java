@@ -6,7 +6,6 @@ import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.RiskDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
-import org.javaguru.travel.insurance.core.services.TravelCalculatePremiumServiceImpl;
 import org.javaguru.travel.insurance.core.underwriting.TravelPremiumCalculationResult;
 import org.javaguru.travel.insurance.core.underwriting.TravelPremiumUnderwriting;
 import org.javaguru.travel.insurance.core.validations.TravelAgreementValidator;
@@ -19,8 +18,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.eq;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class TravelCalculatePremiumServiceImplTest {

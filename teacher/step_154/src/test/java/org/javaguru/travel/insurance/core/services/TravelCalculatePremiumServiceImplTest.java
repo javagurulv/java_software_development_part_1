@@ -5,10 +5,6 @@ import org.javaguru.travel.insurance.core.api.command.TravelCalculatePremiumCore
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
-import org.javaguru.travel.insurance.core.services.AgreementPersonsPremiumCalculator;
-import org.javaguru.travel.insurance.core.services.AgreementTotalPremiumCalculator;
-import org.javaguru.travel.insurance.core.services.PersonSaver;
-import org.javaguru.travel.insurance.core.services.TravelCalculatePremiumServiceImpl;
 import org.javaguru.travel.insurance.core.validations.TravelAgreementValidator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,7 +17,9 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class TravelCalculatePremiumServiceImplTest {

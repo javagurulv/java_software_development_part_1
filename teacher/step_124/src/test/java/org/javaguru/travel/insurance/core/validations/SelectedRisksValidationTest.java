@@ -2,8 +2,6 @@ package org.javaguru.travel.insurance.core.validations;
 
 import org.javaguru.travel.insurance.core.domain.ClassifierValue;
 import org.javaguru.travel.insurance.core.repositories.ClassifierValueRepository;
-import org.javaguru.travel.insurance.core.validations.SelectedRisksValidation;
-import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.junit.jupiter.api.Test;
@@ -19,7 +17,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class SelectedRisksValidationTest {

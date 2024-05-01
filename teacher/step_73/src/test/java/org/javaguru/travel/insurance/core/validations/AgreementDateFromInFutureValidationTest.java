@@ -1,8 +1,6 @@
 package org.javaguru.travel.insurance.core.validations;
 
 import org.javaguru.travel.insurance.core.DateTimeService;
-import org.javaguru.travel.insurance.core.validations.AgreementDateFromInFutureValidation;
-import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.junit.jupiter.api.Test;
@@ -18,7 +16,9 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class AgreementDateFromInFutureValidationTest {

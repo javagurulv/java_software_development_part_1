@@ -1,8 +1,5 @@
 package org.javaguru.travel.insurance.core;
 
-import org.javaguru.travel.insurance.core.TravelCalculatePremiumRequestValidator;
-import org.javaguru.travel.insurance.core.TravelCalculatePremiumServiceImpl;
-import org.javaguru.travel.insurance.core.TravelPremiumUnderwriting;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumResponse;
 import org.javaguru.travel.insurance.dto.ValidationError;

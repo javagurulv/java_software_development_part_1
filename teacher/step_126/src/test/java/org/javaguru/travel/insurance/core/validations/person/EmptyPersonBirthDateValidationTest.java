@@ -1,7 +1,6 @@
 package org.javaguru.travel.insurance.core.validations.person;
 
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
-import org.javaguru.travel.insurance.core.validations.person.EmptyPersonBirthDateValidation;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.junit.jupiter.api.Test;

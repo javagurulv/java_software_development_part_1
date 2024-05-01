@@ -1,12 +1,11 @@
 package org.javaguru.travel.insurance.core.services;
 
-import org.javaguru.travel.insurance.core.services.TravelCalculatePremiumServiceImpl;
 import org.javaguru.travel.insurance.core.underwriting.TravelPremiumCalculationResult;
 import org.javaguru.travel.insurance.core.underwriting.TravelPremiumUnderwriting;
 import org.javaguru.travel.insurance.core.validations.TravelCalculatePremiumRequestValidator;
+import org.javaguru.travel.insurance.dto.ValidationError;
 import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
 import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumResponseV1;
-import org.javaguru.travel.insurance.dto.ValidationError;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

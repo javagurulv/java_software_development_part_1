@@ -3,7 +3,6 @@ package org.javaguru.travel.insurance.core.services;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.RiskDTO;
-import org.javaguru.travel.insurance.core.services.AgreementPersonsPremiumCalculator;
 import org.javaguru.travel.insurance.core.underwriting.TravelPremiumCalculationResult;
 import org.javaguru.travel.insurance.core.underwriting.TravelPremiumUnderwriting;
 import org.junit.jupiter.api.Test;

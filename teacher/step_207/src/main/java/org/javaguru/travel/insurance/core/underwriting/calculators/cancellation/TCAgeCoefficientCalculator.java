@@ -6,7 +6,6 @@ import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.domain.TCAgeCoefficient;
 import org.javaguru.travel.insurance.core.repositories.TCAgeCoefficientRepository;
 import org.javaguru.travel.insurance.core.util.DateTimeUtil;
-
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;

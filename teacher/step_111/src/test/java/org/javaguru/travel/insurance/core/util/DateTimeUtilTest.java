@@ -1,6 +1,5 @@
 package org.javaguru.travel.insurance.core.util;
 
-import org.javaguru.travel.insurance.core.util.DateTimeUtil;
 import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;

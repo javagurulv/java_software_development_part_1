@@ -6,7 +6,6 @@ import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.domain.AgeCoefficient;
 import org.javaguru.travel.insurance.core.repositories.AgeCoefficientRepository;
 import org.javaguru.travel.insurance.core.util.DateTimeUtil;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

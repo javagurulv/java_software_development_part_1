@@ -1,6 +1,5 @@
 package org.javaguru.travel.insurance.core.underwriting.calculators.medical;
 
-import org.javaguru.travel.insurance.core.underwriting.calculators.medical.*;
 import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

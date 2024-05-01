@@ -4,7 +4,6 @@ import org.javaguru.travel.insurance.core.domain.AgeCoefficient;
 import org.javaguru.travel.insurance.core.domain.CountryDefaultDayRate;
 import org.javaguru.travel.insurance.core.repositories.AgeCoefficientRepository;
 import org.javaguru.travel.insurance.core.repositories.CountryDefaultDayRateRepository;
-import org.javaguru.travel.insurance.core.underwriting.calculators.TravelMedicalRiskPremiumCalculator;
 import org.javaguru.travel.insurance.core.util.DateTimeUtil;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.junit.jupiter.api.BeforeEach;

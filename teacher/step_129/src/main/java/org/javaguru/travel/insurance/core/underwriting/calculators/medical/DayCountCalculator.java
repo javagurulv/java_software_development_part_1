@@ -4,7 +4,6 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.util.DateTimeUtil;
 import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
-
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;

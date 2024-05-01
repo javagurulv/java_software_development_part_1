@@ -1,6 +1,12 @@
 package org.javaguru.travel.insurance.core;
 
-import org.javaguru.travel.insurance.core.validations.*;
+import org.javaguru.travel.insurance.core.validations.AgreementDateFromInFutureValidation;
+import org.javaguru.travel.insurance.core.validations.AgreementDateFromValidation;
+import org.javaguru.travel.insurance.core.validations.AgreementDateToInFutureValidation;
+import org.javaguru.travel.insurance.core.validations.AgreementDateToValidation;
+import org.javaguru.travel.insurance.core.validations.DateFromLessThenDateToValidation;
+import org.javaguru.travel.insurance.core.validations.PersonFirstNameValidation;
+import org.javaguru.travel.insurance.core.validations.PersonLastNameValidation;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.junit.jupiter.api.Test;
@@ -8,10 +14,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

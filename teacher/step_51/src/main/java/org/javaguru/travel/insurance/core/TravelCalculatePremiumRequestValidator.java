@@ -1,6 +1,12 @@
 package org.javaguru.travel.insurance.core;
 
-import org.javaguru.travel.insurance.core.validations.*;
+import org.javaguru.travel.insurance.core.validations.AgreementDateFromInFutureValidation;
+import org.javaguru.travel.insurance.core.validations.AgreementDateFromValidation;
+import org.javaguru.travel.insurance.core.validations.AgreementDateToInFutureValidation;
+import org.javaguru.travel.insurance.core.validations.AgreementDateToValidation;
+import org.javaguru.travel.insurance.core.validations.DateFromLessThenDateToValidation;
+import org.javaguru.travel.insurance.core.validations.PersonFirstNameValidation;
+import org.javaguru.travel.insurance.core.validations.PersonLastNameValidation;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.springframework.stereotype.Component;

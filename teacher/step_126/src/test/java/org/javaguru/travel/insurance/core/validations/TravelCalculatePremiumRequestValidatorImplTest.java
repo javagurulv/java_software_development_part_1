@@ -1,8 +1,5 @@
 package org.javaguru.travel.insurance.core.validations;
 
-import org.javaguru.travel.insurance.core.validations.TravelAgreementFieldValidation;
-import org.javaguru.travel.insurance.core.validations.TravelCalculatePremiumRequestValidatorImpl;
-import org.javaguru.travel.insurance.core.validations.TravelPersonFieldValidation;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.junit.jupiter.api.Test;

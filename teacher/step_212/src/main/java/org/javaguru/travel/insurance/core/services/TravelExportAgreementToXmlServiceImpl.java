@@ -11,7 +11,6 @@ import org.javaguru.travel.insurance.core.repositories.entities.AgreementXmlExpo
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +18,11 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.StringWriter;
 import java.util.List;
 
 @Component

@@ -1,7 +1,6 @@
 package org.javaguru.travel.insurance.core.validations.agreement;
 
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
-import org.javaguru.travel.insurance.core.validations.agreement.EmptyMedicalRiskLimitLevelValidation;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.junit.jupiter.api.BeforeEach;

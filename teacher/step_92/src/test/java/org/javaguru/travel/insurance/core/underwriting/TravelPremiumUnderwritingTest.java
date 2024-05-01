@@ -1,7 +1,5 @@
 package org.javaguru.travel.insurance.core.underwriting;
 
-import org.javaguru.travel.insurance.core.underwriting.TravelPremiumUnderwritingImpl;
-import org.javaguru.travel.insurance.core.underwriting.TravelRiskPremiumCalculator;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

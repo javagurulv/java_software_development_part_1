@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.underwriting.TravelPremiumCalculationResult;
 import org.javaguru.travel.insurance.core.underwriting.TravelPremiumUnderwriting;
-
 import org.springframework.stereotype.Component;
 
 @Component

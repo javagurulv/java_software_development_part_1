@@ -5,9 +5,9 @@ import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.underwriting.TravelPremiumCalculationResult;
 import org.javaguru.travel.insurance.core.underwriting.TravelPremiumUnderwriting;
 import org.javaguru.travel.insurance.core.validations.TravelCalculatePremiumRequestValidator;
+import org.javaguru.travel.insurance.dto.ValidationError;
 import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
 import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumResponseV1;
-import org.javaguru.travel.insurance.dto.ValidationError;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

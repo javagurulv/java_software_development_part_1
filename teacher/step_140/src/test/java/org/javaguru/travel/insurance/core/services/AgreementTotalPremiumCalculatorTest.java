@@ -3,13 +3,12 @@ package org.javaguru.travel.insurance.core.services;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.RiskDTO;
-import org.javaguru.travel.insurance.core.services.AgreementTotalPremiumCalculator;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AgreementTotalPremiumCalculatorTest {
 
