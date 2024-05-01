@@ -1,7 +1,6 @@
 package org.javaguru.travel.insurance.core.repositories;
 
 import org.javaguru.travel.insurance.core.domain.ClassifierValue;
-import org.javaguru.travel.insurance.core.repositories.ClassifierValueRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
