@@ -2,7 +2,7 @@ package org.javaguru.travel.insurance.core.underwriting.calculators.medical;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
-import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
+import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
 import org.javaguru.travel.insurance.core.domain.MedicalRiskLimitLevel;
 import org.javaguru.travel.insurance.core.repositories.MedicalRiskLimitLevelRepository;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,16 +19,16 @@ class RiskLimitLevelCalculator {
 
     private final MedicalRiskLimitLevelRepository riskLimitLevelRepository;
 
-    BigDecimal calculate(PersonDTO person) {
+    BigDecimal calculate(AgreementDTO agreement) {
         return medicalRiskLimitLevelEnabled
-                ? getCoefficient(person)
+                ? getCoefficient(agreement)
                 : getDefaultValue();
     }
 
-    private BigDecimal getCoefficient(PersonDTO person) {
-        return riskLimitLevelRepository.findByMedicalRiskLimitLevelIc(person.getMedicalRiskLimitLevel())
+    private BigDecimal getCoefficient(AgreementDTO agreement) {
+        return riskLimitLevelRepository.findByMedicalRiskLimitLevelIc(agreement.getMedicalRiskLimitLevel())
                 .map(MedicalRiskLimitLevel::getCoefficient)
-                .orElseThrow(() -> new RuntimeException("Medical risk limit level not found by = " + person.getMedicalRiskLimitLevel()));
+                .orElseThrow(() -> new RuntimeException("Medical risk limit level not found by = " + agreement.getMedicalRiskLimitLevel()));
     }
 
     private static BigDecimal getDefaultValue() {

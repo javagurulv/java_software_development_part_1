@@ -21,6 +21,8 @@ public class AgreementDTO {
 
     private String country;
 
+    private String medicalRiskLimitLevel;
+
     private List<String> selectedRisks;
 
     private List<PersonDTO> persons;
