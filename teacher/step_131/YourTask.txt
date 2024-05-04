@@ -36,6 +36,8 @@ clean code.
 В следующих заданиях мы попробуем применить ее для нашего приложения.
 Обсудите не понятные вам вопросы и детали с ментором.
 
+Начните изучение вот с этой статьи:
+https://habr.com/ru/companies/timeweb/articles/771338/
 
 Hexagonal Architecture, also known as Ports and Adapters Architecture,
 is an architectural pattern that aims to improve the maintainability,
