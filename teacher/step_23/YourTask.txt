@@ -21,3 +21,7 @@
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
+Прочитайте и поэкспериментируйте
+с Lombok аннотациями описанными в статье:
+https://habr.com/ru/articles/812101/
