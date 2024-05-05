@@ -8,10 +8,9 @@ import java.util.Date;
 import java.util.Optional;
 
 @Component
-class DateFromLessThenDateToValidation implements TravelRequestValidation {
+public class DateFromLessThenDateToValidation {
 
-    @Override
-    public Optional<ValidationError> execute(TravelCalculatePremiumRequest request) {
+    public Optional<ValidationError> validateDateFromLessThenDateTo(TravelCalculatePremiumRequest request) {
         Date dateFrom = request.getAgreementDateFrom();
         Date dateTo = request.getAgreementDateTo();
         return (dateFrom != null && dateTo != null

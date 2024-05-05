@@ -10,98 +10,98 @@ public class PersonLevelV2TestCases extends TravelCalculatePremiumControllerV2Te
 
     @Test
     @DisplayName("ERROR_CODE_7 one personFirstName is NULL, must not be empty")
-    public void check_ERROR_CODE_7_NULL() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_7_personFirstName_is_null");
+    public void executeTestCase2() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_2");
     }
 
     @Test
     @DisplayName("ERROR_CODE_7 one personFirstName is empty, must not be empty")
-    public void check_ERROR_CODE_7_EMPTY() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_7_personFirstName_is_empty");
+    public void executeTestCase3() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_3");
     }
 
     @Test
     @DisplayName("ERROR_CODE_7 two personFirstName is empty, must not be empty")
-    public void check_ERROR_CODE_7_two_persons_empty() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_7_two_personFirstName_is_empty");
+    public void executeTestCase4() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_4");
     }
 
     @Test
     @DisplayName("ERROR_CODE_7 two personFirstName is NULL, must not be empty")
-    public void check_ERROR_CODE_7_two_persons_null() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_7_two_personFirstName_is_null");
+    public void executeTestCase5() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_5");
     }
 
     @Test
     @DisplayName("ERROR_CODE_8 one personLastName is empty, must not be empty")
-    public void check_ERROR_CODE_8_EMPTY() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_8_personLastName_is_empty");
+    public void executeTestCase6() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_6");
     }
 
     @Test
     @DisplayName("ERROR_CODE_8 one personLastName is NULL, must not be empty")
-    public void check_ERROR_CODE_8_NULL() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_8_personLastName_is_null");
+    public void executeTestCase7() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_7");
     }
 
     @Test
     @DisplayName("ERROR_CODE_8 two personLastName is NULL, must not be empty")
-    public void check_ERROR_CODE_8_two_personLastName_NULL() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_8_two_personLastName_is_null");
+    public void executeTestCase8() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_8");
     }
 
     @Test
     @DisplayName("ERROR_CODE_8 two personLastName is empty, must not be empty")
-    public void check_ERROR_CODE_8_two_personLastName_EMPTY() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_8_two_personLastName_is_empty");
+    public void executeTestCase9() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_9");
     }
 
     @Test
     @DisplayName("ERROR_CODE_11 one personBirthDate is NULL, must not be empty")
-    public void check_ERROR_CODE_11() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_11_personBirthDate_is_null");
+    public void executeTestCase10() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_10");
     }
 
     @Test
     @DisplayName("ERROR_CODE_11 two personBirthDate is NULL, must not be empty")
-    public void check_ERROR_CODE_11_two_persons() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_11_two_personBirthDate_is_null");
+    public void executeTestCase11() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_11");
     }
 
     @Test
     @DisplayName("ERROR_CODE_12 one personBirthDate must be in the past")
-    public void check_ERROR_CODE_12() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_12_personBirthDate_in_the_future");
+    public void executeTestCase12() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_12");
     }
 
     @Test
     @DisplayName("ERROR_CODE_12 two personBirthDate must be in the past")
-    public void check_ERROR_CODE_12_two_persons() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_12_two_personBirthDate_in_the_future");
+    public void executeTestCase13() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_13");
     }
 
     @Test
     @DisplayName("ERROR_CODE_16 one person personCode is NULL, must not be empty")
-    public void check_ERROR_CODE_16_NULL() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_16_person_code_is_null");
+    public void executeTestCase32() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_32");
     }
 
     @Test
     @DisplayName("ERROR_CODE_16 one person personCode is empty, must not be empty")
-    public void check_ERROR_CODE_16_EMPTY() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_16_person_code_is_empty");
+    public void executeTestCase33() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_33");
     }
 
     @Test
     @DisplayName("ERROR_CODE_16 two persons personCode is NULL, must not be empty")
-    public void check_ERROR_CODE_16_two_persons_NULL() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_16_two_person_code_is_null");
+    public void executeTestCase34() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_34");
     }
 
     @Test
     @DisplayName("ERROR_CODE_16 two persons personCode is empty, must not be empty")
-    public void check_ERROR_CODE_16_two_persons_EMPTY() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_16_two_person_code_is_empty");
+    public void executeTestCase35() throws Exception {
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/test_case_35");
     }
 
 }

@@ -1,21 +1,14 @@
-Ваша задача: добавить в запрос (TravelCalculatePremiumRequest)
-секцию selected_risks и внести соответствующие изменения в Java код,
-чтобы секция selected_risks парсилась в Java класс запроса:
+Ваша задача: написать SQL скрипт по заполнению таблиц
+classifiers и classifier_values значениями для классификатора
+RISK_TYPE.
 
-{
-  "personFirstName" : "Vasja",
-  "personLastName" : "Pupkin",
-  "agreementDateFrom" : "2025-05-25",
-  "agreementDateTo" : "2025-05-29",
-  "selected_risks":["TRAVEL_MEDICAL", "TRAVEL_CANCELLATION", "TRAVEL_LOSS_BAGGAGE"]
-}
+RISK_TYPE возможные значения:
+TRAVEL_MEDICAL
+TRAVEL_CANCELLATION
+TRAVEL_LOSS_BAGGAGE
+TRAVEL_THIRD_PARTY_LIABILITY
+TRAVEL_EVACUATION
+TRAVEL_SPORT_ACTIVITIES
 
-selected_risks - это массив строк, каждая строка содержит IC код
-из классификатора RISK_TYPE.
-
-PS: никаких валидаций и проверок на данном этапе делать не надо.
-После внесения изменений запустите приложение, через Postman
-отправьте запрос с секцией selected_risks и убедитесь в дебаге,
-что в Java коде данные будут доступны для дальнейшей обработки.
-Так же можете проверить залогируется секция selected_risks и ее
-значения в лог файл или нет.
+Созданный SQL скрипт протестируйте на созданной базе данных
+и сохраните в файле database/mySqlDataScript.sql.

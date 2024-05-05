@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelGetNotExportedAgreementUuidsServiceImpl
         implements TravelGetNotExportedAgreementUuidsService {
-    
+
     private final AgreementEntityRepository agreementRepository;
 
     @Override

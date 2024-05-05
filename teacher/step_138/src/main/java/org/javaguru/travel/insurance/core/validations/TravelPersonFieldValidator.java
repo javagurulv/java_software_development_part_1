@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 @Component
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelPersonFieldValidator {
-    
+
     private final List<TravelPersonFieldValidation> personFieldValidations;
 
     List<ValidationErrorDTO> validate(List<PersonDTO> persons) {

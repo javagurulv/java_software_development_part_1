@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelCalculatePremiumRequestValidatorImpl
     implements TravelCalculatePremiumRequestValidator {
-    
+
     private final List<TravelRequestValidation> travelValidations;
 
     @Override
