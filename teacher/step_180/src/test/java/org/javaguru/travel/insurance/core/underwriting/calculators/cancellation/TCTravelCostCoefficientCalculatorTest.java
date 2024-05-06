@@ -24,7 +24,7 @@ class TCTravelCostCoefficientCalculatorTest {
     @Mock private TCTravelCostCoefficientRepository TCTravelCostCoefficientRepository;
 
     @InjectMocks
-    private TCTravelCostCoefficientCalculator calculator;
+    private TravelCostCoefficientCalculator calculator;
 
     private PersonDTO person;
 

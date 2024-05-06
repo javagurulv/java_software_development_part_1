@@ -1,7 +1,7 @@
 package org.javaguru.travel.insurance.core.validations;
 
+import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
-import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -24,7 +24,7 @@ public class TravelCalculatePremiumRequestValidatorImplTest {
 
     @Test
     public void shouldNotReturnErrors() {
-        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
         TravelAgreementFieldValidation validation1 = mock(TravelAgreementFieldValidation.class);
         when(validation1.validate(request)).thenReturn(Optional.empty());
         when(validation1.validateList(request)).thenReturn(List.of());
@@ -51,7 +51,7 @@ public class TravelCalculatePremiumRequestValidatorImplTest {
 
     @Test
     public void shouldReturnSingleAgreementErrors() {
-        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
         TravelAgreementFieldValidation validation1 = mock(TravelAgreementFieldValidation.class);
         when(validation1.validate(request)).thenReturn(Optional.of(new ValidationError()));
         TravelAgreementFieldValidation validation2 = mock(TravelAgreementFieldValidation.class);
@@ -66,7 +66,7 @@ public class TravelCalculatePremiumRequestValidatorImplTest {
 
     @Test
     public void shouldReturnSinglePersonErrors() {
-        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
         TravelPersonFieldValidation validation1 = mock(TravelPersonFieldValidation.class);
         when(validation1.validate(request)).thenReturn(Optional.of(new ValidationError()));
         TravelPersonFieldValidation validation2 = mock(TravelPersonFieldValidation.class);
@@ -81,7 +81,7 @@ public class TravelCalculatePremiumRequestValidatorImplTest {
 
     @Test
     public void shouldReturnListAgreementErrors() {
-        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
         TravelAgreementFieldValidation validation1 = mock(TravelAgreementFieldValidation.class);
         when(validation1.validate(request)).thenReturn(Optional.empty());
         when(validation1.validateList(request)).thenReturn(List.of(new ValidationError()));
@@ -98,7 +98,7 @@ public class TravelCalculatePremiumRequestValidatorImplTest {
 
     @Test
     public void shouldReturnListPersonErrors() {
-        TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
+        TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
         TravelPersonFieldValidation validation1 = mock(TravelPersonFieldValidation.class);
         when(validation1.validate(request)).thenReturn(Optional.empty());
         when(validation1.validateList(request)).thenReturn(List.of(new ValidationError()));

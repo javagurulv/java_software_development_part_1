@@ -1,27 +1,35 @@
-Ваша задача:
+Ваша задача: изучите дизайн паттерн Inversion of Control (IoC).
 
-Узнайте для чего используют библиотеку Lombok.
-(https://www.baeldung.com/intro-to-project-lombok)
+IoC в действительности поддерживает три способа получения внешних
+зависимостей классом:
+- через конструктор;
+- через set метод;
+- через свойство объекта.
 
-Добавьте в проект библиотеку Lombok.
+Попробуйте узнать, когда какой способ лучше применять.
 
-	compileOnly('org.projectlombok:lombok:1.18.24')
-	annotationProcessor('org.projectlombok:lombok:1.18.24')
 
-	testCompileOnly('org.projectlombok:lombok:1.18.24')
-	testAnnotationProcessor('org.projectlombok:lombok:1.18.24')
+Попробуйте применить подход описанный ниже для создания мок объектов
+и внедрения их в качестве зависимостей.
 
-В IntelliJIdea File -> Settings -> "Enable annotation processing"
-поставить галочку!
+JUnit - это библиотека, которая управляет запуском юнит тестов.
+Ее поведение можно расширять, что и сделано с помощью
+@ExtendWith(MockitoExtension.class). Узнайте, что эта штука делает
+под капотом. Так же узнайте что такое аннотации @Mock и @InjectMocks.
 
-Примените Lombok для генерации get/set методов и конструкторов
-для классов запроса и ответа:
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@ExtendWith(MockitoExtension.class)
+class TravelCalculatePremiumServiceImplTest {
 
-Прочитайте и поэкспериментируйте
-с Lombok аннотациями описанными в статье:
-https://habr.com/ru/articles/812101/
+    @Mock private DateTimeService dateTimeService;
+
+    @InjectMocks
+    private TravelCalculatePremiumServiceImpl service;
+
+    private TravelCalculatePremiumRequest request;
+
+    @BeforeEach
+    public void setUp() {
+        request = createRequestWithAllFields();
+        when(dateTimeService.getDaysBetween(request.getAgreementDateFrom(), request.getAgreementDateTo())).thenReturn(0L);
+    }
