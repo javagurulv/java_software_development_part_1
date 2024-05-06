@@ -33,8 +33,6 @@ class PersonFieldAnnotationValidationTest {
     public void shouldNotReturnError() {
         AgreementDTO agreement = mock(AgreementDTO.class);
         PersonDTO person = mock(PersonDTO.class);
-        when(person.getPersonFirstName()).thenReturn("Vasja");
-        when(person.getPersonLastName()).thenReturn("Pupkin");
         List<ValidationErrorDTO> errors = validation.validateList(agreement, person);
         assertTrue(errors.isEmpty());
         verifyNoInteractions(errorFactory);

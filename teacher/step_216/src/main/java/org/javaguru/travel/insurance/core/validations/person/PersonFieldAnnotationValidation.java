@@ -9,10 +9,10 @@ import org.javaguru.travel.insurance.core.util.Placeholder;
 import org.javaguru.travel.insurance.core.validations.ValidationErrorFactory;
 import org.springframework.stereotype.Component;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
