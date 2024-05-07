@@ -32,9 +32,9 @@ https://mvnrepository.com/repos/central
 Узнайте больше про Gradle плагины.
 
 
-	sourceCompatibility = '18'
-	targetCompatibility = '18'
-Означает, что мы пишем и компилим проект с использованием JDK 18.
+	sourceCompatibility = '21'
+	targetCompatibility = '21'
+Означает, что мы пишем и компилим проект с использованием JDK 21.
 
 
 	compileJava {
