@@ -14,3 +14,9 @@
 TravelCalculatePremiumServiceImpl.
 4. Воспользуйтесь аннотацией @EnableTransactionManagement установив ее на классе
 InsuranceApplication для того, чтобы явно включить управление транзакциями в приложении.
+
+Прочитайте статью:
+https://habr.com/ru/companies/alfa/articles/812417/
+
+Узнайте про транзакции, ACID, CAP теорему
+и уровни изоляций транзакций.
