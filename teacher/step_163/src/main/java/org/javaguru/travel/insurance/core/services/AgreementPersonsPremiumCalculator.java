@@ -16,7 +16,7 @@ class AgreementPersonsPremiumCalculator {
     void calculateRiskPremiums(AgreementDTO agreement) {
         agreement.getPersons().forEach(person -> {
             TravelPremiumCalculationResult calculationResult = premiumUnderwriting.calculatePremium(agreement, person);
-            person.setRisks(calculationResult.getRisks());
+            person.setRisks(calculationResult.risks());
         });
     }
 

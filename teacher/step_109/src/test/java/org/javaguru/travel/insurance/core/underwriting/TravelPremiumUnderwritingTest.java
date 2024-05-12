@@ -32,7 +32,7 @@ public class TravelPremiumUnderwritingTest {
         );
         when(selectedRisksPremiumCalculator.calculatePremiumForAllRisks(request)).thenReturn(riskPremiums);
         TravelPremiumCalculationResult premiumCalculationResult = premiumUnderwriting.calculatePremium(request);
-        assertEquals(premiumCalculationResult.getTotalPremium(), new BigDecimal(2));
+        assertEquals(premiumCalculationResult.totalPremium(), new BigDecimal(2));
     }
 
 }
