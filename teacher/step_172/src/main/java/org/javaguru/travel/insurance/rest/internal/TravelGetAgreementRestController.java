@@ -41,9 +41,6 @@ public class TravelGetAgreementRestController {
 
 	private TravelGetAgreementResponse processRequest(String uuid) {
 		requestLogger.log(uuid);
-		//TravelGetAgreementCoreCommand coreCommand = dtoConverter.buildCoreCommand(uuid);
-		//TravelGetAgreementCoreResult coreResult = agreementService.getAgreement(coreCommand);
-		//TravelGetAgreementResponse response = dtoV2Converter.buildResponse(coreResult);
 
 		TravelGetAgreementResponse response = new TravelGetAgreementResponse();
 		response.setAgreementDateFrom(new Date());
