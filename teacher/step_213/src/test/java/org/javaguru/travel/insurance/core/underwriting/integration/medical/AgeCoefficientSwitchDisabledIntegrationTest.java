@@ -53,7 +53,7 @@ public class AgeCoefficientSwitchDisabledIntegrationTest {
 
         TravelPremiumCalculationResult result = premiumUnderwriting.calculatePremium(agreement, person);
 
-        assertEquals(result.getTotalPremium(), new BigDecimal("446.25"));
+        assertEquals(result.totalPremium(), new BigDecimal("446.25"));
     }
 
     private Date createDate(String dateStr) {

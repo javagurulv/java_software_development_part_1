@@ -53,7 +53,7 @@ public class MedicalRiskLimitLevelSwitchEnabledTest {
 
         TravelPremiumCalculationResult result = premiumUnderwriting.calculatePremium(agreement, person);
 
-        assertEquals(result.getTotalPremium(), new BigDecimal("490.88"));
+        assertEquals(result.totalPremium(), new BigDecimal("490.88"));
     }
 
     private Date createDate(String dateStr) {

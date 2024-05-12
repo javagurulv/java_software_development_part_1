@@ -52,7 +52,7 @@ public class MidicalRiskLimitLevelSwitchDisabledTest {
 
         TravelPremiumCalculationResult result = premiumUnderwriting.calculatePremium(agreement, person);
 
-        assertEquals(result.getTotalPremium(), new BigDecimal("327.25"));
+        assertEquals(result.totalPremium(), new BigDecimal("327.25"));
     }
 
     private Date createDate(String dateStr) {
