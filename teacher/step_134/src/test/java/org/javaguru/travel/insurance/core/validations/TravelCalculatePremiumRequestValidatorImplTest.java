@@ -53,9 +53,9 @@ public class TravelCalculatePremiumRequestValidatorImplTest {
     public void shouldReturnSingleAgreementErrors() {
         TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
         TravelAgreementFieldValidation validation1 = mock(TravelAgreementFieldValidation.class);
-        when(validation1.validate(request)).thenReturn(Optional.of(new ValidationError()));
+        when(validation1.validate(request)).thenReturn(Optional.of(new ValidationError("errorCode", "errorMessage")));
         TravelAgreementFieldValidation validation2 = mock(TravelAgreementFieldValidation.class);
-        when(validation2.validate(request)).thenReturn(Optional.of(new ValidationError()));
+        when(validation2.validate(request)).thenReturn(Optional.of(new ValidationError("errorCode", "errorMessage")));
         List<TravelAgreementFieldValidation> agreementValidations = List.of(validation1, validation2);
         List<TravelPersonFieldValidation> personValidations = List.of();
         ReflectionTestUtils.setField(validator, "agreementFieldValidations", agreementValidations);
@@ -68,9 +68,9 @@ public class TravelCalculatePremiumRequestValidatorImplTest {
     public void shouldReturnSinglePersonErrors() {
         TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
         TravelPersonFieldValidation validation1 = mock(TravelPersonFieldValidation.class);
-        when(validation1.validate(request)).thenReturn(Optional.of(new ValidationError()));
+        when(validation1.validate(request)).thenReturn(Optional.of(new ValidationError("errorCode", "errorMessage")));
         TravelPersonFieldValidation validation2 = mock(TravelPersonFieldValidation.class);
-        when(validation2.validate(request)).thenReturn(Optional.of(new ValidationError()));
+        when(validation2.validate(request)).thenReturn(Optional.of(new ValidationError("errorCode", "errorMessage")));
         List<TravelPersonFieldValidation> personValidations = List.of(validation1, validation2);
         List<TravelAgreementFieldValidation> agreementValidations = List.of();
         ReflectionTestUtils.setField(validator, "agreementFieldValidations", agreementValidations);
@@ -84,10 +84,10 @@ public class TravelCalculatePremiumRequestValidatorImplTest {
         TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
         TravelAgreementFieldValidation validation1 = mock(TravelAgreementFieldValidation.class);
         when(validation1.validate(request)).thenReturn(Optional.empty());
-        when(validation1.validateList(request)).thenReturn(List.of(new ValidationError()));
+        when(validation1.validateList(request)).thenReturn(List.of(new ValidationError("errorCode", "errorMessage")));
         TravelAgreementFieldValidation validation2 = mock(TravelAgreementFieldValidation.class);
         when(validation2.validate(request)).thenReturn(Optional.empty());
-        when(validation2.validateList(request)).thenReturn(List.of(new ValidationError()));
+        when(validation2.validateList(request)).thenReturn(List.of(new ValidationError("errorCode", "errorMessage")));
         List<TravelAgreementFieldValidation> agreementValidations = List.of(validation1, validation2);
         List<TravelPersonFieldValidation> personValidations = List.of();
         ReflectionTestUtils.setField(validator, "agreementFieldValidations", agreementValidations);
@@ -101,10 +101,10 @@ public class TravelCalculatePremiumRequestValidatorImplTest {
         TravelCalculatePremiumRequestV1 request = mock(TravelCalculatePremiumRequestV1.class);
         TravelPersonFieldValidation validation1 = mock(TravelPersonFieldValidation.class);
         when(validation1.validate(request)).thenReturn(Optional.empty());
-        when(validation1.validateList(request)).thenReturn(List.of(new ValidationError()));
+        when(validation1.validateList(request)).thenReturn(List.of(new ValidationError("errorCode", "errorMessage")));
         TravelPersonFieldValidation validation2 = mock(TravelPersonFieldValidation.class);
         when(validation2.validate(request)).thenReturn(Optional.empty());
-        when(validation2.validateList(request)).thenReturn(List.of(new ValidationError()));
+        when(validation2.validateList(request)).thenReturn(List.of(new ValidationError("errorCode", "errorMessage")));
         List<TravelAgreementFieldValidation> agreementValidations = List.of();
         List<TravelPersonFieldValidation> personValidations = List.of(validation1, validation2);
         ReflectionTestUtils.setField(validator, "agreementFieldValidations", agreementValidations);

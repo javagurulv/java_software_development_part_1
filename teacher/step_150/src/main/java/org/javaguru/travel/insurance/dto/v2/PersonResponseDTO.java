@@ -28,8 +28,6 @@ public class PersonResponseDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date personBirthDate;
 
-    private String medicalRiskLimitLevel;
-
     @JsonSerialize(using = BigDecimalSerializer.class)
     private BigDecimal personPremium;
 

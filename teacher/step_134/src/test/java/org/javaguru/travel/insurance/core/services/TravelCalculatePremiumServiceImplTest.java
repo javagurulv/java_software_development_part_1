@@ -48,8 +48,8 @@ public class TravelCalculatePremiumServiceImplTest {
         when(requestValidator.validate(request)).thenReturn(errors);
         TravelCalculatePremiumResponseV1 response = service.calculatePremium(request);
         assertEquals(response.getErrors().size(), 1);
-        assertEquals(response.getErrors().get(0).getErrorCode(), "field");
-        assertEquals(response.getErrors().get(0).getDescription(), "errorMessage");
+        assertEquals(response.getErrors().get(0).errorCode(), "field");
+        assertEquals(response.getErrors().get(0).description(), "errorMessage");
     }
 
     @Test
@@ -59,8 +59,8 @@ public class TravelCalculatePremiumServiceImplTest {
         when(requestValidator.validate(request)).thenReturn(errors);
         TravelCalculatePremiumResponseV1 response = service.calculatePremium(request);
         assertEquals(response.getErrors().size(), 1);
-        assertEquals(response.getErrors().get(0).getErrorCode(), "field");
-        assertEquals(response.getErrors().get(0).getDescription(), "errorMessage");
+        assertEquals(response.getErrors().get(0).errorCode(), "field");
+        assertEquals(response.getErrors().get(0).description(), "errorMessage");
     }
 
     @Test

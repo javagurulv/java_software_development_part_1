@@ -48,8 +48,8 @@ public class TravelCalculatePremiumRequestValidatorTest {
     @Test
     public void shouldReturnError() {
         TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
-        when(personFirstNameValidation.validatePersonFirstName(request)).thenReturn(Optional.of(new ValidationError()));
-        when(personLastNameValidation.validatePersonLastName(request)).thenReturn(Optional.of(new ValidationError()));
+        when(personFirstNameValidation.validatePersonFirstName(request)).thenReturn(Optional.of(new ValidationError("errorCode", "description")));
+        when(personLastNameValidation.validatePersonLastName(request)).thenReturn(Optional.of(new ValidationError("errorCode", "description")));
         when(agreementDateFromValidation.validateAgreementDateFrom(request)).thenReturn(Optional.of(new ValidationError()));
         when(agreementDateToValidation.validateAgreementDateTo(request)).thenReturn(Optional.of(new ValidationError()));
         when(dateFromLessThenDateToValidation.validateDateFromLessThenDateTo(request)).thenReturn(Optional.of(new ValidationError()));

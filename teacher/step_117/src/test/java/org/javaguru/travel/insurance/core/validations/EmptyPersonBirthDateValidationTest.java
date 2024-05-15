@@ -19,7 +19,8 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class EmptyPersonBirthDateValidationTest {
 
-    @Mock private ValidationErrorFactory errorFactory;
+    @Mock
+    private ValidationErrorFactory errorFactory;
 
     @InjectMocks
     private EmptyPersonBirthDateValidation validation;
@@ -40,8 +41,8 @@ class EmptyPersonBirthDateValidationTest {
                 .thenReturn(new ValidationError("ERROR_CODE_11", "Person Birth Date must be provided when TRAVEL_MEDICAL is selected"));
         Optional<ValidationError> errorOpt = validation.validate(request);
         assertTrue(errorOpt.isPresent());
-        assertEquals("ERROR_CODE_11", errorOpt.get().getErrorCode());
-        assertEquals("Person Birth Date must be provided when TRAVEL_MEDICAL is selected", errorOpt.get().getDescription());
+        assertEquals("ERROR_CODE_11", errorOpt.get().errorCode());
+        assertEquals("Person Birth Date must be provided when TRAVEL_MEDICAL is selected", errorOpt.get().description());
     }
 
 }

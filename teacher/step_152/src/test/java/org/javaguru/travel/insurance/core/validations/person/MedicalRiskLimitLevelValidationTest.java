@@ -16,8 +16,6 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
@@ -72,7 +70,7 @@ class MedicalRiskLimitLevelValidationTest {
         when(classifierValueRepository.findByClassifierTitleAndIc("MEDICAL_RISK_LIMIT_LEVEL", "LEVEL_10000"))
                 .thenReturn(Optional.empty());
         ValidationErrorDTO validationError = mock(ValidationErrorDTO.class);
-        when(errorFactory.buildError(eq("ERROR_CODE_14"), any())).thenReturn(validationError);
+        when(errorFactory.buildError("ERROR_CODE_14")).thenReturn(validationError);
         Optional<ValidationErrorDTO> validationErrorOpt = validation.validate(agreement, person);
         assertTrue(validationErrorOpt.isPresent());
         assertSame(validationError, validationErrorOpt.get());
