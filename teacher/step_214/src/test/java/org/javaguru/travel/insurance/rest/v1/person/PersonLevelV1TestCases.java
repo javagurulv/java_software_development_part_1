@@ -56,10 +56,4 @@ public class PersonLevelV1TestCases extends TravelCalculatePremiumControllerV1Te
         executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_16_personCode_is_empty");
     }
 
-    @Test
-    @DisplayName("ERROR_CODE_21 personCode invalid format")
-    public void check_ERROR_CODE_21_InvalidFormat() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_21_personCode_invalid_format");
-    }
-
 }

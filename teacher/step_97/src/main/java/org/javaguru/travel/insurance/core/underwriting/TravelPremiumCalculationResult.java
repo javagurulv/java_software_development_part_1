@@ -1,11 +1,20 @@
 package org.javaguru.travel.insurance.core.underwriting;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.javaguru.travel.insurance.dto.RiskPremium;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public record TravelPremiumCalculationResult(
-        BigDecimal totalPremium,
-        List<RiskPremium> riskPremiums
-) {}
+@Getter
+@Setter
+@AllArgsConstructor
+public class TravelPremiumCalculationResult {
+
+    private BigDecimal totalPremium;
+
+    private List<RiskPremium> riskPremiums;
+
+}

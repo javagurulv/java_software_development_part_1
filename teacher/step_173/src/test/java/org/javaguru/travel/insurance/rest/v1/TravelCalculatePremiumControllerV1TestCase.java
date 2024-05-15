@@ -32,22 +32,13 @@ public abstract class TravelCalculatePremiumControllerV1TestCase {
     protected void executeAndCompare() throws Exception {
         executeAndCompare(
                 "rest/v1/" + getTestCaseFolderName() + "/request.json",
-                "rest/v1/" + getTestCaseFolderName() + "/response.json",
-                false
+                "rest/v1/" + getTestCaseFolderName() + "/response.json"
         );
     }
 
-    protected void executeAndCompare(boolean ignoreUUIDValue) throws Exception {
-        executeAndCompare(
-                "rest/v1/" + getTestCaseFolderName() + "/request.json",
-                "rest/v1/" + getTestCaseFolderName() + "/response.json",
-                ignoreUUIDValue
-        );
-    }
 
-    protected void executeAndCompare(String jsonRequestFilePath,
-                                     String jsonResponseFilePath,
-                                     boolean ignoreUUIDValue) throws Exception {
+        protected void executeAndCompare(String jsonRequestFilePath,
+                                     String jsonResponseFilePath) throws Exception {
         String jsonRequest = jsonFileReader.readJsonFromFile(jsonRequestFilePath);
 
         MvcResult result = mockMvc.perform(post(BASE_URL)
@@ -60,20 +51,11 @@ public abstract class TravelCalculatePremiumControllerV1TestCase {
 
         String jsonResponse = jsonFileReader.readJsonFromFile(jsonResponseFilePath);
 
-        if (ignoreUUIDValue) {
-            assertJson(responseBodyContent)
-                    .where()
-                    .keysInAnyOrder()
-                    .arrayInAnyOrder()
-                    .at("/uuid").isNotEmpty()
-                    .isEqualTo(jsonResponse);
-        } else {
-            assertJson(responseBodyContent)
-                    .where()
-                    .keysInAnyOrder()
-                    .arrayInAnyOrder()
-                    .isEqualTo(jsonResponse);
-        }
+        assertJson(responseBodyContent)
+                .where()
+                .keysInAnyOrder()
+                .arrayInAnyOrder()
+                .isEqualTo(jsonResponse);
     }
 
 }

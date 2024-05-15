@@ -25,10 +25,10 @@ public class TravelCalculatePremiumControllerTest {
     @Autowired private JsonFileReader jsonFileReader;
 
     @Test
-    public void successRequestTravelMedical() throws Exception {
+    public void successRequest() throws Exception {
         executeAndCompare(
-                "rest/TravelCalculatePremiumRequest_travel_medical_success.json",
-                "rest/TravelCalculatePremiumResponse_travel_medical_success.json"
+                "rest/TravelCalculatePremiumRequest_success.json",
+                "rest/TravelCalculatePremiumResponse_success.json"
         );
     }
 

@@ -1,4 +1,3 @@
-Продолжаем работу над заданием:
 Ментор предлагает воспользоваться классом ClassifierValueRepository
 и его методом findByClassifierTitleAndIc(...) для создания
 новой валидации. Новая валидация должна проверять значения selected_risks
@@ -8,46 +7,23 @@
 валидация должна возвращать ошибку:
 Риск с ic = NOT_EXISTING_RISK не поддерживается системой.
 
+Перед тем как читать дальше: проанализируйте можно ли с текущей
+реализацией создать валидацию, которая бы возвращала не одну ошибку,
+а список ошибок?
 
-Для реализации поставленного выше задания ментор предлагает
-внести в код следующие архитектурные изменения:
+interface TravelRequestValidation {
 
-В интерфейсе TravelRequestValidation переименовать метод
-execute(...) -> validate(...).
-
-Добавить в интерфейс TravelRequestValidation новый метод:
-List<ValidationError> validateList(TravelCalculatePremiumRequest request);
-Этот новый метод позволит возвращать список ошибок при валидации.
-
-Для минимизации эффекта изменений в интерфейсе TravelRequestValidation
-на уже существующий код (чтобы не реализовывать новый метод в каждом
-классе валидации) предлагается создать абстрактный класс с дефолтными
-реализациями методов:
-
-abstract class TravelRequestValidationImpl
-    implements TravelRequestValidation {
-
-    @Override
-    Optional<ValidationError> validate(TravelCalculatePremiumRequest request) {
-        return Optional.empty();
-    }
-
-    @Override
-    List<ValidationError> validateList(TravelCalculatePremiumRequest request) {
-        return List.of();
-    }
+    Optional<ValidationError> execute(TravelCalculatePremiumRequest request);
 
 }
 
-После этого все классы валидаций должны наследоваться от
-TravelRequestValidationImpl и переопределять только тот метод
-валидации, который им нужен.
+Без изменения интерфейса TravelRequestValidation это сделать невозможно.
 
+Перед тем как читать дальше: попробуйте подумать и предложить идеи
+какие изменения нужно внести в код для того, чтобы стало возможно создать
+валидацию, которая бы возвращала список ошибок. Было бы хорошо
+оставить поддержку двух вариантов:
+- старого, когда валидация возвращает одну ошибку;
+- нового, когда валидация возвращает список ошибок.
 
-Далее внести в класс TravelCalculatePremiumRequestValidatorImpl
-изменения, так чтобы он вызывал у валидации оба метода
-(как validate(...) так и validateList(...)) и собирал полученные
-ошибки в один список.
-
-
-Ваша задача: реализовать предложение ментора.
+Попробуйте реализовать и обсудите ваши идеи с ментором.

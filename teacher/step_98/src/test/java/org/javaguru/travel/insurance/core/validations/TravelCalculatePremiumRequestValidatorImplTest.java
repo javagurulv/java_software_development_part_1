@@ -43,9 +43,9 @@ public class TravelCalculatePremiumRequestValidatorImplTest {
     public void shouldReturnSingleErrors() {
         TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
         TravelRequestValidation validation1 = mock(TravelRequestValidation.class);
-        when(validation1.validate(request)).thenReturn(Optional.of(new ValidationError("errorCode", "description")));
+        when(validation1.validate(request)).thenReturn(Optional.of(new ValidationError()));
         TravelRequestValidation validation2 = mock(TravelRequestValidation.class);
-        when(validation2.validate(request)).thenReturn(Optional.of(new ValidationError("errorCode", "description")));
+        when(validation2.validate(request)).thenReturn(Optional.of(new ValidationError()));
         List<TravelRequestValidation> travelValidations = List.of(
                 validation1, validation2
         );
@@ -59,10 +59,10 @@ public class TravelCalculatePremiumRequestValidatorImplTest {
         TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
         TravelRequestValidation validation1 = mock(TravelRequestValidation.class);
         when(validation1.validate(request)).thenReturn(Optional.empty());
-        when(validation1.validateList(request)).thenReturn(List.of(new ValidationError("errorCode", "description")));
+        when(validation1.validateList(request)).thenReturn(List.of(new ValidationError()));
         TravelRequestValidation validation2 = mock(TravelRequestValidation.class);
         when(validation2.validate(request)).thenReturn(Optional.empty());
-        when(validation2.validateList(request)).thenReturn(List.of(new ValidationError("errorCode", "description")));
+        when(validation2.validateList(request)).thenReturn(List.of(new ValidationError()));
         List<TravelRequestValidation> travelValidations = List.of(
                 validation1, validation2
         );

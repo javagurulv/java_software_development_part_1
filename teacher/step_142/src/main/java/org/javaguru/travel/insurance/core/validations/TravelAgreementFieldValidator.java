@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 @Component
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelAgreementFieldValidator {
-    
+
     private final List<TravelAgreementFieldValidation> agreementFieldValidations;
 
     List<ValidationErrorDTO> validate(AgreementDTO agreement) {
