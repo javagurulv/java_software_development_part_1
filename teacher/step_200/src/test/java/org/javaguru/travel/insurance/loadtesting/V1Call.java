@@ -7,6 +7,11 @@ class V1Call extends CommonCall implements Runnable {
 
     private static final String CALCULATE_PREMIUM_V1_LOCAL_URL = "http://localhost:8080/insurance/travel/api/v1/";
     private JsonFileReader jsonFileReader = new JsonFileReader();
+    private LoadTestingStatistic statistic;
+
+    public V1Call(LoadTestingStatistic statistic) {
+        this.statistic = statistic;
+    }
 
     @Override
     public void run() {
@@ -17,6 +22,7 @@ class V1Call extends CommonCall implements Runnable {
         stopwatch.stop();
         long elapsedMillis = stopwatch.elapsed().toMillis();
         System.out.println("Request processing time (ms): " + elapsedMillis);
+        statistic.addExecutionTime(elapsedMillis);
     }
 
 }

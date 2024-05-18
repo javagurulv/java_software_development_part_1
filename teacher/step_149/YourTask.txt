@@ -17,3 +17,7 @@ TravelCalculatePremiumCoreResult -> TravelCalculatePremiumResponseV1
 этот код в отдельные классы, например:
 DtoV1Converter и воспользуйтесь этим классом как в /rest/v1,
 так и в /web/v1. Класс DtoV1Converter положите в пакет /dto/v1.
+
+PS: не забудьте по окончанию выполнения шага создать и заполнить
+файл /documentation/Step_X_description.txt. Формат заполнения этого
+файла описан в step_1 в файле Learning_reflection.txt.

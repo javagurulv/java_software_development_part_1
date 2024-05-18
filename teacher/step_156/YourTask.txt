@@ -1,3 +1,7 @@
 Ваша задача: по аналогии с AgreementDTOBuilder создайте билдер для
 класса PersonDTO и воспользуйтесь им в коде тестового класса
 AgreementDateFromValidationIntegrationTest.
+
+PS: не забудьте по окончанию выполнения шага создать и заполнить
+файл /documentation/Step_X_description.txt. Формат заполнения этого
+файла описан в step_1 в файле Learning_reflection.txt.

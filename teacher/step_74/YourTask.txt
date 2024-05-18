@@ -51,3 +51,7 @@ testImplementation('uk.org.webcompere:model-assert:1.0.0')
                     .keysInAnyOrder()
                     .arrayInAnyOrder()
                 .isEqualTo(jsonResponse);
+
+PS: не забудьте по окончанию выполнения шага создать и заполнить
+файл /documentation/Step_X_description.txt. Формат заполнения этого
+файла описан в step_1 в файле Learning_reflection.txt.

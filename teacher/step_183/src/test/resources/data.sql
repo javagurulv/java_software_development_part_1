@@ -213,3 +213,19 @@ VALUES(10000, 19999.99, 100.0);
 
 INSERT INTO travel_cancellation_travel_cost_coefficient(travel_cost_from, travel_cost_to, coefficient)
 VALUES(20000, 1000000, 500.0);
+
+
+INSERT INTO travel_cancellation_age_coefficient(age_from, age_to, coefficient)
+VALUES(0, 9, 5.0);
+
+INSERT INTO travel_cancellation_age_coefficient(age_from, age_to, coefficient)
+VALUES(10, 17, 10.0);
+
+INSERT INTO travel_cancellation_age_coefficient(age_from, age_to, coefficient)
+VALUES(18, 39, 20.0);
+
+INSERT INTO travel_cancellation_age_coefficient(age_from, age_to, coefficient)
+VALUES(40, 64, 30.0);
+
+INSERT INTO travel_cancellation_age_coefficient(age_from, age_to, coefficient)
+VALUES(65, 200, 50.0);

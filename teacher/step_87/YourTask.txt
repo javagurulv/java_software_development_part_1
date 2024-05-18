@@ -11,3 +11,7 @@ https://refactoring.guru/extract-method
 https://www.jetbrains.com/help/idea/extract-method.html
 https://refactoring.com/catalog/extractFunction.html
 https://martinfowler.com/articles/class-too-large.html
+
+PS: не забудьте по окончанию выполнения шага создать и заполнить
+файл /documentation/Step_X_description.txt. Формат заполнения этого
+файла описан в step_1 в файле Learning_reflection.txt.

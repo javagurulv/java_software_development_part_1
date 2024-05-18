@@ -16,3 +16,7 @@ Ruslan: https://www.youtube.com/watch?v=qeXzUX9JCns
 https://spring.io/guides/gs/accessing-data-jpa/
 https://www.baeldung.com/spring-data-jpa-query
 https://reflectoring.io/spring-boot-data-jpa-test/
+
+PS: не забудьте по окончанию выполнения шага создать и заполнить
+файл /documentation/Step_X_description.txt. Формат заполнения этого
+файла описан в step_1 в файле Learning_reflection.txt.

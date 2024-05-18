@@ -18,3 +18,7 @@ TravelPremiumCalculationResult calculatePremium(AgreementDTO agreement, PersonDT
 4. Переведите класс TravelPremiumUnderwritingImpl на использование
 классов из пакета /core/api, и измените его сигнатуру метода согласно
 сделанным в пункте 4 изменениям.
+
+PS: не забудьте по окончанию выполнения шага создать и заполнить
+файл /documentation/Step_X_description.txt. Формат заполнения этого
+файла описан в step_1 в файле Learning_reflection.txt.

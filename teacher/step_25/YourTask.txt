@@ -25,3 +25,7 @@
 Прочитайте и поэкспериментируйте
 с Lombok аннотациями описанными в статье:
 https://habr.com/ru/articles/812101/
+
+PS: не забудьте по окончанию выполнения шага создать и заполнить
+файл /documentation/Step_X_description.txt. Формат заполнения этого
+файла описан в step_1 в файле Learning_reflection.txt.

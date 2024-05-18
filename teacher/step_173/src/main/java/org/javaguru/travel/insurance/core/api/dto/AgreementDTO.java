@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class AgreementDTO {
 
+    private String uuid;
     private Date agreementDateFrom;
 
     private Date agreementDateTo;

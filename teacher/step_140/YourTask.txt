@@ -7,3 +7,7 @@
 3. Скопировать в /version_2 пакет /core/validations/person + тесты.
 6. Перевести скопированные /core/validations/person + тесты на
    использование классов из пакета /core/api.
+
+PS: не забудьте по окончанию выполнения шага создать и заполнить
+файл /documentation/Step_X_description.txt. Формат заполнения этого
+файла описан в step_1 в файле Learning_reflection.txt.

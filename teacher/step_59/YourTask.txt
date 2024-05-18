@@ -10,3 +10,7 @@ PS: воспользуйтесь интернетом, найдите решен
 
 Примерный ожидаемый результат на консоли:
 2023-03-13 07:43:25,915 [http-nio-8080-exec-4] INFO  l.j.j.i.r.TravelCalculatePremiumRequestLogger - REQUEST: {"personFirstName":"Vasja","personLastName":"Pupkin","agreementDateFrom":"2025-01-01","agreementDateTo":"2025-01-10"}
+
+PS: не забудьте по окончанию выполнения шага создать и заполнить
+файл /documentation/Step_X_description.txt. Формат заполнения этого
+файла описан в step_1 в файле Learning_reflection.txt.

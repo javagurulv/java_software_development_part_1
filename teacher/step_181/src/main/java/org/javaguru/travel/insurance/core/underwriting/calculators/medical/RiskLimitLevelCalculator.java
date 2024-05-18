@@ -3,8 +3,8 @@ package org.javaguru.travel.insurance.core.underwriting.calculators.medical;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
-import org.javaguru.travel.insurance.core.domain.MedicalRiskLimitLevel;
-import org.javaguru.travel.insurance.core.repositories.MedicalRiskLimitLevelRepository;
+import org.javaguru.travel.insurance.core.domain.TMMedicalRiskLimitLevel;
+import org.javaguru.travel.insurance.core.repositories.TMMedicalRiskLimitLevelRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +17,7 @@ class RiskLimitLevelCalculator {
     @Value( "${medical.risk.limit.level.enabled:false}" )
     private Boolean medicalRiskLimitLevelEnabled;
 
-    private final MedicalRiskLimitLevelRepository riskLimitLevelRepository;
+    private final TMMedicalRiskLimitLevelRepository riskLimitLevelRepository;
 
     BigDecimal calculate(PersonDTO person) {
         return medicalRiskLimitLevelEnabled
@@ -27,7 +27,7 @@ class RiskLimitLevelCalculator {
 
     private BigDecimal getCoefficient(PersonDTO person) {
         return riskLimitLevelRepository.findByMedicalRiskLimitLevelIc(person.getMedicalRiskLimitLevel())
-                .map(MedicalRiskLimitLevel::getCoefficient)
+                .map(TMMedicalRiskLimitLevel::getCoefficient)
                 .orElseThrow(() -> new RuntimeException("Medical risk limit level not found by = " + person.getMedicalRiskLimitLevel()));
     }
 

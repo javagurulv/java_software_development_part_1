@@ -13,7 +13,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Component@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
+@Component
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelAgreementFieldValidator {
     
     private final List<TravelAgreementFieldValidation> agreementFieldValidations;

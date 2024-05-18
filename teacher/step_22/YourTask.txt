@@ -106,3 +106,7 @@ Best books about JUnit and Testing (в интернете можно найти 
 3. https://www.amazon.com/JUnit-Action-Second-Edition-Tahchiev/dp/1935182021
 4. https://www.amazon.com/Effective-Unit-Testing-guide-developers/dp/1935182579
 5. https://www.amazon.com/Practical-Unit-Testing-JUnit-Mockito/dp/8393489393
+
+PS: не забудьте по окончанию выполнения шага создать и заполнить
+файл /documentation/Step_X_description.txt. Формат заполнения этого
+файла описан в step_1 в файле Learning_reflection.txt.

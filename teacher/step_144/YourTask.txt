@@ -9,3 +9,7 @@ List<RiskDTO> calculatePremiumForAllRisks(AgreementDTO agreement, PersonDTO pers
 а так же сделайте нужные изменения в коде класса.
 Данный класс должен по полису и персоне рассчитывать все выбранные
 риски для переданной в качестве параметра персоне.
+
+PS: не забудьте по окончанию выполнения шага создать и заполнить
+файл /documentation/Step_X_description.txt. Формат заполнения этого
+файла описан в step_1 в файле Learning_reflection.txt.

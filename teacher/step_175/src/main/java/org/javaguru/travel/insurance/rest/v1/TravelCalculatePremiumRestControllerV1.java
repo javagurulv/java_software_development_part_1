@@ -22,11 +22,11 @@ public class TravelCalculatePremiumRestControllerV1 {
 	private final TravelRestRequestExecutionTimeLogger executionTimeLogger;
 	private final TravelCalculatePremiumService calculatePremiumService;
 	private final DtoV1Converter dtoV1Converter;
-
-	TravelCalculatePremiumRestControllerV1(TravelCalculatePremiumRequestLoggerV1 requestLogger,
-										   TravelCalculatePremiumResponseLoggerV1 responseLogger,
-										   TravelRestRequestExecutionTimeLogger executionTimeLogger,
-										   TravelCalculatePremiumService calculatePremiumService,
+	
+	TravelCalculatePremiumRestControllerV1(TravelCalculatePremiumRequestLoggerV1 requestLogger, 
+										   TravelCalculatePremiumResponseLoggerV1 responseLogger, 
+										   TravelRestRequestExecutionTimeLogger executionTimeLogger, 
+										   TravelCalculatePremiumService calculatePremiumService, 
 										   DtoV1Converter dtoV1Converter) {
 		this.requestLogger = requestLogger;
 		this.responseLogger = responseLogger;

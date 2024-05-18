@@ -10,3 +10,7 @@ age_from, age_to, coefficient
 18         40       1.1
 41         65       1.2
 66         150      1.5
+
+PS: не забудьте по окончанию выполнения шага создать и заполнить
+файл /documentation/Step_X_description.txt. Формат заполнения этого
+файла описан в step_1 в файле Learning_reflection.txt.

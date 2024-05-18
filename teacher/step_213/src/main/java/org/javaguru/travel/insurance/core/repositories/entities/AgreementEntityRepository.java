@@ -11,7 +11,9 @@ public interface AgreementEntityRepository extends JpaRepository<AgreementEntity
 
     Optional<AgreementEntity> findByUuid(String uuid);
 
-    @Query("select agr.uuid from AgreementEntity agr")
-    List<String> getAllAgreementUuids();
+    @Query(value = "SELECT agr.uuid " +
+            "FROM agreements agr " +
+            "WHERE agr.uuid NOT IN (SELECT agreement_uuid FROM agreements_xml_export)", nativeQuery = true)
+    List<String> getNotExportedAgreementUuids();
 
 }

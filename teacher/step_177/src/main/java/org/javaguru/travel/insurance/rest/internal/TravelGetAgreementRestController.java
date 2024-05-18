@@ -22,10 +22,10 @@ public class TravelGetAgreementRestController {
 	private final TravelGetAgreementService getAgreementService;
 	private final GetAgreementDtoConverter dtoConverter;
 
-	TravelGetAgreementRestController(TravelGetAgreementRequestLogger requestLogger,
-									 TravelGetAgreementResponseLogger responseLogger,
-									 TravelRestRequestExecutionTimeLogger executionTimeLogger,
-									 TravelGetAgreementService getAgreementService,
+	TravelGetAgreementRestController(TravelGetAgreementRequestLogger requestLogger, 
+									 TravelGetAgreementResponseLogger responseLogger, 
+									 TravelRestRequestExecutionTimeLogger executionTimeLogger, 
+									 TravelGetAgreementService getAgreementService, 
 									 GetAgreementDtoConverter dtoConverter) {
 		this.requestLogger = requestLogger;
 		this.responseLogger = responseLogger;

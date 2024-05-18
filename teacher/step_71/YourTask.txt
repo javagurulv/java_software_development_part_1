@@ -12,3 +12,7 @@ TRAVEL_SPORT_ACTIVITIES
 
 Созданный SQL скрипт протестируйте на созданной базе данных
 и сохраните в файле database/mySqlDataScript.sql.
+
+PS: не забудьте по окончанию выполнения шага создать и заполнить
+файл /documentation/Step_X_description.txt. Формат заполнения этого
+файла описан в step_1 в файле Learning_reflection.txt.

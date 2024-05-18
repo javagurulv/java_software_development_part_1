@@ -19,3 +19,7 @@ src/test/java/org/javaguru/java2/insurance/rest/TravelCalculatePremiumController
 Узнать про HTTP GET, POST, Thymeleaf, URL, HTML.
 Прояснить при помощи интернета или задать все возникшие вопросы ментору.
 Запустить приложение и по тестировать созданную ментором веб страницу.
+
+PS: не забудьте по окончанию выполнения шага создать и заполнить
+файл /documentation/Step_X_description.txt. Формат заполнения этого
+файла описан в step_1 в файле Learning_reflection.txt.

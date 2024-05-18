@@ -7,8 +7,8 @@
 
     <changeSet author="javaguru" id="46">
         <addUniqueConstraint columnNames="uuid"
-                              constraintName="unique_uuid"
-                              tableName="agreements"/>
+                             constraintName="unique_uuid"
+                             tableName="agreements"/>
     </changeSet>
 
     <changeSet author="javaguru" id="47">
