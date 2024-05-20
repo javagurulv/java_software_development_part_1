@@ -36,13 +36,13 @@ Gradle wrapper это Java библиотека, которая
 
 Откройте меню: File -> Project Structure
 и убедитесь, что у вас выбрана
-SDK 18 (например Amazon Corretto version 18.0.2)
-и установлен Language Level: 18 - JavaDoc snippets
+SDK 21 (например Amazon Corretto version 21.0.3)
+и установлен Language Level: 21 - JavaDoc snippets
 или SDK default.
 
 Откройте меню: File -> Settings и в верхнем левом углу
 в строке поиска наберите Gradle. Убедитесь, что
-Gradle JVM: установлена в Project SDK corretto 18.
+Gradle JVM: установлена в Project SDK corretto 21.
 В этом же окне установите:
 Build and run using: IntelliJ IDEA
 Run tests using: IntelliJ IDEA
