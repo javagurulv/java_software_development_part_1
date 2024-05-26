@@ -1,0 +1,18 @@
+
+Strangler Fig Application
+https://martinfowler.com/bliki/StranglerFigApplication.html
+
+Trunk Based Development: Introduction
+https://trunkbaseddevelopment.com/
+
+The XP 2002 Conference
+https://martinfowler.com/articles/xp2002.html
+
+
+Martin Fowler
+https://martinfowler.com/
+
+
+Evolutionary Database Design
+https://martinfowler.com/articles/evodb.html
+
