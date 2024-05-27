@@ -5,7 +5,6 @@
 Ваша задача: изучить материалы про нотацию C4:
 https://c4model.com/
 https://habr.com/ru/articles/778726/
-https://habr.com/ru/companies/nspk/articles/679426/
 
 Попробуйте изучить и воспользоваться
 инструментом для создания С4 диаграмм:
