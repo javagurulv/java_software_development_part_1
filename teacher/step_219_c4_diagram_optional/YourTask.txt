@@ -4,6 +4,7 @@
 
 Ваша задача: изучить материалы про нотацию C4:
 https://c4model.com/
+https://www.youtube.com/watch?v=x2-rSnhpw0g
 https://habr.com/ru/articles/778726/
 
 Попробуйте изучить и воспользоваться
