@@ -19,14 +19,6 @@
         </createTable>
     </changeSet>
 
-    <changeSet author="javaguru" id="23-xx">
-        <addForeignKeyConstraint baseTableName="selected_risks"
-                                 baseColumnNames="agreement_id"
-                                 constraintName="fk_selected_risks_agreement_id"
-                                 referencedTableName="agreements"
-                                 referencedColumnNames="id"/>
-    </changeSet>
-
     <changeSet author="javaguru" id="24">
         <createIndex indexName="ix_selected_risks_agreement_id_risk_ic"
                      tableName="selected_risks"

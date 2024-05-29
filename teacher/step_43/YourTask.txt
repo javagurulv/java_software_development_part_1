@@ -1,14 +1,13 @@
-Ментор хочет написать тесты на контроллер
-TravelCalculatePremiumController, для того чтобы можно было
-поднимать приложение целиком, посылать HTTP POST запрос с JSON
-внутри и проверять ответ.
+Знакомство с принципом разработки KISS.
 
-Ментор создал вам пример такого теста в классе
-TravelCalculatePremiumControllerTest.
+KISS stands for Keep It Simple, Stupid.
 
-Ваша задача: разобраться как работает тест контроллера
-TravelCalculatePremiumControllerTest.
+This software design principle states that designs,
+solutions, systems, and products work best if they're kept simple.
+It means we should favor simplicity over complexity
+and avoid complexity as much as possible.
 
-PS: не забудьте по окончанию выполнения шага создать и заполнить
-файл /documentation/Step_X_description.txt. Формат заполнения этого
-файла описан в step_1 в файле Learning_reflection.txt.
+Ваша задача: найти и ознакомиться с информацией
+по принципу KISS в программировании.
+
+https://www.baeldung.com/cs/kiss-software-design-principle

@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/insurance/travel")
 public class TravelCalculatePremiumController {
 
-	private TravelCalculatePremiumRequestLogger requestLogger;
-	private TravelCalculatePremiumResponseLogger responseLogger;
-	private TravelCalculatePremiumRequestExecutionTimeLogger executionTimeLogger;
-	private TravelCalculatePremiumService calculatePremiumService;
+	private final TravelCalculatePremiumRequestLogger requestLogger;
+	private final TravelCalculatePremiumResponseLogger responseLogger;
+	private final TravelCalculatePremiumRequestExecutionTimeLogger executionTimeLogger;
+	private final TravelCalculatePremiumService calculatePremiumService;
 
 	TravelCalculatePremiumController(TravelCalculatePremiumRequestLogger requestLogger,
 									 TravelCalculatePremiumResponseLogger responseLogger,

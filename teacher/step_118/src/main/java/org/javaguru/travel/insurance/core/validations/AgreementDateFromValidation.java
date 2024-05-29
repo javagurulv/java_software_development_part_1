@@ -13,7 +13,7 @@ import java.util.Optional;
 class AgreementDateFromValidation extends TravelRequestValidationImpl {
 
     private final ValidationErrorFactory errorFactory;
-
+    
     @Override
     public Optional<ValidationError> validate(TravelCalculatePremiumRequest request) {
         return (request.getAgreementDateFrom() == null)

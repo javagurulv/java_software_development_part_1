@@ -32,8 +32,6 @@ public class TravelCalculatePremiumResponse extends CoreResponse {
 
     private String country;
 
-    private String medicalRiskLimitLevel;
-
     @JsonSerialize(using = BigDecimalSerializer.class)
     private BigDecimal agreementPremium;
 

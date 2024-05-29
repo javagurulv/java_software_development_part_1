@@ -23,10 +23,10 @@ public class TravelCalculatePremiumRestControllerV2 {
 	private final TravelCalculatePremiumService calculatePremiumService;
 	private final DtoV2Converter dtoV2Converter;
 
-	TravelCalculatePremiumRestControllerV2(TravelCalculatePremiumRequestLoggerV2 requestLogger, 
-										   TravelCalculatePremiumResponseLoggerV2 responseLogger, 
-										   TravelCalculatePremiumRequestExecutionTimeLogger executionTimeLogger, 
-										   TravelCalculatePremiumService calculatePremiumService, 
+	TravelCalculatePremiumRestControllerV2(TravelCalculatePremiumRequestLoggerV2 requestLogger,
+										   TravelCalculatePremiumResponseLoggerV2 responseLogger,
+										   TravelCalculatePremiumRequestExecutionTimeLogger executionTimeLogger,
+										   TravelCalculatePremiumService calculatePremiumService,
 										   DtoV2Converter dtoV2Converter) {
 		this.requestLogger = requestLogger;
 		this.responseLogger = responseLogger;
