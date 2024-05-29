@@ -1,12 +1,5 @@
 package org.javaguru.travel.insurance.core;
 
-import org.javaguru.travel.insurance.core.validations.AgreementDateFromInFutureValidation;
-import org.javaguru.travel.insurance.core.validations.AgreementDateFromValidation;
-import org.javaguru.travel.insurance.core.validations.AgreementDateToInFutureValidation;
-import org.javaguru.travel.insurance.core.validations.AgreementDateToValidation;
-import org.javaguru.travel.insurance.core.validations.DateFromLessThenDateToValidation;
-import org.javaguru.travel.insurance.core.validations.PersonFirstNameValidation;
-import org.javaguru.travel.insurance.core.validations.PersonLastNameValidation;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.junit.jupiter.api.Test;
@@ -55,8 +48,8 @@ public class TravelCalculatePremiumRequestValidatorTest {
     @Test
     public void shouldReturnError() {
         TravelCalculatePremiumRequest request = mock(TravelCalculatePremiumRequest.class);
-        when(personFirstNameValidation.validatePersonFirstName(request)).thenReturn(Optional.of(new ValidationError()));
-        when(personLastNameValidation.validatePersonLastName(request)).thenReturn(Optional.of(new ValidationError()));
+        when(personFirstNameValidation.validatePersonFirstName(request)).thenReturn(Optional.of(new ValidationError("errorCode", "description")));
+        when(personLastNameValidation.validatePersonLastName(request)).thenReturn(Optional.of(new ValidationError("errorCode", "description")));
         when(agreementDateFromValidation.validateAgreementDateFrom(request)).thenReturn(Optional.of(new ValidationError()));
         when(agreementDateToValidation.validateAgreementDateTo(request)).thenReturn(Optional.of(new ValidationError()));
         when(dateFromLessThenDateToValidation.validateDateFromLessThenDateTo(request)).thenReturn(Optional.of(new ValidationError()));

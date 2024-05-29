@@ -18,7 +18,7 @@ public class TravelInsuranceControllerV2 {
     private final TravelCalculatePremiumService service;
     private final DtoV2Converter dtoV2Converter;
 
-    TravelInsuranceControllerV2(TravelCalculatePremiumService service, 
+    TravelInsuranceControllerV2(TravelCalculatePremiumService service,
                                 DtoV2Converter dtoV2Converter) {
         this.service = service;
         this.dtoV2Converter = dtoV2Converter;

@@ -1,45 +1,33 @@
-Знакомимся с компьютерными сетями.
+Ментор указал вам на то, что код TravelCalculatePremiumServiceImpl
+не отражает сути бизнес процесса, который он реализует.
 
-Разрабатываемые программистами программы очень редко могут существовать
-в изоляции от внешнего мира. Обычно это приложения, которые общаются
-между собой и дают возможность пользователям получить к ним доступ.
-Так как приложения разворачиваются и работают на разных компьютерах
-для обеспечения коммуникации между ними используется сеть (network).
+В нём нет чёткого акцента на место в коде, где бы
+происходил расчёт стоимости страхового полиса (underwriting).
+На данный момент это происходит где-то во время создания ответа.
 
-Задача этого шага: познакомиться с устройством сети. Хороший
-программист должен понимать как устроена и работает сеть, через
-которую передаются данные его приложений.
+А ведь это и есть главная вещь,
+ради которой и создавался этот сервис!
 
-В этом шаге погрузитесь в изучение устройства сетей и протоколов, которые
-обеспечивают их работу. Узнайте как можно больше информации о:
+Попробуйте переделать код так, чтобы удовлетворить
+пожелание ментора и приблизить ваш код к реальному
+бизнес процессу, который он автоматизирует.
 
-- архитектуре компьютерных сетей;
-- уровнях в сетевой модели (канальный, межсетевой, транспортный, прикладной);
-- протоколах используемых в компьютерных сетях;
-- протоколе TCI;
-- протоколе IP.
+Если у вас нет идей как это можно сделать - проконсультируйтесь с ментором!
 
-Начните изучение со следующих источников:
-https://selectel.ru/blog/tcp-ip-for-beginners/
-https://selectel.ru/blog/osi-for-beginners/
+PS: при изменении кода не забудьте про тесты.
 
-Основы сетей передачи данных.
-Модель OSI и стек протоколов TCP IP.
-Основы Ethernet.
-https://www.youtube.com/watch?v=Z-a7MNStFQs
-
-Что такое TCP/IP: Объясняем на пальцах
-https://www.youtube.com/watch?v=2I1HnSN1H9o
-
-Если будет необходимость найдите
-дополнительные источники и изучите их.
-
-PS: если вы нашли полезный источник
-(статью или видео), поделитесь им с
-ментором и сокурсниками.
-
-Ваша цель сформировать у себя начальное понимание
-того как устроены и работают компьютерные сети.
+From business:
+The process of calculating the price of an insurance policy
+is typically referred to as "underwriting". Underwriting involves
+assessing the risk of insuring a particular individual or entity,
+based on factors such as age, health, occupation, location,
+and other relevant information. Once the risk has been assessed,
+the insurer can then determine the appropriate premium to charge
+for the policy, based on the likelihood of a claim being made and
+the potential cost of that claim. Underwriting is a key part of the
+insurance industry, as it helps to ensure that premiums are set at a
+level that is fair and sustainable for both the insurer and the
+policyholder.
 
 PS: не забудьте по окончанию выполнения шага создать и заполнить
 файл /documentation/Step_X_description.txt. Формат заполнения этого

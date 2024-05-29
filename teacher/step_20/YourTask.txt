@@ -1,40 +1,95 @@
-Для того чтобы воспользоваться классом DateTimeService в классе
-TravelCalculatePremiumServiceImpl "повесьте" на новый класс
-аннотацию @Component (по аналогии с TravelCalculatePremiumServiceImpl).
+Знакомство с понятием stateless и stateful объектов.
 
-Spring аннотация @Component это часть реализации Inversion of Control
-(IoC) или Dependency Injection дизайн паттерна. Это один из ключевых
-дизайн паттернов применяемых для построения больших приложений. Он
-позволяет как бы "склеивать" все объекты из которых состоит приложение
-во время выполнения программы. Дополнительно изучите информацию
-про основы IoC в Spring.
+Давайте на примере класса DateTimeService разберем
+что такое stateless и stateful объекты. Понятия
+stateless и stateful очень важны, особенно если
+вы хотите использовать эти объекты для создания
+многопоточных приложений.
 
-Для того чтобы воспользоваться новым классом в
-TravelCalculatePremiumServiceImpl просто создайте конструктор
-принимающий его в качестве параметра и сохраняющего в свойство класса.
-(private DateTimeService dateTimeService;)
+Ниже приведены две реализации класса DateTimeService (V1 и V2):
 
-Такой способ получения внешней зависимости называется:
-constructor dependency injection.
+class DateTimeServiceV1 {
 
-Далее замените код расчета количества дней между датами
-на вызов метода из класса DateTimeService
-(например dateTimeService.getDaysBetween(...).
+    long getDaysBetween(Date date1, Date date2) {
+        long diff = date2.getTime() - date1.getTime();
+        return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+    }
 
-Старый код расчёта количества дней между датами в классе
-TravelCalculatePremiumServiceImpl больше не используется, удалите его.
+}
 
-После внесённых изменений не забудьте поправить тест
-класса TravelCalculatePremiumServiceImpl так, чтобы он
-компилировался и работал.
+class DateTimeServiceV2 {
 
-Совет: запомните этот прием (вынесение алгоритма в отдельный класс).
-Это очень действенный прием, который широко используется в разработке
-программного обеспечения. Используйте его и вы!
+    private Date date1;
+    private Date date2;
 
-Books about Dependency Injection (Inversion of Control - IoC)
-(в интернете можно найти pdf):
-1. https://www.amazon.com/Dependency-Injection-Examples-Java-Ruby/dp/193398855X
+    DateTimeServiceV2(Date date1, Date date2) {
+        this.date1 = date1;
+        this.date2 = date2;
+    }
+
+    long getDaysBetween() {
+        long diff = date2.getTime() - date1.getTime();
+        return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+    }
+
+}
+
+Как вы думаете, какую из этих реализаций проще использовать
+для многократного вычисления количества дней между датами?
+
+V1 code example:
+    var dateTimeService = new DateTimeServiceV1();
+    var daysBetween1 = dateTimeService.getDaysBetween(date1, date2);
+    var daysBetween2 = dateTimeService.getDaysBetween(date3, date4);
+    var daysBetween3 = dateTimeService.getDaysBetween(date5, date6);
+
+V2 code example:
+    var daysBetween1 = new DateTimeServiceV2(date1, date2).getDaysBetween();
+    var daysBetween2 = new DateTimeServiceV2(date3, date4).getDaysBetween();
+    var daysBetween3 = new DateTimeServiceV2(date5, date6).getDaysBetween();
+
+Какой из вариантов кода лучше? И почему?
+
+Вариант V1 лучше, так как в нем для произведения вычислений
+создается всего один экземпляр класса DateTimeServiceV1.
+
+А в варианте V2 создается аш три экземпляра класса DateTimeServiceV2.
+
+Как вы понимаете создание "лишних" объектов скажется негативно
+на общей производительности системы. Так как системе придется
+потратить дополнительное время на создание объектов и потом
+на их удаление из памяти после того как они больше будут не нужны.
+
+Вариант реализации V1 обладает характеристикой stateless.
+Экземпляры класса DateTimeServiceV1 являются объектами
+у которых нет состояния.
+
+Напомним, что состояние объекта это набор всех свойств объекта
+и их значений в определенный момент времени.
+
+Так как у объектов класса DateTimeServiceV1 нет свойств, поэтому
+их состояние и не может изменяться во время использования экземпляров
+этого класса.
+
+И наоборот объекты класса DateTimeServiceV2 обладают состоянием.
+Они хранят значения двух дат (date1 и date2). И поэтому экземпляры
+класса DateTimeServiceV2 не получится использовать повторно.
+
+Очень часто в программировании мы создаем классы для реализации
+определенных алгоритмов. Делая эти классы stateless мы открываем
+себе дорогу к многократному использованию экземпляров таких классов.
+
+Stateless объекты как математические функции. Они получают входные
+параметры в виде параметров метода, вычисляют на их основе результат
+и просто возвращают его, не изменяя при этом свое состояние.
+
+Такие stateless объекты безопасно использовать
+при многопоточных вычислениях.
+
+Ваша задача: узнайте почему stateless объекты
+считаются потоко безопасными (thread safe).
+И почему stateful объекты не являются потоко
+безопасными (not thread safe).
 
 PS: не забудьте по окончанию выполнения шага создать и заполнить
 файл /documentation/Step_X_description.txt. Формат заполнения этого

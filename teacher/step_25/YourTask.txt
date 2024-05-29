@@ -1,30 +1,28 @@
-Ваша задача:
+Попробуйте применить подход описанный ниже для создания мок объектов
+и внедрения их в качестве зависимостей.
 
-Узнайте для чего используют библиотеку Lombok.
-(https://www.baeldung.com/intro-to-project-lombok)
+JUnit - это библиотека, которая управляет запуском юнит тестов.
+Ее поведение можно расширять, что и сделано с помощью
+@ExtendWith(MockitoExtension.class). Узнайте, что эта штука делает
+под капотом. Так же узнайте что такое аннотации @Mock и @InjectMocks.
 
-Добавьте в проект библиотеку Lombok.
 
-	compileOnly('org.projectlombok:lombok:1.18.32')
-	annotationProcessor('org.projectlombok:lombok:1.18.32')
+@ExtendWith(MockitoExtension.class)
+class TravelCalculatePremiumServiceImplTest {
 
-	testCompileOnly('org.projectlombok:lombok:1.18.32')
-	testAnnotationProcessor('org.projectlombok:lombok:1.18.32')
+    @Mock private DateTimeService dateTimeService;
 
-В IntelliJIdea File -> Settings -> "Enable annotation processing"
-поставить галочку!
+    @InjectMocks
+    private TravelCalculatePremiumServiceImpl service;
 
-Примените Lombok для генерации get/set методов и конструкторов
-для классов запроса и ответа:
+    private TravelCalculatePremiumRequest request;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+    @BeforeEach
+    public void setUp() {
+        request = createRequestWithAllFields();
+        when(dateTimeService.getDaysBetween(request.getAgreementDateFrom(), request.getAgreementDateTo())).thenReturn(0L);
+    }
 
-Прочитайте и поэкспериментируйте
-с Lombok аннотациями описанными в статье:
-https://habr.com/ru/articles/812101/
 
 PS: не забудьте по окончанию выполнения шага создать и заполнить
 файл /documentation/Step_X_description.txt. Формат заполнения этого

@@ -3,7 +3,6 @@ package org.javaguru.travel.insurance.core.services;
 import org.javaguru.travel.insurance.core.api.command.TravelCalculatePremiumCoreCommand;
 import org.javaguru.travel.insurance.core.api.command.TravelCalculatePremiumCoreResult;
 import org.javaguru.travel.insurance.core.api.dto.AgreementDTO;
-import org.javaguru.travel.insurance.core.api.dto.PersonDTO;
 import org.javaguru.travel.insurance.core.api.dto.ValidationErrorDTO;
 import org.javaguru.travel.insurance.core.validations.TravelAgreementValidator;
 import org.junit.jupiter.api.Test;
@@ -27,7 +26,6 @@ public class TravelCalculatePremiumServiceImplTest {
     @Mock private TravelAgreementValidator agreementValidator;
     @Mock private AgreementPersonsPremiumCalculator agreementPersonsPremiumCalculator;
     @Mock private AgreementTotalPremiumCalculator agreementTotalPremiumCalculator;
-    @Mock private PersonSaver personSaver;
 
     @InjectMocks
     private TravelCalculatePremiumServiceImpl premiumService;
@@ -45,14 +43,12 @@ public class TravelCalculatePremiumServiceImplTest {
         assertEquals(result.getErrors().size(), 1);
         assertEquals(result.getErrors().get(0).getErrorCode(), "Error code");
         assertEquals(result.getErrors().get(0).getDescription(), "Error description");
-        verifyNoInteractions(agreementPersonsPremiumCalculator, agreementPersonsPremiumCalculator, personSaver);
+        verifyNoInteractions(agreementPersonsPremiumCalculator, agreementPersonsPremiumCalculator);
     }
 
     @Test
     public void shouldCalculatePersonsPremium() {
-        var person = new PersonDTO();
         var agreement = new AgreementDTO();
-        agreement.setPersons(List.of(person));
         when(agreementValidator.validate(agreement)).thenReturn(Collections.emptyList());
         premiumService.calculatePremium(new TravelCalculatePremiumCoreCommand(agreement));
         verify(agreementPersonsPremiumCalculator).calculateRiskPremiums(agreement);
@@ -60,9 +56,7 @@ public class TravelCalculatePremiumServiceImplTest {
 
     @Test
     public void shouldCalculateAgreementTotalPremium() {
-        var person = new PersonDTO();
         var agreement = new AgreementDTO();
-        agreement.setPersons(List.of(person));
         when(agreementValidator.validate(agreement)).thenReturn(Collections.emptyList());
         when(agreementTotalPremiumCalculator.calculate(agreement)).thenReturn(BigDecimal.ONE);
         TravelCalculatePremiumCoreResult result = premiumService.calculatePremium(new TravelCalculatePremiumCoreCommand(agreement));

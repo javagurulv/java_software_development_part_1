@@ -1,28 +1,25 @@
-Попробуйте применить подход описанный ниже для создания мок объектов
-и внедрения их в качестве зависимостей.
+Ваша задача: изучите дизайн паттерн Inversion of Control (IoC).
 
-JUnit - это библиотека, которая управляет запуском юнит тестов.
-Ее поведение можно расширять, что и сделано с помощью
-@ExtendWith(MockitoExtension.class). Узнайте, что эта штука делает
-под капотом. Так же узнайте что такое аннотации @Mock и @InjectMocks.
+IoC в действительности поддерживает три
+способа получения внешних зависимостей классом:
+- через конструктор;
+- через set метод;
+- через свойство объекта.
+
+Разберитесь как работает дизайн паттерн Inversion of Control (IoC).
+Попробуйте узнать, какой способ получения зависимостей лучше,
+какие плюсы и минусы есть у каждого способа.
 
 
-@ExtendWith(MockitoExtension.class)
-class TravelCalculatePremiumServiceImplTest {
+Рекомендованные линки для изучения:
 
-    @Mock private DateTimeService dateTimeService;
+https://martinfowler.com/articles/injection.html
 
-    @InjectMocks
-    private TravelCalculatePremiumServiceImpl service;
+https://odrotbohm.de/2013/11/why-field-injection-is-evil/
 
-    private TravelCalculatePremiumRequest request;
+https://www.baeldung.com/constructor-injection-in-spring
 
-    @BeforeEach
-    public void setUp() {
-        request = createRequestWithAllFields();
-        when(dateTimeService.getDaysBetween(request.getAgreementDateFrom(), request.getAgreementDateTo())).thenReturn(0L);
-    }
-
+https://livebook.manning.com/book/dependency-injection/chapter-1/
 
 PS: не забудьте по окончанию выполнения шага создать и заполнить
 файл /documentation/Step_X_description.txt. Формат заполнения этого
