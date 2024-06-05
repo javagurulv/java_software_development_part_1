@@ -16,3 +16,11 @@ https://martinfowler.com/
 Evolutionary Database Design
 https://martinfowler.com/articles/evodb.html
 
+
+Architectural Katas
+https://nealford.com/katas/
+https://nofluffjuststuff.com/
+
+
+Chapter 4. Microkernel Architecture
+https://www.oreilly.com/library/view/software-architecture-patterns/9781098134280/ch04.html
