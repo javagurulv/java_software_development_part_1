@@ -24,3 +24,20 @@ https://nofluffjuststuff.com/
 
 Chapter 4. Microkernel Architecture
 https://www.oreilly.com/library/view/software-architecture-patterns/9781098134280/ch04.html
+
+
+DevOps world tools to learn:
+Puppet
+Chef
+Docker
+Red Hat Ansible
+VMware Salt
+JenkinsCI
+HashiCorp Terraform
+HashiCorp Vault
+HashiCorp Consul
+HashiCorp Vagrant
+Kubernates
+
+IaC - Infrastructure as Code
+GitOps
